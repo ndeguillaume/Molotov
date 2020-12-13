@@ -1,0 +1,74 @@
+.search-wrapper > div {
+    display:inline-block;
+}
+
+.search-ico i {
+    color: #919191;
+    cursor: pointer;
+}
+
+.search-ico i:hover {
+    color: #e4e5eb;
+}
+
+.search-ico {
+    background-color: #3a3b3c;
+    height: 34px;
+    border-top-left-radius: 10px 10px;
+    border-bottom-left-radius: 10px 10px;
+    position: relative;
+    right: -10px;
+}
+
+.search-ico > div {
+    display:flex;
+    height: 100%;
+    padding-left:10px;
+}
+
+.search-ico::after, .search-ico::before, .search-ico {
+    box-sizing: initial;
+    vertical-align: bottom; 
+}
+
+.search-button {
+    margin:auto;
+}
+
+.search-bar {
+    border-top-right-radius: 10px 10px;
+    border-bottom-right-radius: 10px 10px;
+    border:none;
+    background-color: #3a3b3c;
+    color: #e4e5eb;
+    padding: 5px;
+    padding-left:15px;
+    padding-right: 15px;
+    width: 75%;
+    max-width: 400px;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #919191;
+    text-align: center;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #919191;
+    text-align: center;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #919191;
+    text-align: center;
+  }
+
+  .search-bar:focus, input:focus{
+    outline: none;
+}
+
+.fa-toggle-on {
+    margin-left: 10px;
+    cursor: pointer; 
+}
