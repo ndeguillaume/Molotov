@@ -4,7 +4,7 @@
 FROM node:10.16-alpine as client
 
 # Working directory be app
-WORKDIR /usr/app/client/
+WORKDIR /usr/src/app/client/
 
 COPY client/package*.json ./
 
@@ -22,7 +22,7 @@ RUN yarn build
 FROM node:10.16-alpine
 
 WORKDIR /usr/src/app/
-COPY --from=client /usr/app/client/build/ ./client/build/
+COPY --from=client /usr/src/app/client/build/ ./client/build/
 RUN ls
 
 WORKDIR /usr/src/app/server/

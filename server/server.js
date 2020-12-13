@@ -12,7 +12,7 @@ require('./src/database');
 // Routes
 const postRouter = require('./src/routes/post.router');
 
-const CLIENT_BUILD_PATH = path.join(__dirname, "client","build");
+const CLIENT_BUILD_PATH = path.join(__dirname, "../client/build");
 
 app.use(
   bodyParser.urlencoded({
