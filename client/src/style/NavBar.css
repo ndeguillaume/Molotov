@@ -1,0 +1,19 @@
+.NavBar {
+    display: flex;
+    height: 40px;
+    background-color: #242526;
+    border-bottom: 1px solid #e4e5eb;
+}
+
+.NavBar > div {
+    margin: auto;
+    display:inline-block;
+}
+
+.NavBar > div:not(:nth-child(2)) {
+    flex:1;
+}
+
+.NavBar > div:nth-child(2) {
+    flex:3
+}
