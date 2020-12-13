@@ -1,9 +1,11 @@
 import React from 'react';
+import MoreInformation from './MoreInformation';
 
 export default class randomCocktail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      moreInfo : false,
       error: null,
       isLoaded: false,
       items: []
@@ -29,26 +31,33 @@ export default class randomCocktail extends React.Component {
       )
   }
 
+  displayMoreInformation() {
+   this.setState({moreInfo: true});
+}
+
   render() {
     const { error, isLoaded, items } = this.state;
     if (error) {
-      return <div>Erreur : {error.message}</div>;
+      return <div>Error : {error.message}</div>;
     } else if (!isLoaded) {
-      return <div>Chargement…</div>;
+      return <div>Loading...</div>;
     } else {
       return (
-        <div class="random-cocktail">
-          <div class="random-cocktail-thumbnail-wrapper">
+        <div key={items.drinkId} className="random-cocktail">
+          <div className="random-cocktail-thumbnail-wrapper">
             <img src={items.strDrinkThumb}></img>
           </div>
-          <div class="random-cocktail-title">
-            <i class="fas fa-cocktail"></i>{items.strDrink}
+          <div className="random-cocktail-title">
+            <i className="fas fa-cocktail"></i>{items.strDrink}
           </div>
-          <div class="random-cocktail-components">
-            {items.strIngredient1}, {items.strIngredient2} ...
+          <div className="random-cocktail-ingredients">
+            {items.strIngredient1}, ...
             </div>
-          <div class="more-information-button-wrapper"><div>More information</div></div>
-        </div>)
+          <div className="more-information-button-wrapper button-wrapper"><div onClick={() => this.displayMoreInformation()}>More information</div></div>
+          {this.state.moreInfo ? <MoreInformation drink={items}/> : null}
+        </div>
+        )
     }
   }
+
 }

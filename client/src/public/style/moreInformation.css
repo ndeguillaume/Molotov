@@ -1,0 +1,27 @@
+.more-information-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; 
+    display: flex;
+    margin: 0;
+    background-color:rgb(0 0 0 / 30%);
+}
+
+.more-information{
+    margin: auto;
+    background-color: #18191a;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.more-information-title, .more-information-close {
+    display:inline-block
+}
+
+.fa-times {
+    cursor: pointer;
+}

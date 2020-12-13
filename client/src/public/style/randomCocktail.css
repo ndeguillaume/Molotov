@@ -1,3 +1,11 @@
+.col {
+    text-align: center;
+}
+
+.col * {
+    text-align: initial ;
+}
+
 .random-cocktail{
     background-color: #242526;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -8,13 +16,13 @@
 }
 
 .random-cocktail-thumbnail-wrapper > img {
-    width: 235px;
+    width: 230px;
     border-radius: 5px;
     border: 1px solid #99918a;
 }
 
-.random-cocktail-thumbnail-wrapper {
-    margin:5px;
+.random-cocktail-title {
+    text-align: center;
 }
 
 .random-cocktail-title i {
@@ -25,33 +33,16 @@
     margin: 10px;
 }
 
-.more-information-button-wrapper div {
+.random-cocktail .button-wrapper {
+    text-align: center;
+}
+
+.random-cocktail-thumbnail-wrapper {
     padding: 10px;
-    background-color: #d000cd;
-    color: #e4e5eb;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    -webkit-transition: 0.18s ease-out;
-    -moz-transition: 0.18s ease-out;
-    -o-transition: 0.18s ease-out;
-    transition: 0.18s ease-out;
+    padding-bottom: 5px;
 }
 
-.more-information-button-wrapper div:hover {
-    background-color: #ab00a8;
-    -webkit-transition: 0.18s ease-out;
-    -moz-transition: 0.18s ease-out;
-    -o-transition: 0.18s ease-out;
-    transition: 0.18s ease-out;
-}
-
-
-.random-cocktail > div:not(:first-child) {
-    margin-top: 10px;
-}
-
-.random-cocktail > div:not(:last-child) {
-    margin-bottom: 10px;
+.random-cocktail-title, .random-cocktail-ingredients {
+    padding-left: 10px;
+    padding-right: 10px;
 }
