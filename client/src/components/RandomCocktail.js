@@ -44,7 +44,7 @@ export default class randomCocktail extends React.Component {
           <div class="random-cocktail-title">
             <i class="fas fa-cocktail"></i>{items.strDrink}
           </div>
-          <div>
+          <div class="random-cocktail-components">
             {items.strIngredient1}, {items.strIngredient2} ...
             </div>
           <div class="more-information-button-wrapper"><div>More information</div></div>
