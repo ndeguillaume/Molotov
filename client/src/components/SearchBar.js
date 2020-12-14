@@ -10,7 +10,8 @@ export default class SearchBar extends React.Component {
     }
 
     search() {
-        console.log(this.state.searchValue)
+        let url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + this.state.searchValue;
+        this.props.handleClick(url);
     }
 
     updateInputValue(e) {
@@ -19,6 +20,15 @@ export default class SearchBar extends React.Component {
         })
       }
 
+    onKeyDown(e) {
+        if (e.key === 'Enter') {
+            this.setState({
+                searchValue: e.target.value
+            })
+            this.search();
+        }
+    }
+
     render() {
         return (
                 <div className="search-wrapper">
@@ -26,9 +36,9 @@ export default class SearchBar extends React.Component {
                     <div>
                         <div className="search-button" title="Search"><i className="fas fa-search" onClick={() => this.search()}></i></div>
                     </div></div>
-                    <input type="text" className="search-bar" placeholder="Search cocktail" aria-label="search-cocktail" onChange={(e) => this.updateInputValue(e)} />
-                    <div class="filter-ico">
-                        <div className="filter-button" title="Filter"><i class="fas fa-toggle-on"></i></div>
+                    <input type="text" className="search-bar" placeholder="Search cocktail" aria-label="search-cocktail" onKeyDown={(e) => this.onKeyDown(e)} onChange={(e) => this.updateInputValue(e)} />
+                    <div className="filter-ico">
+                        <div className="filter-button" title="Filter"><i className="fas fa-toggle-on"></i></div>
                     </div>
                 </div>
         )

@@ -12,9 +12,21 @@
 }
 
 .NavBar > div:not(:nth-child(2)) {
-    flex:1;
+    flex: 1;
 }
 
 .NavBar > div:nth-child(2) {
-    flex:3
+    flex: 10;
+}
+
+.NavBar > div:first-child img {
+    width: 32px;
+}
+
+.login-button {
+    margin: 5px;
+}
+
+.reset-ico {
+    cursor: pointer;
 }

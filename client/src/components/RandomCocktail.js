@@ -43,14 +43,14 @@ export default class randomCocktail extends React.Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <div key={items.drinkId} className="random-cocktail">
-          <div className="random-cocktail-thumbnail-wrapper">
-            <img src={items.strDrinkThumb}></img>
+        <div key={items.drinkId} className="cocktail">
+          <div className="cocktail-thumbnail-wrapper">
+            <img src={items.strDrinkThumb} alt={items.strDrink}></img>
           </div>
-          <div className="random-cocktail-title">
+          <div className="cocktail-title">
             <i className="fas fa-cocktail"></i>{items.strDrink}
           </div>
-          <div className="random-cocktail-ingredients">
+          <div className="cocktail-ingredients">
             {items.strIngredient1}, ...
             </div>
           <div className="more-information-button-wrapper button-wrapper"><div onClick={() => this.displayMoreInformation()}>More information</div></div>

@@ -41,3 +41,45 @@
 .button-wrapper div {
   text-align: center;
 }
+
+
+.cocktail{
+  background-color: #242526;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: inline-block;
+  width: 250px;
+  /* height: 250px; */
+  border-radius: 5px;
+}
+
+.cocktail-thumbnail-wrapper > img {
+  width: 230px;
+  border-radius: 5px;
+  border: 1px solid #99918a;
+}
+
+.cocktail-title {
+  text-align: center!important;
+}
+
+.cocktail-title i {
+  margin-right: 5px;
+}
+
+.more-information-button-wrapper {
+  margin: 10px;
+}
+
+.cocktail .button-wrapper {
+  text-align: center;
+}
+
+.cocktail-thumbnail-wrapper {
+  padding: 10px;
+  padding-bottom: 5px;
+}
+
+.cocktail-title, .cocktail-ingredients {
+  padding-left: 10px;
+  padding-right: 10px;
+}
