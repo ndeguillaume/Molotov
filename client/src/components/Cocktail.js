@@ -21,7 +21,7 @@ export default class Cocktail extends React.Component {
             <img src={this.props.drink.strDrinkThumb} alt={this.props.drink.strDrink}></img>
           </div>
           <div className="cocktail-title">
-            <i className="fas fa-cocktail"></i>{this.props.drink.strDrink}
+            <i className="fas fa-cocktail" title="contains alcohol"></i>{this.props.drink.strDrink}
           </div>
           <div className="cocktail-ingredients">
             {this.props.drink.strIngredient1}, ...

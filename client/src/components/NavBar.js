@@ -6,7 +6,6 @@ import ico from './../public/images/violet.png'
 export default class Navbar extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props.displayFilterDiv)
   }
 
   render() {

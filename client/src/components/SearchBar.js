@@ -7,19 +7,43 @@ export default class SearchBar extends React.Component {
         this.state = {
             searchValue: "",
             searchCocktail: true,
-            alcohol: true
+            alcohol: true,
+            placeholder: "Search cocktail"
         };
         this.optionsFilterIco = React.createRef();
-        this.caca = this.caca.bind(this)
+        this.optionClicked = this.optionClicked.bind(this)
     }
 
     search() {
-        let url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + this.state.searchValue;
+        let url
+        if (this.state.searchCocktail) {
+            url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + this.state.searchValue;
+        }
+        else {
+            url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?i=" + this.state.searchValue
+        }
         this.props.handleClick(url);
     }
 
-    caca() {
-        console.log("!!!")
+    optionClicked(e) {
+        const target = e.target
+        if (target.classList.contains("not-selected") && target.classList.contains("option-ingredient")) {
+            this.setState({ searchCocktail: false })
+            this.setState({ placeholder: "Search ingredient" })
+        }
+        else if (target.classList.contains("not-selected") && target.classList.contains("option-cocktail")) {
+            this.setState({ searchCocktail: true })
+            this.setState({ placeholder: "Search cocktail" })
+        }
+        else if (target.classList.contains("option-cocktail")) {
+            this.setState({ searchCocktail: false })
+        }
+        else if (target.classList.contains("not-selected") && target.classList.contains("option-alcohol")) {
+            this.setState({ alcohol: true })
+        }
+        else {
+            this.setState({ alcohol: false })
+        }
     }
     updateInputValue(e) {
         this.setState({
@@ -39,29 +63,29 @@ export default class SearchBar extends React.Component {
     render() {
         if (this.props.displayFilterDiv) {
             const styles = {
-                filter : {
-                    left: this.optionsFilterIco.current.getBoundingClientRect().left + this.optionsFilterIco.current.offsetWidth/2 - 100 + "px"
+                filter: {
+                    left: this.optionsFilterIco.current.getBoundingClientRect().left + this.optionsFilterIco.current.offsetWidth / 2 - 100 + "px"
                 }
             }
-            let buttons;  
-                if (this.state.searchCocktail) {
-                    buttons = '<div class="button-wrapper"><div>Cocktails</div></div><div class="button-wrapper"><div class="not-selected">Ingredient(s)</div></div>'
-                } 
-                else {
-                    buttons = '<div class="button-wrapper"><div class="not-selected">Cocktails</div></div><div class="button-wrapper"><div>Ingredient(s)</div></div>'
-                }
-                if (this.state.alcohol) {
-                    buttons += '<div class="button-wrapper"><div>Alcohol</div></div>'
-                } else {
-                    buttons += '<div class="button-wrapper"><div class="not-selected">Alcohol</div></div>'
-                }
+            let buttons;
+            if (this.state.searchCocktail) {
+                buttons = '<div class="button-wrapper"><div class="option-cocktail">Cocktails</div></div><div class="button-wrapper"><div class="not-selected option-ingredient">Ingredient(s)</div></div>'
+            }
+            else {
+                buttons = '<div class="button-wrapper"><div class="not-selected option-cocktail">Cocktails</div></div><div class="button-wrapper"><div class="option-ingredient">Ingredient(s)</div></div>'
+            }
+            if (this.state.alcohol) {
+                buttons += '<div class="button-wrapper"><div class="option-alcohol">Alcohol</div></div>'
+            } else {
+                buttons += '<div class="button-wrapper"><div class="not-selected option-alcohol">Alcohol</div></div>'
+            }
             return (
                 <div className="search-wrapper">
                     <div className="search-ico">
                         <div>
                             <div className="search-button" title="Search"><i className="fas fa-search" onClick={this.search}></i></div>
                         </div></div>
-                    <input type="text" className="search-bar" placeholder="Search cocktail" aria-label="search-cocktail" onKeyDown={(e) => this.onKeyDown(e)} onChange={(e) => this.updateInputValue(e)} />
+                    <input type="text" className="search-bar" placeholder={this.state.placeholder} aria-label="search-cocktail" onKeyDown={(e) => this.onKeyDown(e)} onChange={(e) => this.updateInputValue(e)} />
                     <div className="filter-ico">
                         <div className="filter-button rotated" title="Filter"><i ref={this.optionsFilterIco} className="fas fa-toggle-on" onClick={this.props.filterClick} ></i></div>
                     </div>
@@ -69,7 +93,7 @@ export default class SearchBar extends React.Component {
                         <div className="filter-options-title">
                             Search by
                     </div>
-                        <div className="filter-options-buttons" dangerouslySetInnerHTML={{__html: buttons}}>
+                        <div onClick={(e) => this.optionClicked(e)} className="filter-options-buttons" dangerouslySetInnerHTML={{ __html: buttons }}>
                         </div>
                     </div>
                 </div>
@@ -81,7 +105,7 @@ export default class SearchBar extends React.Component {
                     <div>
                         <div className="search-button" title="Search"><i className="fas fa-search" onClick={this.search}></i></div>
                     </div></div>
-                <input type="text" className="search-bar" placeholder="Search cocktail" aria-label="search-cocktail" onKeyDown={(e) => this.onKeyDown(e)} onChange={(e) => this.updateInputValue(e)} />
+                <input type="text" className="search-bar" placeholder={this.state.placeholder} aria-label="search-cocktail" onKeyDown={(e) => this.onKeyDown(e)} onChange={(e) => this.updateInputValue(e)} />
                 <div className="filter-ico">
                     <div className="filter-button" title="Filter">
                         <i ref={this.optionsFilterIco} className="fas fa-toggle-on" onClick={this.props.filterClick} ></i>

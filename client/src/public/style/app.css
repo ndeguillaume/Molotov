@@ -83,3 +83,33 @@
   padding-left: 10px;
   padding-right: 10px;
 }
+
+
+
+.ingredient{
+  background-color: #242526;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: inline-block;
+  width: 400px;
+  border-radius: 5px;
+}
+
+.ingredient-content {
+  max-height: 500px;
+  overflow: auto;
+  margin-bottom: 10px;
+}
+
+.ingredient-thumbnail-wrapper > img {
+  width: 300px;
+  border-radius: 5px;
+}
+
+.ingredient-title {
+  text-align: center!important;
+}
+
+.ingredient-title i {
+  margin-right: 5px;
+}
+

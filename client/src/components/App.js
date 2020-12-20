@@ -7,6 +7,7 @@ import './../public/style/bootstrap/css/bootstrap.min.css'
 import Navbar from './NavBar';
 import RandomCocktail from './RandomCocktail';
 import SearchedCocktails from './SearchedCocktails'
+import SearchedIngredients from './SearchedIngredients'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -27,7 +28,6 @@ export default class App extends React.Component {
 
   handleClick(searchUrl) {
     this.setState({ url: searchUrl });
-    console.log(this.state.url);
   }
 
   resetSearch() {
@@ -58,7 +58,12 @@ export default class App extends React.Component {
       });
     }
     else {
-      cocktails = <SearchedCocktails url={this.state.url} />
+      if (this.state.url.split("?")[1].split("=")[0] === "s") {
+        cocktails = <SearchedCocktails url={this.state.url} />
+      }
+      else if (this.state.url.split("?")[1].split("=")[0] === "i") {
+        cocktails = <SearchedIngredients url={this.state.url} />
+      }
     }
     return (
       <div className="App">

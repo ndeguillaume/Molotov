@@ -48,7 +48,7 @@ export default class randomCocktail extends React.Component {
             <img src={items.strDrinkThumb} alt={items.strDrink}></img>
           </div>
           <div className="cocktail-title">
-            <i className="fas fa-cocktail"></i>{items.strDrink}
+            <i className="fas fa-cocktail" title="contains alcohol"></i>{items.strDrink}
           </div>
           <div className="cocktail-ingredients">
             {items.strIngredient1}, ...
