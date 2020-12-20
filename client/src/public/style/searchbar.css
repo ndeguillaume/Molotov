@@ -46,6 +46,7 @@
     padding-right: 15px;
     width: 75%;
     max-width: 400px;
+    margin-right: 10px;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -69,6 +70,33 @@
 }
 
 .fa-toggle-on {
-    margin-left: 10px;
     cursor: pointer; 
+    transition: all 0.2s ease;
 }
+
+.filter-options-wrapper {
+    background-color: #242526;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    width: 200px;
+    position: absolute;
+    top: 55px;
+}
+
+.filter-options-buttons .button-wrapper {
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.filter-options-title {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.rotated {
+    color : #d465ce;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
