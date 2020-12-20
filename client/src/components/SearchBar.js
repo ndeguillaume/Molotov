@@ -1,14 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './../public/style/searchbar.css'
 
 export default class SearchBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchValue: ""
+            searchValue: "",
+            searchCocktail: true,
+            alcohol: true
         };
         this.optionsFilterIco = React.createRef();
+        this.caca = this.caca.bind(this)
     }
 
     search() {
@@ -16,6 +18,9 @@ export default class SearchBar extends React.Component {
         this.props.handleClick(url);
     }
 
+    caca() {
+        console.log("!!!")
+    }
     updateInputValue(e) {
         this.setState({
             searchValue: e.target.value
@@ -38,6 +43,18 @@ export default class SearchBar extends React.Component {
                     left: this.optionsFilterIco.current.getBoundingClientRect().left + this.optionsFilterIco.current.offsetWidth/2 - 100 + "px"
                 }
             }
+            let buttons;  
+                if (this.state.searchCocktail) {
+                    buttons = '<div class="button-wrapper"><div>Cocktails</div></div><div class="button-wrapper"><div class="not-selected">Ingredient(s)</div></div>'
+                } 
+                else {
+                    buttons = '<div class="button-wrapper"><div class="not-selected">Cocktails</div></div><div class="button-wrapper"><div>Ingredient(s)</div></div>'
+                }
+                if (this.state.alcohol) {
+                    buttons += '<div class="button-wrapper"><div>Alcohol</div></div>'
+                } else {
+                    buttons += '<div class="button-wrapper"><div class="not-selected">Alcohol</div></div>'
+                }
             return (
                 <div className="search-wrapper">
                     <div className="search-ico">
@@ -52,16 +69,7 @@ export default class SearchBar extends React.Component {
                         <div className="filter-options-title">
                             Search by
                     </div>
-                        <div className="filter-options-buttons">
-                            <div className="button-wrapper">
-                                <div>Cocktails</div>
-                            </div>
-                            <div className="button-wrapper">
-                                <div>Ingredient(s)</div>
-                            </div>
-                            <div className="button-wrapper">
-                                <div>Alcohol</div>
-                            </div>
+                        <div className="filter-options-buttons" dangerouslySetInnerHTML={{__html: buttons}}>
                         </div>
                     </div>
                 </div>
