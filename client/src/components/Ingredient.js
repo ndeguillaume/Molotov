@@ -1,10 +1,6 @@
 import React from 'react';
 
 export default class Ingredient extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
       const item = this.props.ingredient
       console.log(item)

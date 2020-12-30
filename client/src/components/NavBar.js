@@ -4,10 +4,6 @@ import './../public/style/navbar.css';
 import ico from './../public/images/violet.png'
 
 export default class Navbar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <nav className="NavBar">

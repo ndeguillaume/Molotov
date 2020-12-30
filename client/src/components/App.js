@@ -6,8 +6,8 @@ import './../public/style/fontawesome/css/all.min.css'
 import './../public/style/bootstrap/css/bootstrap.min.css'
 import Navbar from './NavBar';
 import RandomCocktail from './RandomCocktail';
-import SearchedCocktails from './SearchedCocktails'
-import SearchedIngredients from './SearchedIngredients'
+import SearchedCocktailsByName from './SearchedCocktailsByName'
+import SearchedCocktailsByIngredient from './SearchedCocktailsByIngredient'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -59,10 +59,10 @@ export default class App extends React.Component {
     }
     else {
       if (this.state.url.split("?")[1].split("=")[0] === "s") {
-        cocktails = <SearchedCocktails url={this.state.url} />
+        cocktails = <SearchedCocktailsByName url={this.state.url} />
       }
       else if (this.state.url.split("?")[1].split("=")[0] === "i") {
-        cocktails = <SearchedIngredients url={this.state.url} />
+        cocktails = <SearchedCocktailsByIngredient url={this.state.url} />
       }
     }
     return (
@@ -71,8 +71,8 @@ export default class App extends React.Component {
         <div className="content container">
           <div className="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
             {cocktails}
-          </div>
           {(this.state.url === "") ? (<div className="load-more-button-wrapper button-wrapper"><div onClick={() => this.loadMore()}>Load more...</div></div>) : null}
+          </div>
         </div>
       </div>
     )

@@ -8,7 +8,7 @@ export default class SearchBar extends React.Component {
             searchValue: "",
             searchCocktail: true,
             alcohol: true,
-            placeholder: "Search cocktail"
+            placeholder: "Search cocktail by name"
         };
         this.optionsFilterIco = React.createRef();
         this.optionClicked = this.optionClicked.bind(this)
@@ -20,7 +20,7 @@ export default class SearchBar extends React.Component {
             url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + this.state.searchValue;
         }
         else {
-            url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?i=" + this.state.searchValue
+            url = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + this.state.searchValue
         }
         this.props.handleClick(url);
     }
@@ -29,11 +29,11 @@ export default class SearchBar extends React.Component {
         const target = e.target
         if (target.classList.contains("not-selected") && target.classList.contains("option-ingredient")) {
             this.setState({ searchCocktail: false })
-            this.setState({ placeholder: "Search ingredient" })
+            this.setState({ placeholder: "Search cocktail by ingredient" })
         }
         else if (target.classList.contains("not-selected") && target.classList.contains("option-cocktail")) {
             this.setState({ searchCocktail: true })
-            this.setState({ placeholder: "Search cocktail" })
+            this.setState({ placeholder: "Search cocktail by name" })
         }
         else if (target.classList.contains("option-cocktail")) {
             this.setState({ searchCocktail: false })

@@ -1,7 +1,7 @@
 import React from 'react';
 import Cocktail from './Cocktail'
 
-export default class SearchedCocktails extends React.Component {
+export default class SearchedCocktailsByName extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,15 +33,15 @@ export default class SearchedCocktails extends React.Component {
 
   render() {
     const { error, isLoaded, items } = this.state;
-    var cocktails = [];
-    (items.map((item) => {
-      cocktails.push(<Cocktail drink={item} />)
-    }));
     if (error) {
       return <div>Error : {error.message}</div>;
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
+      var cocktails = [];
+      (items.map((item) => {
+        cocktails.push(<Cocktail drink={item} />)
+      }));
       return (
         <React.Fragment>
           {cocktails}
