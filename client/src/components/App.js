@@ -20,6 +20,7 @@ export default class App extends React.Component {
     this.handleClick = this.handleClick.bind(this)
     this.resetSearch = this.resetSearch.bind(this)
     this.filterClick = this.filterClick.bind(this)
+    this.closeFilter = this.closeFilter.bind(this)
   }
 
   loadMore() {
@@ -36,10 +37,17 @@ export default class App extends React.Component {
     this.setState({ url: "" });
   }
 
-  filterClick() {
+  filterClick(e) {
+    e.stopPropagation()
     this.setState({
       filterOption: !this.state.filterOption
     });
+  }
+
+  closeFilter() {
+    this.setState({
+      filterOption: false
+    })
   }
 
   render() {
@@ -68,7 +76,7 @@ export default class App extends React.Component {
       }
     }
     return (
-      <div className="App">
+      <div className="App" onClick={(e) => this.closeFilter(e)} >
         <Navbar displayFilterDiv={this.state.filterOption} filterClick={this.filterClick} resetSearch={this.resetSearch} handleClick={this.handleClick} search={this.state.search} />
         <div className="content container">
           <div className="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">

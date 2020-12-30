@@ -89,7 +89,7 @@ export default class SearchBar extends React.Component {
                     <div className="filter-ico">
                         <div className="filter-button rotated" title="Filter"><i ref={this.optionsFilterIco} className="fas fa-toggle-on" onClick={this.props.filterClick} ></i></div>
                     </div>
-                    <div style={styles.filter} className="filter-options-wrapper">
+                    <div style={styles.filter} className="filter-options-wrapper" onClick={(e) => {e.stopPropagation()}}>
                         <div className="filter-options-title">
                             Search by
                     </div>
