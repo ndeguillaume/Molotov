@@ -27,10 +27,12 @@ export default class App extends React.Component {
   }
 
   handleClick(searchUrl) {
+    this.setState({ reload: 1 })
     this.setState({ url: searchUrl });
   }
 
   resetSearch() {
+    this.setState({ reload: 1 })
     this.setState({ url: "" });
   }
 
@@ -41,7 +43,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    let cocktails
+    var cocktails = [];
     if (this.state.url === "") {
       var tmp = [];
       for (let i = 0; i < this.state.reload; i++) {

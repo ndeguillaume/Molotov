@@ -8,7 +8,9 @@ export default class SearchedCocktailsByName extends React.Component {
       moreInfo: false,
       error: null,
       isLoaded: false,
-      items: []
+      items: [],
+      reload: 1,
+      updated: false
     };
   }
 
@@ -31,6 +33,33 @@ export default class SearchedCocktailsByName extends React.Component {
       )
   }
 
+  componentDidUpdate(previousProps) {
+    if (this.props.url !== previousProps.url) {
+      fetch(this.props.url)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            items: result.drinks
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+      this.setState({ reload: 1})
+    }
+}
+
+  loadMore() {
+    this.setState({
+      reload: this.state.reload + 1
+    })
+  }
   render() {
     const { error, isLoaded, items } = this.state;
     if (error) {
@@ -38,13 +67,23 @@ export default class SearchedCocktailsByName extends React.Component {
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
-      var cocktails = [];
-      (items.map((item) => {
-        cocktails.push(<Cocktail drink={item} />)
-      }));
+      var cocktailsTab = [];
+      var cocktailsID = [];
+      var i = 0;
+      (this.state.items.map((item) => {
+        if (i < 8 * this.state.reload) {
+          cocktailsTab.push(<Cocktail drink={item} />)
+        }
+        else {
+          cocktailsID.push(item.idDrink)
+        }
+        i++
+      })
+      )
       return (
         <React.Fragment>
-          {cocktails}
+          {cocktailsTab}
+          {(cocktailsID.length === 0) ? null : (<div className="load-more-button-wrapper button-wrapper"><div onClick={() => this.loadMore()}>Load more... ({cocktailsID.length})</div></div>)}
         </React.Fragment>
       )
     }

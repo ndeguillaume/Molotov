@@ -3,7 +3,6 @@ import React from 'react';
 export default class Ingredient extends React.Component {
   render() {
       const item = this.props.ingredient
-      console.log(item)
       return (
       <div className="ingredient">
           <div className="ingredient-title">

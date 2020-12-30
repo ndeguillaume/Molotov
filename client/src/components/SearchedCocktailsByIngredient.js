@@ -34,6 +34,28 @@ export default class SearchedCocktailsByIngredient extends React.Component {
             )
     }
 
+    componentDidUpdate(previousProps) {
+        if (this.props.url !== previousProps.url) {
+            fetch(this.props.url)
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState({
+                        isLoaded: true,
+                        items: result.drinks
+                    });
+                },
+                (error) => {
+                    this.setState({
+                        isLoaded: true,
+                        error
+                    });
+                }
+            )
+          this.setState({ reload: 1})
+        }
+    }
+
     loadMore() {
         this.setState({
             reload: this.state.reload + 1

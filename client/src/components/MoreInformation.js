@@ -15,7 +15,6 @@ export default class MoreInformation extends React.Component {
 
     render() {
         if (this.state.display) {
-            console.log(this.state.drink)
             let moreIngredients = true;
             let i = 1;
             while (moreIngredients) {
