@@ -9,8 +9,7 @@ export default class SearchedCocktailsByName extends React.Component {
       error: null,
       isLoaded: false,
       items: [],
-      reload: 1,
-      updated: false
+      reload: 1
     };
   }
 
