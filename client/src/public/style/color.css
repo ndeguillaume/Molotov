@@ -18,7 +18,11 @@
 }
 
 .purple .not-selected:hover {
-    background-color: #d000cd!important;
+  background-color: #d000cd!important;
+}
+
+.purple .change-color-wrapper.focused {
+  background-color: #d000cd;
 }
 
 .blue .button-wrapper div {
@@ -44,6 +48,10 @@
     background-color: #0896e3!important;
 }
 
+.blue .change-color-wrapper.focused {
+  background-color: #0896e3;
+}
+
 .green .button-wrapper div {
   background-color: #50af37;
   color: #e4e5eb;
@@ -65,6 +73,10 @@
 
 .green .not-selected:hover {
     background-color: #50af37!important;
+}
+
+.green .change-color-wrapper.focused {
+  background-color: #50af37;
 }
 
 .yellow .button-wrapper div {
@@ -90,6 +102,11 @@
     background-color: #ffed00!important;
 }
 
+.yellow .change-color-wrapper.focused {
+  background-color: #ffed00;
+  color: #3a3b3c;
+}
+
 .red .button-wrapper div {
   background-color: #e50606;
   color: #e4e5eb;
@@ -111,6 +128,10 @@
 
 .red .not-selected:hover {
     background-color: #e50606!important;
+}
+
+.red .change-color-wrapper.focused {
+  background-color: #e50606;
 }
 
 .orange .button-wrapper div {
@@ -136,6 +157,11 @@
     background-color: #fa8d3c!important;
 }
 
+.orange .change-color-wrapper.focused {
+  background-color: #fa8d3c;
+  color: #3a3b3c;
+}
+
 .pink .button-wrapper div {
   background-color: #ed41ec;
   color: #3a3b3c;
@@ -159,17 +185,14 @@
     background-color: #ed41ec!important;
 }
 
-
-/* .rotated {
-    color : #d465ce;
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-} */
-
-/* .not-selected {
-    background-color: #80007d!important;
+.pink .change-color-wrapper.focused {
+  background-color: #ed41ec;
+  color: #3a3b3c;
 }
 
-.not-selected:hover {
-    background-color: #d000cd!important;
-} */
+.focused {
+  -webkit-transition: 0.18s ease-out;
+  -moz-transition: 0.18s ease-out;
+  -o-transition: 0.18s ease-out;
+  transition: 0.18s ease-out;
+}

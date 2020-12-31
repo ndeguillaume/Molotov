@@ -16,7 +16,7 @@
 }
 
 .NavBar > div:nth-child(2) {
-    flex: 10;
+    flex: 20;
 }
 
 .NavBar > div:first-child img {
