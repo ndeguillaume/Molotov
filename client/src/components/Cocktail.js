@@ -5,17 +5,24 @@ export default class Cocktail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        moreInfo : false
-      };
+      moreInfo: false
+    };
+
+    this.displayMoreInformation = this.displayMoreInformation.bind(this)
+    this.closeMoreInformation = this.closeMoreInformation.bind(this)
   }
 
   displayMoreInformation() {
-   this.setState({moreInfo: true});
-}
+    this.setState({ moreInfo: true });
+  }
+
+  closeMoreInformation() {
+    this.setState({ moreInfo: false })
+  }
 
   render() {
-      return (
-          <div className="column">
+    return (
+      <div className="column">
         <div key={this.props.drink.drinkId} className="cocktail">
           <div className="cocktail-thumbnail-wrapper">
             <img src={this.props.drink.strDrinkThumb} alt={this.props.drink.strDrink}></img>
@@ -27,8 +34,9 @@ export default class Cocktail extends React.Component {
             {this.props.drink.strIngredient1}, ...
             </div>
           <div className="more-information-button-wrapper button-wrapper"><div onClick={() => this.displayMoreInformation()}>More information</div></div>
-          {this.state.moreInfo ? <MoreInformation drink={this.props.drink}/> : null}
+          {this.state.moreInfo ? <MoreInformation closeMoreInformation={this.closeMoreInformation} drink={this.props.drink} /> : null}
         </div>
-        </div>
-      )}
+      </div>
+    )
+  }
 }

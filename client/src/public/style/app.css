@@ -4,7 +4,10 @@
 
 .content {
   margin-top: 10px;
-  min-height: 95vh
+}
+
+.content > div {
+  height: calc(100vh - 55px)
 }
 
 .load-more-button-wrapper {

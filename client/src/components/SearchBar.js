@@ -108,7 +108,7 @@ export default class SearchBar extends React.Component {
                 <input type="text" className="search-bar" placeholder={this.state.placeholder} aria-label="search-cocktail" onKeyDown={(e) => this.onKeyDown(e)} onChange={(e) => this.updateInputValue(e)} />
                 <div className="filter-ico">
                     <div className="filter-button" title="Filter">
-                        <i ref={this.optionsFilterIco} className="fas fa-toggle-on" onClick={this.props.filterClick} ></i>
+                        <i ref={this.optionsFilterIco} className="fas fa-toggle-on" onClick={(e) => this.props.filterClick(e)} ></i>
                     </div>
                 </div>
             </div>

@@ -10,6 +10,9 @@ export default class randomCocktail extends React.Component {
       isLoaded: false,
       items: []
     };
+
+    this.displayMoreInformation = this.displayMoreInformation.bind(this)
+    this.closeMoreInformation = this.closeMoreInformation.bind(this)
   }
 
   componentDidMount() {
@@ -35,6 +38,10 @@ export default class randomCocktail extends React.Component {
    this.setState({moreInfo: true});
 }
 
+  closeMoreInformation() {
+    this.setState({moreInfo: false})
+  }
+
   render() {
     const { error, isLoaded, items } = this.state;
     if (error) {
@@ -54,7 +61,7 @@ export default class randomCocktail extends React.Component {
             {items.strIngredient1}, ...
             </div>
           <div className="more-information-button-wrapper button-wrapper"><div onClick={() => this.displayMoreInformation()}>More information</div></div>
-          {this.state.moreInfo ? <MoreInformation drink={items}/> : null}
+          {this.state.moreInfo ? <MoreInformation closeMoreInformation={this.closeMoreInformation} drink={items}/> : null}
         </div>
         )
     }

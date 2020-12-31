@@ -36,7 +36,7 @@ export default class MoreInformation extends React.Component {
                                 {this.state.drink.strDrink}
                                 </div>
                                 <div className="more-information-close">
-                                    <i className="fas fa-times" onClick={() => this.removeMoreInformation()}></i>
+                                    <i className="fas fa-times" onClick={this.props.closeMoreInformation}></i>
                             </div>
                         </div>
                         <div className="more-information-ingredients">
