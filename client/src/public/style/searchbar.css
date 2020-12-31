@@ -95,15 +95,6 @@
 }
 
 .rotated {
-    color : #d465ce;
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
-}
-
-.not-selected {
-    background-color: #80007d!important;
-}
-
-.not-selected:hover {
-    background-color: #d000cd!important;
 }

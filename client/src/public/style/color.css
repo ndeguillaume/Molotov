@@ -1,0 +1,175 @@
+.purple .button-wrapper div {
+  background-color: #d000cd;
+  color: #e4e5eb;
+}
+
+.purple .button-wrapper div:hover {
+  background-color: #ab00a8;
+}
+
+.purple .rotated {
+    color : #d000cd;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.purple .not-selected {
+    background-color: #850082!important;
+}
+
+.purple .not-selected:hover {
+    background-color: #d000cd!important;
+}
+
+.blue .button-wrapper div {
+  background-color: #0896e3;
+  color: #e4e5eb;
+}
+
+.blue .button-wrapper div:hover {
+  background-color: #0680c2;
+}
+
+.blue .rotated {
+    color : #0896e3;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.blue .not-selected {
+    background-color: #026194!important;
+}
+
+.blue .not-selected:hover {
+    background-color: #0896e3!important;
+}
+
+.green .button-wrapper div {
+  background-color: #50af37;
+  color: #e4e5eb;
+}
+
+.green .button-wrapper div:hover {
+  background-color: #3a8528;
+}
+
+.green .rotated {
+    color : #50af37;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.green .not-selected {
+    background-color: #2b631d!important;
+}
+
+.green .not-selected:hover {
+    background-color: #50af37!important;
+}
+
+.yellow .button-wrapper div {
+  background-color: #ffed00;
+  color: #3a3b3c;
+}
+
+.yellow .button-wrapper div:hover {
+  background-color: #d4c600;
+}
+
+.yellow .rotated {
+    color : #ffed00;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.yellow .not-selected {
+    background-color: #aa9f00!important;
+}
+
+.yellow .not-selected:hover {
+    background-color: #ffed00!important;
+}
+
+.red .button-wrapper div {
+  background-color: #e50606;
+  color: #e4e5eb;
+}
+
+.red .button-wrapper div:hover {
+  background-color: #b60606;
+}
+
+.red .rotated {
+    color : #e50606;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.red .not-selected {
+    background-color: #8f0606!important;
+}
+
+.red .not-selected:hover {
+    background-color: #e50606!important;
+}
+
+.orange .button-wrapper div {
+  background-color: #fa8d3c;
+  color: #3a3b3c;
+}
+
+.orange .button-wrapper div:hover {
+  background-color: #c77130;
+}
+
+.orange .rotated {
+    color : #fa8d3c;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.orange .not-selected {
+    background-color: #9c5926!important;
+}
+
+.orange .not-selected:hover {
+    background-color: #fa8d3c!important;
+}
+
+.pink .button-wrapper div {
+  background-color: #ed41ec;
+  color: #3a3b3c;
+}
+
+.pink .button-wrapper div:hover {
+  background-color: #d137d1;
+}
+
+.pink .rotated {
+    color : #ed41ec;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.pink .not-selected {
+    background-color: #b12db1!important;
+}
+
+.pink .not-selected:hover {
+    background-color: #ed41ec!important;
+}
+
+
+/* .rotated {
+    color : #d465ce;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+} */
+
+/* .not-selected {
+    background-color: #80007d!important;
+}
+
+.not-selected:hover {
+    background-color: #d000cd!important;
+} */

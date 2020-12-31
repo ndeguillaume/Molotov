@@ -17,8 +17,6 @@
 
 .button-wrapper div {
   padding: 10px;
-  background-color: #d000cd;
-  color: #e4e5eb;
   border-radius: 5px;
   border: none;
   cursor: pointer;
@@ -30,7 +28,6 @@
 }
 
 .button-wrapper div:hover {
-  background-color: #ab00a8;
   -webkit-transition: 0.18s ease-out;
   -moz-transition: 0.18s ease-out;
   -o-transition: 0.18s ease-out;
