@@ -62,7 +62,6 @@ export default class App extends React.Component {
     this.setState({
       colorOption: !this.state.colorOption,
     });
-    console.log("!");
   }
 
   closeColor() {
@@ -79,9 +78,6 @@ export default class App extends React.Component {
     this.closeFilter(e)
     this.closeColor(e)
   }
-  // componentDidUpdate() {
-  //   console.log("!!")
-  // }
 
   render() {
     var cocktails = [];
