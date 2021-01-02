@@ -1,4 +1,5 @@
 import React from "react";
+import "./../../public/style/authpage.css";
 import Register from "./Register.js";
 import Login from "./Login.js"
 
@@ -21,7 +22,8 @@ export default class AuthPage extends React.Component {
   }
 
   render() {
-    return (<div>
+    return (
+    <div className="authPage">
         <Login closeLoginPage={this.props.closeLoginPage} registerClick={this.registerClick} />
           {this.state.register ? (
               <Register closeRegisterForm={this.closeRegisterForm} closeLoginPage={this.props.closeLoginPage} />

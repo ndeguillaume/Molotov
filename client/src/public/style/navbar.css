@@ -16,7 +16,7 @@
 }
 
 .NavBar > div:nth-child(2) {
-    flex: 10;
+    flex: 20;
 }
 
 .NavBar > div:first-child img {
@@ -27,6 +27,10 @@
     margin: 5px;
 }
 
-.reset-ico {
+.reset-ico, .fas.fa-paint-brush {
     cursor: pointer;
 }
+
+.fas.fa-paint-brush {
+    margin: auto;
+  }

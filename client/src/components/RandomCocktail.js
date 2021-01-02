@@ -1,14 +1,14 @@
 import React from 'react';
-import MoreInformation from './MoreInformation';
+import Cocktail from './Cocktail';
 
 export default class randomCocktail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      moreInfo : false,
+      moreInfo: false,
       error: null,
       isLoaded: false,
-      items: []
+      item: []
     };
 
     this.displayMoreInformation = this.displayMoreInformation.bind(this)
@@ -22,7 +22,7 @@ export default class randomCocktail extends React.Component {
         (result) => {
           this.setState({
             isLoaded: true,
-            items: result.drinks[0]
+            item: result.drinks[0]
           });
         },
         (error) => {
@@ -35,35 +35,23 @@ export default class randomCocktail extends React.Component {
   }
 
   displayMoreInformation() {
-   this.setState({moreInfo: true});
-}
+    this.setState({ moreInfo: true });
+  }
 
   closeMoreInformation() {
-    this.setState({moreInfo: false})
+    this.setState({ moreInfo: false })
   }
 
   render() {
-    const { error, isLoaded, items } = this.state;
+    const { error, isLoaded, item } = this.state;
     if (error) {
       return <div>Error : {error.message}</div>;
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
       return (
-        <div key={items.drinkId} className="cocktail">
-          <div className="cocktail-thumbnail-wrapper">
-            <img src={items.strDrinkThumb} alt={items.strDrink}></img>
-          </div>
-          <div className="cocktail-title">
-            <i className="fas fa-cocktail" title="contains alcohol"></i>{items.strDrink}
-          </div>
-          <div className="cocktail-ingredients">
-            {items.strIngredient1}, ...
-            </div>
-          <div className="more-information-button-wrapper button-wrapper"><div onClick={() => this.displayMoreInformation()}>More information</div></div>
-          {this.state.moreInfo ? <MoreInformation closeMoreInformation={this.closeMoreInformation} drink={items}/> : null}
-        </div>
-        )
+        <Cocktail drink={item}/>
+      )
     }
   }
 

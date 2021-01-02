@@ -1,0 +1,10 @@
+.button-wrapper img {
+    width: 30px;
+    height: 40px;
+}
+
+.filter-options-wrapper.colors .button-wrapper div {
+ width: initial;
+ display: inline-block;
+ background-color: initial;
+}

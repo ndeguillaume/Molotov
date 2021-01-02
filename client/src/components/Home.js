@@ -4,7 +4,8 @@ import "./../public/style/randomCocktail.css";
 import "./../public/style/moreInformation.css";
 import "./../public/style/fontawesome/css/all.min.css";
 import "./../public/style/bootstrap/css/bootstrap.min.css";
-import Navbar from "./NavBar";
+import "./../public/style/color.css";
+import Navbar from "./nav/NavBar";
 import AuthPage from "./auth/AuthPage"
 import RandomCocktail from "./RandomCocktail";
 import SearchedCocktailsByName from "./SearchedCocktailsByName";
@@ -18,11 +19,18 @@ export default class Home extends React.Component {
       url: "",
       filterOption: false,
       isLoginPage: false,
+      filterOption: false,
+      colorOption: false,
+      color: "purple",
     };
     this.handleClick = this.handleClick.bind(this);
     this.resetSearch = this.resetSearch.bind(this);
     this.filterClick = this.filterClick.bind(this);
     this.closeFilter = this.closeFilter.bind(this);
+    this.colorClick = this.colorClick.bind(this);
+    this.closeColor = this.closeColor.bind(this);
+    this.setColor = this.setColor.bind(this);
+    this.close = this.close.bind(this);
     this.loginClick = this.loginClick.bind(this);
     this.closeLoginPage = this.closeLoginPage.bind(this);
 
@@ -53,6 +61,28 @@ export default class Home extends React.Component {
     this.setState({
       filterOption: false,
     });
+  }
+
+  colorClick(e) {
+    e.stopPropagation();
+    this.setState({
+      colorOption: !this.state.colorOption,
+    });
+  }
+
+  closeColor() {
+    this.setState({
+      colorOption: false,
+    });
+  }
+
+  setColor(newColor) {
+    this.setState({ color: newColor });
+  }
+
+  close(e) {
+    this.closeFilter(e)
+    this.closeColor(e)
   }
 
   loginClick() {
@@ -96,15 +126,22 @@ export default class Home extends React.Component {
         }
       }
       return (
-        <div className="Home" onClick={(e) => this.closeFilter(e)}>
-          <Navbar
-            displayFilterDiv={this.state.filterOption}
-            filterClick={this.filterClick}
-            resetSearch={this.resetSearch}
-            handleClick={this.handleClick}
-            loginClick={this.loginClick}
-            search={this.state.search}
-          />
+        <div
+        className={`Home ${this.state.color}`}
+        onClick={(e) => this.close(e)}
+      >
+        <Navbar
+          color={this.state.color}
+          displayFilterDiv={this.state.filterOption}
+          displayColorDiv={this.state.colorOption}
+          search={this.state.search}
+          filterClick={this.filterClick}
+          colorClick={this.colorClick}
+          resetSearch={this.resetSearch}
+          handleClick={this.handleClick}
+          setColor={this.setColor}
+          loginClick={this.loginClick}
+        />
           <div className="content container">
             <div className="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
               {cocktails}

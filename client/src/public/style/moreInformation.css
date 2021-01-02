@@ -1,5 +1,5 @@
 .more-information-wrapper {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -25,6 +25,9 @@
 
 .fa-times {
     cursor: pointer;
+    position: relative;
+    bottom: 10px;
+    left: 5px;
 }
 
 .more-information-header {
@@ -37,4 +40,9 @@
     text-align: center;
     font-size: 24px;
     font-weight: bold;
+}
+
+.more-information-instructions p {
+    max-height: 50vh;
+    overflow: auto;
 }

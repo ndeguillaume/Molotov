@@ -16,11 +16,11 @@ export default function AuthOptions(props) {
   return (
     <div className="button-wrapper">
       {userData.user ? (
-        <div className="login-button" onClick={logout}>
+        <div className="log-button" onClick={logout}>
           Logout
         </div>
       ) : (
-        <div className="login-button" onClick={login}>
+        <div className="log-button" onClick={login}>
           Login
         </div>
       )}

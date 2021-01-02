@@ -2,6 +2,10 @@
   color: #e4e5eb;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .content {
   margin-top: 10px;
 }
@@ -17,8 +21,6 @@
 
 .button-wrapper div {
   padding: 10px;
-  background-color: #d000cd;
-  color: #e4e5eb;
   border-radius: 5px;
   border: none;
   cursor: pointer;
@@ -30,7 +32,6 @@
 }
 
 .button-wrapper div:hover {
-  background-color: #ab00a8;
   -webkit-transition: 0.18s ease-out;
   -moz-transition: 0.18s ease-out;
   -o-transition: 0.18s ease-out;
@@ -119,4 +120,15 @@
 
 .cocktail-ingredients {
   text-transform: capitalize;
+}
+
+.change-color-wrapper {
+  flex: initial!important;
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  background-color: #3a3b3c;
+  display: flex!important;
+  margin: auto;
+  margin-right: 10px!important;
 }

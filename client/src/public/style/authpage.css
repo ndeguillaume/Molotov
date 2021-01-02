@@ -1,0 +1,13 @@
+.leaveLoginPage {
+    cursor: pointer;
+}
+
+.log-button {
+    min-width: 100px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.authPage {
+    color: #e4e5eb;
+}

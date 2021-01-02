@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import UserContext from "../../context/UserContext";
 import Axios from "axios";
-import "./../../public/style/loginpage.css";
 
 
 export default function Login(props) {
@@ -31,7 +30,7 @@ export default function Login(props) {
             type="email"
             className="form-control"
             aria-describedby="emailHelp"
-            placeholder="Enter email"
+            placeholder="Email"
             onChange={(event) => setEmail(event.target.value)}
             required
           />
