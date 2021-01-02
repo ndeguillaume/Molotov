@@ -1,36 +1,66 @@
-// server.js
-const express = require('express');
-const path = require("path");
+// // server.js
+// const express = require('express');
+// const path = require("path");
+
+// const app = express();
+// const bodyParser = require('body-parser');
+// const PORT = 8080;
+
+// // Our DB Configuration
+// require('./src/database');
+
+// // Routes
+// const postRouter = require('./src/routes/post.router');
+
+// const CLIENT_BUILD_PATH = path.join(__dirname, "../client/build");
+
+// app.use(
+//   bodyParser.urlencoded({
+//     extended: true
+//   })
+// );
+// app.use(bodyParser.json());
+
+// // Static files
+// app.use(express.static(CLIENT_BUILD_PATH));
+
+// app.use('/posts', postRouter);
+
+// // Server React Client
+// app.get("/", function(req, res) {
+//   res.sendFile(path.join(CLIENT_BUILD_PATH , "index.html"));
+// });
+
+// app.listen(PORT, function () {
+//     console.log(`Server Listening on ${PORT}`);
+// });
+
+
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
-const bodyParser = require('body-parser');
-const PORT = 8080;
+app.use(express.json());
+app.use(cors());
 
-// Our DB Configuration
-require('./src/database');
+const PORT = process.env.PORT || 5000;
 
-// Routes
-const postRouter = require('./src/routes/post.router');
-
-const CLIENT_BUILD_PATH = path.join(__dirname, "../client/build");
-
-app.use(
-  bodyParser.urlencoded({
-    extended: true
-  })
-);
-app.use(bodyParser.json());
-
-// Static files
-app.use(express.static(CLIENT_BUILD_PATH));
-
-app.use('/posts', postRouter);
-
-// Server React Client
-app.get("/", function(req, res) {
-  res.sendFile(path.join(CLIENT_BUILD_PATH , "index.html"));
+app.listen(PORT, () => {
+  console.log(`The server as started on port: ${PORT}`);
 });
 
-app.listen(PORT, function () {
-    console.log(`Server Listening on ${PORT}`);
+mongoose.connect(process.env.MONGODB_CONNECTION, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+}, 
+(err) => {
+    if (err) throw err;
+    console.log("MongoDB connection established");
 });
+
+// routes
+
+app.use("/user", require("./src/routes/user.router"));
