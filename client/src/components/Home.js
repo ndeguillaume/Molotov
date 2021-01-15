@@ -6,7 +6,7 @@ import "./../public/style/fontawesome/css/all.min.css";
 import "./../public/style/bootstrap/css/bootstrap.min.css";
 import "./../public/style/color.css";
 import Navbar from "./nav/NavBar";
-import AuthPage from "./auth/AuthPage"
+import AuthPage from "./auth/AuthPage";
 import RandomCocktail from "./RandomCocktail";
 import SearchedCocktailsByName from "./SearchedCocktailsByName";
 import SearchedCocktailsByIngredient from "./SearchedCocktailsByIngredient";
@@ -41,7 +41,6 @@ export default class Home extends React.Component {
     this.close = this.close.bind(this);
     this.loginClick = this.loginClick.bind(this);
     this.closeLoginPage = this.closeLoginPage.bind(this);
-
   }
 
   loadMore() {
@@ -89,8 +88,8 @@ export default class Home extends React.Component {
   }
 
   close(e) {
-    this.closeFilter(e)
-    this.closeColor(e)
+    this.closeFilter(e);
+    this.closeColor(e);
   }
 
   loginClick() {
@@ -106,6 +105,7 @@ export default class Home extends React.Component {
   }
 
   render() {
+    var searchedCocktail;
     var colorSrc;
     if (this.state.color === "purple") colorSrc = purple;
     if (this.state.color === "blue") colorSrc = blue;
@@ -117,14 +117,18 @@ export default class Home extends React.Component {
 
     if (this.state.isLoginPage) {
       return (
-            <AuthPage closeLoginPage={this.closeLoginPage} color={this.state.color} colorSrc={colorSrc} />
+        <AuthPage
+          closeLoginPage={this.closeLoginPage}
+          color={this.state.color}
+          colorSrc={colorSrc}
+        />
       );
     } else {
       var cocktails = [];
       if (this.state.url === "") {
         var tmp = [];
         for (let i = 0; i < this.state.reload; i++) {
-          for (let j = 0; j < 8; j++) {
+          for (let j = 0; j < 10; j++) {
             tmp.push(i);
           }
         }
@@ -138,38 +142,43 @@ export default class Home extends React.Component {
       } else {
         if (this.state.url.split("?")[1].split("=")[0] === "s") {
           cocktails = <SearchedCocktailsByName url={this.state.url} />;
+          searchedCocktail = true;
         } else if (this.state.url.split("?")[1].split("=")[0] === "i") {
           cocktails = <SearchedCocktailsByIngredient url={this.state.url} />;
+          searchedCocktail = false;
         }
       }
       return (
         <div
-        className={`Home ${this.state.color}`}
-        onClick={(e) => this.close(e)}
-      >
-        <Navbar
-          color={this.state.color}
-          colorSrc={colorSrc}
-          displayFilterDiv={this.state.filterOption}
-          displayColorDiv={this.state.colorOption}
-          search={this.state.search}
-          filterClick={this.filterClick}
-          colorClick={this.colorClick}
-          resetSearch={this.resetSearch}
-          handleClick={this.handleClick}
-          setColor={this.setColor}
-          loginClick={this.loginClick}
-        />
-          <div className="content container">
-            <div className="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
-              {cocktails}
-              {this.state.url === "" ? (
-                <div className="load-more-button-wrapper button-wrapper">
-                  <div onClick={() => this.loadMore()}>Load more...</div>
-                </div>
-              ) : null}
+          className={`Home ${this.state.color}`}
+          onClick={(e) => this.close(e)}
+        >
+          <Navbar
+            color={this.state.color}
+            colorSrc={colorSrc}
+            displayFilterDiv={this.state.filterOption}
+            displayColorDiv={this.state.colorOption}
+            search={this.state.search}
+            filterClick={this.filterClick}
+            colorClick={this.colorClick}
+            resetSearch={this.resetSearch}
+            handleClick={this.handleClick}
+            setColor={this.setColor}
+            loginClick={this.loginClick}
+          />
+
+          {this.state.url === "" ? (
+            <div className="content container">
+              <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+                {cocktails}
+              </div>
+              <div className="load-more-button-wrapper button-wrapper">
+                <div onClick={() => this.loadMore()}>Load more...</div>
+              </div>
             </div>
-          </div>
+          ) : (
+            <React.Fragment>{cocktails}</React.Fragment>
+          )}
         </div>
       );
     }

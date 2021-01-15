@@ -83,10 +83,18 @@ export default class SearchedCocktailsByIngredient extends React.Component {
             })
             )
             return (
-                <React.Fragment>
+                <div className="content container">
+                  <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
                     {cocktailsTab}
-          {(cocktailsID.length === 0) ? null : (<div className="load-more-button-wrapper button-wrapper"><div onClick={() => this.loadMore()}>Load more... ({cocktailsID.length})</div></div>)}
-                </React.Fragment>
+                  </div>
+                  {cocktailsID.length === 0 ? null : (
+                    <div className="load-more-button-wrapper button-wrapper">
+                      <div onClick={() => this.loadMore()}>
+                        Load more... ({cocktailsID.length})
+                      </div>
+                    </div>
+                  )}
+                </div>
             )
         }
     }
