@@ -19,6 +19,14 @@ import pink from "../public/images/pink.png";
 import yellow from "../public/images/yellow.png";
 import red from "../public/images/red.png";
 
+import FL_purple from "../public/images/FL_purple.png";
+import FL_blue from "../public/images/FL_blue.png";
+import FL_green from "../public/images/FL_green.png";
+import FL_orange from "../public/images/FL_orange.png";
+import FL_pink from "../public/images/FL_pink.png";
+import FL_yellow from "../public/images/FL_yellow.png";
+import FL_red from "../public/images/FL_red.png";
+
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -105,15 +113,16 @@ export default class Home extends React.Component {
   }
 
   render() {
-    var searchedCocktail;
     var colorSrc;
-    if (this.state.color === "purple") colorSrc = purple;
-    if (this.state.color === "blue") colorSrc = blue;
-    if (this.state.color === "green") colorSrc = green;
-    if (this.state.color === "orange") colorSrc = orange;
-    if (this.state.color === "pink") colorSrc = pink;
-    if (this.state.color === "yellow") colorSrc = yellow;
-    if (this.state.color === "red") colorSrc = red;
+    var FLcolorSrc;
+    if (this.state.color === "purple") { colorSrc = purple; FLcolorSrc = FL_purple; }
+    if (this.state.color === "blue") { colorSrc = blue; FLcolorSrc = FL_blue; }
+    if (this.state.color === "green") { colorSrc = green; FLcolorSrc = FL_green; }
+    if (this.state.color === "orange") { colorSrc = orange; FLcolorSrc = FL_orange; }
+    if (this.state.color === "pink") { colorSrc = pink; FLcolorSrc = FL_pink; }
+    if (this.state.color === "yellow") { colorSrc = yellow; FLcolorSrc = FL_yellow; }
+    if (this.state.color === "red") { colorSrc = red; FLcolorSrc = FL_red; }
+
 
     if (this.state.isLoginPage) {
       return (
@@ -135,17 +144,15 @@ export default class Home extends React.Component {
         cocktails = tmp.map(function (i) {
           return (
             <div className="col">
-              <RandomCocktail />
+              <RandomCocktail ico={colorSrc} icoFL={FLcolorSrc} />
             </div>
           );
         });
       } else {
         if (this.state.url.split("?")[1].split("=")[0] === "s") {
           cocktails = <SearchedCocktailsByName url={this.state.url} />;
-          searchedCocktail = true;
         } else if (this.state.url.split("?")[1].split("=")[0] === "i") {
           cocktails = <SearchedCocktailsByIngredient url={this.state.url} />;
-          searchedCocktail = false;
         }
       }
       return (

@@ -55,7 +55,7 @@ body {
   border-radius: 5px;
 }
 
-.cocktail-thumbnail-wrapper > img {
+.cocktail-thumbnail-wrapper > img:not(.like-ico) {
   width: 230px;
   border-radius: 5px;
   border: 1px solid #99918a;
@@ -134,4 +134,20 @@ body {
 
 .column {
   text-align: center!important;
+}
+
+.like-ico {
+  width: 30px;
+}
+
+.like-ico:hover {
+  cursor: pointer;
+}
+
+.like-wrapper {
+  text-align: center!important;
+}
+
+.content .col {
+  margin-bottom: 5px;
 }
