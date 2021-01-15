@@ -27,7 +27,6 @@ export default class Navbar extends React.Component {
   }
 
   render() {
-    var color;
     var colors = [purple, blue, green, orange, pink, yellow, red];
     var flColors = [
       FL_purple,
@@ -38,19 +37,12 @@ export default class Navbar extends React.Component {
       FL_yellow,
       FL_red,
     ];
-    if (this.props.color === "purple") color = purple;
-    if (this.props.color === "blue") color = blue;
-    if (this.props.color === "green") color = green;
-    if (this.props.color === "orange") color = orange;
-    if (this.props.color === "pink") color = pink;
-    if (this.props.color === "yellow") color = yellow;
-    if (this.props.color === "red") color = red;
     return (
       <nav className="NavBar">
         <div>
           <img
             className="reset-ico"
-            src={color}
+            src={this.props.colorSrc}
             alt="app-logo"
             onClick={this.props.resetSearch}
           ></img>

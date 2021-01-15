@@ -33,7 +33,7 @@ export default class Cocktail extends React.Component {
           <div className="cocktail-ingredients">
             {this.props.drink.strIngredient1}, ...
             </div>
-          <div className="more-information-button-wrapper button-wrapper"><div onClick={() => this.displayMoreInformation()}>More information</div></div>
+          <div className="popup-button-wrapper button-wrapper"><div onClick={() => this.displayMoreInformation()}>More information</div></div>
           {this.state.moreInfo ? <MoreInformation closeMoreInformation={this.closeMoreInformation} drink={this.props.drink} /> : null}
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import "./../public/style/home.css";
 import "./../public/style/randomCocktail.css";
-import "./../public/style/moreInformation.css";
+import "./../public/style/popup.css";
 import "./../public/style/fontawesome/css/all.min.css";
 import "./../public/style/bootstrap/css/bootstrap.min.css";
 import "./../public/style/color.css";
@@ -10,6 +10,14 @@ import AuthPage from "./auth/AuthPage"
 import RandomCocktail from "./RandomCocktail";
 import SearchedCocktailsByName from "./SearchedCocktailsByName";
 import SearchedCocktailsByIngredient from "./SearchedCocktailsByIngredient";
+
+import purple from "../public/images/purple.png";
+import blue from "../public/images/blue.png";
+import green from "../public/images/green.png";
+import orange from "../public/images/orange.png";
+import pink from "../public/images/pink.png";
+import yellow from "../public/images/yellow.png";
+import red from "../public/images/red.png";
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -98,9 +106,18 @@ export default class Home extends React.Component {
   }
 
   render() {
+    var colorSrc;
+    if (this.state.color === "purple") colorSrc = purple;
+    if (this.state.color === "blue") colorSrc = blue;
+    if (this.state.color === "green") colorSrc = green;
+    if (this.state.color === "orange") colorSrc = orange;
+    if (this.state.color === "pink") colorSrc = pink;
+    if (this.state.color === "yellow") colorSrc = yellow;
+    if (this.state.color === "red") colorSrc = red;
+
     if (this.state.isLoginPage) {
       return (
-            <AuthPage closeLoginPage={this.closeLoginPage} />
+            <AuthPage closeLoginPage={this.closeLoginPage} color={this.state.color} colorSrc={colorSrc} />
       );
     } else {
       var cocktails = [];
@@ -132,6 +149,7 @@ export default class Home extends React.Component {
       >
         <Navbar
           color={this.state.color}
+          colorSrc={colorSrc}
           displayFilterDiv={this.state.filterOption}
           displayColorDiv={this.state.colorOption}
           search={this.state.search}

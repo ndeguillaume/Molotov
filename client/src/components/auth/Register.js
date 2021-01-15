@@ -33,62 +33,107 @@ export default function Register(props) {
   };
 
   return (
-    <div className="more-information-wrapper">
-      <div className="more-information">
-        <div className="more-information-header">
-          <div className="more-information-title">Sign up</div>
-          <div className="more-information-close">
+    <div className="popup-wrapper">
+      <div className="popup">
+        <div className="popup-header">
+          <div className="popup-title">Sign up</div>
+          <div className="popup-close">
             <i className="fas fa-times" onClick={props.closeRegisterForm}></i>
           </div>
         </div>
-        <div className="more-information-ingredients">
+        <div className="popup-ingredients">
           <div className="col">
             <div className="row">
               <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="First Name"
-                  onChange={(event) => setFirstName(event.target.value)}
-                  required
-                />
+                <div className="search-wrapper">
+                  <div className="search-ico">
+                    <div>
+                      <div className="search-button" title="first name">
+                        <i className="fas fa-user"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <input
+                    type="text"
+                    className="search-bar"
+                    placeholder="First Name"
+                    onChange={(event) => setFirstName(event.target.value)}
+                    required
+                  />
+                </div>
               </div>
               <div className="form-group">
-                <input
+              <div className="search-wrapper">
+                  <div className="search-ico">
+                    <div>
+                      <div className="search-button" title="last name">
+                        <i className="fas fa-user"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <input
                   type="text"
-                  className="form-control"
+                  className="search-bar"
                   placeholder="Last Name"
                   onChange={(event) => setLastName(event.target.value)}
                   required
                 />
+                </div>
               </div>
               <div className="form-group">
-                <input
+              <div className="search-wrapper">
+                  <div className="search-ico">
+                    <div>
+                      <div className="search-button" title="email">
+                        <i className="fas fa-envelope"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <input
                   type="email"
-                  className="form-control"
+                  className="search-bar"
                   aria-describedby="emailHelp"
-                  placeholder="Enter email"
+                  placeholder="Email"
                   onChange={(event) => setEmail(event.target.value)}
                   required
                 />
+                </div>
               </div>
               <div className="form-group">
-                <input
+              <div className="search-wrapper">
+                  <div className="search-ico">
+                    <div>
+                      <div className="search-button" title="password">
+                        <i className="fas fa-unlock-alt"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <input
                   type="password"
-                  className="form-control"
+                  className="search-bar"
                   placeholder="Password"
                   onChange={(event) => setPassword(event.target.value)}
                   required
                 />
+                </div>
               </div>
               <div className="form-group">
-                <input
+              <div className="search-wrapper">
+                  <div className="search-ico">
+                    <div>
+                      <div className="search-button" title="confirm password">
+                        <i className="fas fa-unlock-alt"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <input
                   type="password"
-                  className="form-control"
+                  className="search-bar"
                   placeholder="Confirm Password"
                   onChange={(event) => setVerifiedPassword(event.target.value)}
                   required
                 />
+                </div>
               </div>
               <div className="button-wrapper">
                 <div className="register" onClick={register}>
