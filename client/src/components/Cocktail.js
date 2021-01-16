@@ -39,11 +39,14 @@ export default class Cocktail extends React.Component {
             {this.props.drink.strIngredient1}, ...
           </div>
           <div className="like-wrapper">
-            <Like
-              ico={this.props.ico}
-              icoFL={this.props.icoFL}
-              id={this.props.drink.idDrink}
-            />
+              <Like
+                addLikedCocktail={this.props.addLikedCocktail}
+                removeLikedCocktail={this.props.removeLikedCocktail}
+                isLiked={this.props.isLiked}
+                ico={this.props.ico}
+                icoFL={this.props.icoFL}
+                id={this.props.drink.idDrink}
+              />
           </div>
           <div className="popup-button-wrapper button-wrapper">
             <div onClick={() => this.displayMoreInformation()}>

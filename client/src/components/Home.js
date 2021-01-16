@@ -10,6 +10,7 @@ import AuthPage from "./auth/AuthPage";
 import RandomCocktail from "./RandomCocktail";
 import SearchedCocktailsByName from "./SearchedCocktailsByName";
 import SearchedCocktailsByIngredient from "./SearchedCocktailsByIngredient";
+import Axios from "axios";
 
 import purple from "../public/images/purple.png";
 import blue from "../public/images/blue.png";
@@ -38,6 +39,8 @@ export default class Home extends React.Component {
       filterOption: false,
       colorOption: false,
       color: "purple",
+      likedCocktails: [],
+      likedCocktailsLoaded: false
     };
     this.handleClick = this.handleClick.bind(this);
     this.resetSearch = this.resetSearch.bind(this);
@@ -49,6 +52,30 @@ export default class Home extends React.Component {
     this.close = this.close.bind(this);
     this.loginClick = this.loginClick.bind(this);
     this.closeLoginPage = this.closeLoginPage.bind(this);
+    this.addLikedCocktail = this.addLikedCocktail.bind(this);
+    this.removeLikedCocktail = this.removeLikedCocktail.bind(this);
+  }
+
+   componentDidMount() {
+    let token = localStorage.getItem("auth-token");
+    Axios.get("http://localhost:5000/likedDrinks",
+    { headers: { "x-auth-token": token } }
+  ).then(response => {
+    for(let i = 0; i < response.data.length; i ++) {
+      this.state.likedCocktails.push(response.data[i]);
+    }
+    this.setState({
+      likedCocktailsLoaded: true
+    })
+  })
+}
+
+  addLikedCocktail(id) {
+    this.state.likedCocktails.push(id)
+  }
+
+  removeLikedCocktail(id) {
+    this.state.likedCocktails.remove(id);
   }
 
   loadMore() {
@@ -123,7 +150,7 @@ export default class Home extends React.Component {
     if (this.state.color === "yellow") { colorSrc = yellow; FLcolorSrc = FL_yellow; }
     if (this.state.color === "red") { colorSrc = red; FLcolorSrc = FL_red; }
 
-
+    if (this.state.likedCocktailsLoaded)
     if (this.state.isLoginPage) {
       return (
         <AuthPage
@@ -133,6 +160,9 @@ export default class Home extends React.Component {
         />
       );
     } else {
+     var likedCocktails = this.state.likedCocktails;
+     var addLikedCocktail = this.addLikedCocktail;
+     var removeLikedCocktail = this.removeLikedCocktail;
       var cocktails = [];
       if (this.state.url === "") {
         var tmp = [];
@@ -144,15 +174,15 @@ export default class Home extends React.Component {
         cocktails = tmp.map(function (i) {
           return (
             <div className="col">
-              <RandomCocktail ico={colorSrc} icoFL={FLcolorSrc} />
+              <RandomCocktail addLikedCocktail={addLikedCocktail} removeLikedCocktail={removeLikedCocktail} likedCocktails={likedCocktails} ico={colorSrc} icoFL={FLcolorSrc} />
             </div>
           );
         });
       } else {
         if (this.state.url.split("?")[1].split("=")[0] === "s") {
-          cocktails = <SearchedCocktailsByName url={this.state.url} />;
+          cocktails = <SearchedCocktailsByName addLikedCocktail={this.addLikedCocktail} removeLikedCocktail={this.removeLikedCocktail} likedCocktails={this.state.likedCocktails} ico={colorSrc} icoFL={FLcolorSrc} url={this.state.url} />;
         } else if (this.state.url.split("?")[1].split("=")[0] === "i") {
-          cocktails = <SearchedCocktailsByIngredient url={this.state.url} />;
+          cocktails = <SearchedCocktailsByIngredient addLikedCocktail={this.addLikedCocktail} removeLikedCocktail={this.removeLikedCocktail} likedCocktails={this.state.likedCocktails} ico={colorSrc} icoFL={FLcolorSrc} url={this.state.url} />;
         }
       }
       return (
@@ -189,5 +219,6 @@ export default class Home extends React.Component {
         </div>
       );
     }
+    else return <div>loading....</div>
   }
 }

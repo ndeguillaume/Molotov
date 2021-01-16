@@ -74,7 +74,13 @@ export default class SearchedCocktailsByIngredient extends React.Component {
             var i = 0;
             (this.state.items.map((item) => {
                 if (i < 8 * this.state.reload) {
-                    cocktailsTab.push(<CocktailFromId id={item.idDrink} />)
+                    cocktailsTab.push(
+                        <CocktailFromId
+                          likedCocktails={this.props.likedCocktails}
+                          ico={this.props.ico}
+                          icoFL={this.props.icoFL}
+                          drink={item}
+                        />)
                 }
                 else {
                     cocktailsID.push(item.idDrink)

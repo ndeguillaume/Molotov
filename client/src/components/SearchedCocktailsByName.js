@@ -1,5 +1,6 @@
 import React from "react";
 import Cocktail from "./Cocktail";
+import Like from "./Like";
 
 export default class SearchedCocktailsByName extends React.Component {
   constructor(props) {
@@ -71,25 +72,38 @@ export default class SearchedCocktailsByName extends React.Component {
       var i = 0;
       this.state.items.map((item) => {
         if (i < 10 * this.state.reload) {
-          cocktailsTab.push(<Cocktail drink={item} />);
+          var isLiked = false;
+          for (let i = 0; i < this.props.likedCocktails.length; i ++) {
+            isLiked = this.props.likedCocktails[i] === item.idDrink;
+          }
+          cocktailsTab.push(
+            <Cocktail
+            addLikedCocktail={this.props.addLikedCocktail}
+            removeLikedCocktail={this.props.removeLikedCocktail}
+            isLiked={isLiked}
+              ico={this.props.ico}
+              icoFL={this.props.icoFL}
+              drink={item}
+            />
+          );
         } else {
           cocktailsID.push(item.idDrink);
         }
         i++;
       });
       return (
-          <div className="content container">
-            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
-              {cocktailsTab}
-            </div>
-            {cocktailsID.length === 0 ? null : (
-              <div className="load-more-button-wrapper button-wrapper">
-                <div onClick={() => this.loadMore()}>
-                  Load more... ({cocktailsID.length})
-                </div>
-              </div>
-            )}
+        <div className="content container">
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+            {cocktailsTab}
           </div>
+          {cocktailsID.length === 0 ? null : (
+            <div className="load-more-button-wrapper button-wrapper">
+              <div onClick={() => this.loadMore()}>
+                Load more... ({cocktailsID.length})
+              </div>
+            </div>
+          )}
+        </div>
       );
     }
   }
