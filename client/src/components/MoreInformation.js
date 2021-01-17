@@ -1,4 +1,5 @@
 import React from 'react';
+import DrinkRating from './DrinkRating';
 
 export default class MoreInformation extends React.Component {
     render() {
@@ -38,6 +39,7 @@ export default class MoreInformation extends React.Component {
                             {this.props.drink.strInstructions}
                         </p>
                     </div>
+                        <DrinkRating drink={this.props.drink.idDrink}/>
                 </div>
             </div>
         )
