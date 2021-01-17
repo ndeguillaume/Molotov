@@ -113,7 +113,7 @@ export default class Home extends React.Component {
     this.state.likedCocktails = this.state.likedCocktails.filter(function (
       value
     ) {
-      return value !== id;
+      return value != id;
     });
   }
 
