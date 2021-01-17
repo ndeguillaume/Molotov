@@ -63,7 +63,6 @@ export default class DrinkRating extends React.Component {
       this.setState({ hasARating: response.data !== null });
       if (response.data !== null) {
         this.setState({ rating: response.data });
-        console.log("rating set à " + this.state.rating);
       }
       this.setState({ isLoaded: true });
     });
