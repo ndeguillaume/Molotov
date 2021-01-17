@@ -18,7 +18,6 @@ export default class ColorFIlter extends React.Component {
       this.props.colorIco.current.getBoundingClientRect().left +
       this.props.colorIco.current.offsetWidth / 2 -
       100;
-    console.log(position);
     while (position + 200 > window.innerWidth) position--;
     const styles = {
       filter: {

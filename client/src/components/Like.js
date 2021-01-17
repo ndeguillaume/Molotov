@@ -4,11 +4,14 @@ import Axios from "axios";
 
 export default function Like(props) {
   const { userData, setUserData } = useContext(UserContext);
-
   const like = async (event) => {
-    console.log(userData);
-    props.addLikedCocktail(props.id)
+    if (!props.isLiked) {
+      props.addLikedCocktail(props.id);
+    } else {
+      props.removeLikedCocktail(props.id);
+    }
     let token = localStorage.getItem("auth-token");
+
     await Axios.put("http://localhost:5000/likedDrinks/" + props.id, null, {
       headers: { "x-auth-token": token },
     });

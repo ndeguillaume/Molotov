@@ -6,11 +6,12 @@ export default class Cocktail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      moreInfo: false,
+      moreInfo: false
     };
 
     this.displayMoreInformation = this.displayMoreInformation.bind(this);
     this.closeMoreInformation = this.closeMoreInformation.bind(this);
+
   }
 
   displayMoreInformation() {
@@ -22,6 +23,12 @@ export default class Cocktail extends React.Component {
   }
 
   render() {
+    let isLiked = false;
+    let i = 0;
+    while (!isLiked && i < this.props.likedCocktails.length) {
+      isLiked = this.props.likedCocktails[i] == this.props.drink.idDrink;
+      i++;
+    }
     return (
       <div className="column">
         <div key={this.props.drink.drinkId} className="cocktail">
@@ -42,7 +49,7 @@ export default class Cocktail extends React.Component {
               <Like
                 addLikedCocktail={this.props.addLikedCocktail}
                 removeLikedCocktail={this.props.removeLikedCocktail}
-                isLiked={this.props.isLiked}
+                isLiked={isLiked}
                 ico={this.props.ico}
                 icoFL={this.props.icoFL}
                 id={this.props.drink.idDrink}

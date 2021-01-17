@@ -72,15 +72,11 @@ export default class SearchedCocktailsByName extends React.Component {
       var i = 0;
       this.state.items.map((item) => {
         if (i < 10 * this.state.reload) {
-          var isLiked = false;
-          for (let i = 0; i < this.props.likedCocktails.length; i ++) {
-            isLiked = this.props.likedCocktails[i] === item.idDrink;
-          }
           cocktailsTab.push(
             <Cocktail
-            addLikedCocktail={this.props.addLikedCocktail}
-            removeLikedCocktail={this.props.removeLikedCocktail}
-            isLiked={isLiked}
+              addLikedCocktail={this.props.addLikedCocktail}
+              removeLikedCocktail={this.props.removeLikedCocktail}
+              likedCocktails={this.props.likedCocktails}
               ico={this.props.ico}
               icoFL={this.props.icoFL}
               drink={item}

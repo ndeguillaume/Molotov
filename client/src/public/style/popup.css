@@ -46,3 +46,7 @@
     max-height: 50vh;
     overflow: auto;
 }
+
+.popup-ingredients, .popup-instructions {
+    text-align: left;
+}

@@ -44,17 +44,13 @@ export default class randomCocktail extends React.Component {
 
   render() {
     const { error, isLoaded, item } = this.state;
-    var isLiked = false;
-    for (let i = 0; i < this.props.likedCocktails.length; i ++) {
-      isLiked = this.props.likedCocktails[i] == item.idDrink;
-    }
     if (error) {
       return <div>Error : {error.message}</div>;
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
       return (
-        <Cocktail addLikedCocktail={this.props.addLikedCocktail} removeLikedCocktail={this.props.removeLikedCocktail} isLiked={isLiked} drink={item} ico={this.props.ico} icoFL={this.props.icoFL}/>
+        <Cocktail likedCocktails={this.props.likedCocktails} addLikedCocktail={this.props.addLikedCocktail} removeLikedCocktail={this.props.removeLikedCocktail} drink={item} ico={this.props.ico} icoFL={this.props.icoFL}/>
       )
     }
   }

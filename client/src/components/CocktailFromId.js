@@ -61,6 +61,8 @@ export default class CocktailFromId extends React.Component {
   render() {
     return (
       <Cocktail
+        addLikedCocktail={this.props.addLikedCocktail}
+        removeLikedCocktail={this.props.removeLikedCocktail}
         likedCocktails={this.props.likedCocktails}
         ico={this.props.ico}
         icoFL={this.props.icoFL}
