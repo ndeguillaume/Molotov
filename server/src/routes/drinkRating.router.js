@@ -5,11 +5,15 @@ const auth = require("../middleware/auth");
 router.get("/:drinkId", auth, async (req, res) => {
   const drinkId = req.params.drinkId;
   const userId = req.user;
-  const drinkRating = await DrinkRating.findOne({
-    userId: userId,
-    drinkId: drinkId,
-  });
-  res.json(drinkRating.rating);
+  const isRatingExisting = await DrinkRating.exists({userId: userId, drinkId: drinkId});
+  if(isRatingExisting) {
+    const drinkRating = await DrinkRating.findOne({
+      userId: userId,
+      drinkId: drinkId,
+    });
+    res.json(drinkRating.rating);
+  }
+  res.json(null);
 });
 
 router.put("/:drinkId", auth, async (req, res) => {

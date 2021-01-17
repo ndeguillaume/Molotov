@@ -31,7 +31,12 @@ router.put("/:id", auth, async (req, res) => {
       );
     }
     const updatedUser = await User.findById(userId);
-    res.json(updatedUser);
+    res.json({
+      id: updatedUser._id,
+      likedDrinks: updatedUser.likedDrinks,
+      firstName: updatedUser.firstName,
+      lastName: updatedUser.lastName,
+    });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
