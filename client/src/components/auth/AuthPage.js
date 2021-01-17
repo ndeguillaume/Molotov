@@ -1,7 +1,7 @@
 import React from "react";
 import "./../../public/style/authpage.css";
 import Register from "./Register.js";
-import Login from "./Login.js"
+import Login from "./Login.js";
 
 export default class AuthPage extends React.Component {
   constructor(props) {
@@ -23,11 +23,31 @@ export default class AuthPage extends React.Component {
 
   render() {
     return (
-    <div className="authPage">
-        <Login closeLoginPage={this.props.closeLoginPage} registerClick={this.registerClick} />
-          {this.state.register ? (
-              <Register closeRegisterForm={this.closeRegisterForm} closeLoginPage={this.props.closeLoginPage} />
-              ) : null}
+      <div className={`${this.props.color} auth-page container`}>
+        <div className="auth-img-wrapper">
+          <img
+            className="reset-ico"
+            src={this.props.colorSrc}
+            alt="app-logo"
+          ></img>
+        </div>
+        <div className="auth-wrapper">
+          <div>
+            <h3>MOLOTOV</h3>
+          </div>
+          <div>
+            <Login
+              closeLoginPage={this.props.closeLoginPage}
+              registerClick={this.registerClick}
+            />
+            {this.state.register ? (
+              <Register
+                closeRegisterForm={this.closeRegisterForm}
+                closeLoginPage={this.props.closeLoginPage}
+              />
+            ) : null}
+          </div>
+        </div>
         </div>
     );
   }

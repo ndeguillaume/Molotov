@@ -1,13 +1,97 @@
-.leaveLoginPage {
-    cursor: pointer;
+.leave-login-page {
+  cursor: pointer;
 }
 
 .log-button {
-    min-width: 100px;
-    margin-right: 20px;
-    margin-left: 20px;
+  min-width: 100px;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
-.authPage {
-    color: #e4e5eb;
+.auth-wrapper {
+    width: 520px;
 }
+
+.auth-page {
+  color: #e4e5eb;
+  height: 100vh;
+  display: flex;
+}
+
+.auth-page > div {
+  margin: auto;
+}
+
+.auth-page h3 {
+    font-size: 32px;
+}
+
+.auth-page > div > div:nth-child(2) {
+  padding: 10px;
+  background-color: #242526;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+}
+
+.auth-page h3 {
+  text-align: center;
+}
+
+.form-group > div {
+  margin: 5px;
+}
+
+.form-group .search-wrapper {
+  text-align: center;
+}
+
+.form-group .search-wrapper i:hover {
+  cursor: initial;
+}
+
+
+
+.auth-page .button-wrapper {
+  margin: 5px;
+}
+
+.leave-login-page-wrapper {
+  margin-top: 10px;
+  display: flex;
+  text-align: center;
+}
+
+.leave-login-page-wrapper > div {
+    margin:auto;
+  display: block;
+  width: 100%;
+  border-top: 2px solid #3a3b3c;
+}
+
+
+@media screen and (max-width: 1040px) {
+    .auth-page {
+        display:initial;
+    }
+    .auth-img-wrapper {
+        text-align: center;
+    }
+    .auth-img-wrapper img {
+        width: 150px;
+    }
+    .auth-wrapper > div { 
+        width: 100%;
+        margin: auto;
+    }
+  }
+
+
+  .auth-page .popup {
+      width: 500px;
+  }
+
+  .auth-page .popup .button-wrapper {
+      width: 60%;
+      margin: auto;
+      margin-top: 5px;
+  }

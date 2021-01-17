@@ -16,23 +16,23 @@ export default class MoreInformation extends React.Component {
                 txt.push(<>{this.props.drink["strIngredient" + j] + " : " + this.props.drink["strMeasure" + j]}<br /></>)
         }
         return (
-            <div className="more-information-wrapper">
-                <div className="more-information">
-                    <div className="more-information-header">
-                        <div className="more-information-title">
+            <div className="popup-wrapper">
+                <div className="popup">
+                    <div className="popup-header">
+                        <div className="popup-title">
                             {this.props.drink.strDrink}
                         </div>
-                        <div className="more-information-close">
+                        <div className="popup-close">
                             <i className="fas fa-times" onClick={this.props.closeMoreInformation}></i>
                         </div>
                     </div>
-                    <div className="more-information-ingredients">
+                    <div className="popup-ingredients">
                         <h3>Ingredients</h3>
                         <p>
                             {txt}
                         </p>
                     </div>
-                    <div className="more-information-instructions">
+                    <div className="popup-instructions">
                         <h3>Instructions</h3>
                         <p>
                             {this.props.drink.strInstructions}

@@ -50,7 +50,7 @@ export default class randomCocktail extends React.Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <Cocktail drink={item}/>
+        <Cocktail likedCocktails={this.props.likedCocktails} addLikedCocktail={this.props.addLikedCocktail} removeLikedCocktail={this.props.removeLikedCocktail} drink={item} ico={this.props.ico} icoFL={this.props.icoFL}/>
       )
     }
   }
