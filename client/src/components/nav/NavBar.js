@@ -19,6 +19,7 @@ import FL_orange from "../../public/images/FL_orange.png";
 import FL_pink from "../../public/images/FL_pink.png";
 import FL_yellow from "../../public/images/FL_yellow.png";
 import FL_red from "../../public/images/FL_red.png";
+import LikedDrinksOptions from "./LikedDrinksOptions";
 
 export default class Navbar extends React.Component {
   constructor(props) {
@@ -44,7 +45,7 @@ export default class Navbar extends React.Component {
             className="reset-ico"
             src={this.props.colorSrc}
             alt="app-logo"
-            onClick={this.props.resetSearch}
+            onClick={this.props.closeLikedDrinksPage}
           ></img>
         </div>
         <div>
@@ -84,6 +85,7 @@ export default class Navbar extends React.Component {
             flColors={flColors}
           />
         ) : null}
+        <LikedDrinksOptions openLikedDrinksPage={this.props.openLikedDrinksPage}/>
 
         <AuthOptions loginClick={this.props.loginClick}/>
       </nav>

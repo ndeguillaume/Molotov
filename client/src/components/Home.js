@@ -5,6 +5,7 @@ import "./../public/style/popup.css";
 import "./../public/style/fontawesome/css/all.min.css";
 import "./../public/style/bootstrap/css/bootstrap.min.css";
 import "./../public/style/color.css";
+import "./../public/style/likedDrinksPage.css"
 import Navbar from "./nav/NavBar";
 import AuthPage from "./auth/AuthPage";
 import RandomCocktail from "./RandomCocktail";
@@ -40,7 +41,7 @@ export default class Home extends React.Component {
       color: "purple",
       likedCocktails: [],
       likedCocktailsLoaded: false,
-      isLikedCocktailPage: true,
+      isLikedCocktailPage: false,
       cocktails: []
     };
     this.handleClick = this.handleClick.bind(this);
@@ -240,23 +241,27 @@ export default class Home extends React.Component {
             colorSrc={colorSrc}
           />
         );
-      } else if (this.state.isLikedCocktailPage){
-        return (
-          <LikedDrinksPage 
-            addLikedCocktail={this.addLikedCocktail}
-            removeLikedCocktail={this.removeLikedCocktail}
-            likedCocktails={this.state.likedCocktails}
-            closeLikedCocktails={this.closeLikedDrinksPage}
-            ico={colorSrc}
-            icoFL={FLcolorSrc}
-            color={this.state.color}
-          />
-        )
-      }else {
+      } 
+      else {
         var likedCocktails = this.state.likedCocktails;
         var addLikedCocktail = this.addLikedCocktail;
         var removeLikedCocktail = this.removeLikedCocktail;
         var cocktails = [];
+        if (this.state.isLikedCocktailPage){
+          cocktails.push(
+            <div className="col">
+            <LikedDrinksPage 
+              addLikedCocktail={this.addLikedCocktail}
+              removeLikedCocktail={this.removeLikedCocktail}
+              likedCocktails={this.state.likedCocktails}
+              closeLikedCocktails={this.closeLikedDrinksPage}
+              ico={colorSrc}
+              icoFL={FLcolorSrc}
+              color={this.state.color}
+            />
+            </div>
+          )
+        } else 
         if (this.state.url === "") {
           for (let i = 0; i < this.state.reload; i++) {
             for (let j = 0; j < 10; j++) {
@@ -317,6 +322,7 @@ export default class Home extends React.Component {
               loginClick={this.loginClick}
               eraseLikedCocktail={this.eraseLikedCocktail}
               openLikedDrinksPage={this.openLikedDrinksPage}
+              closeLikedDrinksPage={this.closeLikedDrinksPage}
             />
 
             {this.state.url === "" ? (
