@@ -26,7 +26,7 @@ export default class Cocktail extends React.Component {
     let isLiked = false;
     let i = 0;
     while (!isLiked && i < this.props.likedCocktails.length) {
-      isLiked = this.props.likedCocktails[i] == this.props.drink.idDrink;
+      isLiked = this.props.likedCocktails[i] === this.props.drink.idDrink;
       i++;
     }
     return (

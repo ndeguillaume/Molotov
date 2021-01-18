@@ -16,7 +16,7 @@ export default class DrinkRating extends React.Component {
     const newRating = e.target.id.charAt(0);
     let token = localStorage.getItem("auth-token");
     if (this.state.hasARating) {
-      if (newRating == this.state.rating) {
+      if (newRating === this.state.rating) {
         Axios.delete("http://localhost:5000/drinkRating/" + this.props.drink, {
           headers: { "x-auth-token": token },
         });

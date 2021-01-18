@@ -10,6 +10,7 @@ import AuthPage from "./auth/AuthPage";
 import RandomCocktail from "./RandomCocktail";
 import SearchedCocktailsByName from "./SearchedCocktailsByName";
 import SearchedCocktailsByIngredient from "./SearchedCocktailsByIngredient";
+import LikedDrinksPage from "./LikedDrinksPage";
 import Axios from "axios";
 
 import purple from "../public/images/purple.png";
@@ -36,11 +37,11 @@ export default class Home extends React.Component {
       url: "",
       filterOption: false,
       isLoginPage: false,
-      filterOption: false,
       colorOption: false,
       color: "purple",
       likedCocktails: [],
       likedCocktailsLoaded: false,
+      isLikedCocktailPage: true,
       cocktails: []
     };
     this.handleClick = this.handleClick.bind(this);
@@ -179,6 +180,18 @@ export default class Home extends React.Component {
     this.eraseLikedCocktail();
   }
 
+  openLikedDrinksPage(){
+    this.setState({
+      isLikedCocktailPage: true,
+    });
+  }
+
+  closeLikedDrinksPage(){
+    this.setState({
+      isLikedCocktailPage: false,
+    });
+  }
+
   render() {
     var colorSrc;
     var FLcolorSrc;
@@ -221,7 +234,16 @@ export default class Home extends React.Component {
             colorSrc={colorSrc}
           />
         );
-      } else {
+      } else if (this.state.isLikedCocktailPage){
+        return (
+          <LikedDrinksPage 
+            likedCocktails={this.state.likedCocktails}
+            closeLikedCocktails={this.closeLikedDrinksPage}
+            color={this.state.color}
+            colorSrc={colorSrc}
+          />
+        )
+      }else {
         var likedCocktails = this.state.likedCocktails;
         var addLikedCocktail = this.addLikedCocktail;
         var removeLikedCocktail = this.removeLikedCocktail;
@@ -285,6 +307,7 @@ export default class Home extends React.Component {
               setColor={this.setColor}
               loginClick={this.loginClick}
               eraseLikedCocktail={this.eraseLikedCocktail}
+              openLikedDrinksPage={this.openLikedDrinksPage}
             />
 
             {this.state.url === "" ? (
