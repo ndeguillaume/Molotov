@@ -13,7 +13,7 @@
     transform: scaleX(-1);
 }
 
-.purple h3 {
+.purple h3, .purple .fas.fa-star {
   color: #d000cd
 }
 
@@ -44,7 +44,7 @@
     transform: scaleX(-1);
 }
 
-.blue h3 {
+.blue h3, .blue .fas.fa-star {
   color: #0896e3;
 }
 
@@ -75,7 +75,7 @@
     transform: scaleX(-1);
 }
 
-.green h3 {
+.green h3, .green .fas.fa-star {
   color: #50af37;
 }
 
@@ -106,7 +106,7 @@
     transform: scaleX(-1);
 }
 
-.yellow h3 {
+.yellow h3, .yellow .fas.fa-star {
   color: #ffed00;
 }
 
@@ -138,7 +138,7 @@
     transform: scaleX(-1);
 }
 
-.red h3 {
+.red h3, .red .fas.fa-star {
   color: #e50606;
 }
 
@@ -169,7 +169,7 @@
     transform: scaleX(-1);
 }
 
-.orange h3 {
+.orange h3, .orange .fas.fa-star {
   color: #fa8d3c;
 }
 
@@ -201,7 +201,7 @@
     transform: scaleX(-1);
 }
 
-.pink h3 {
+.pink h3, .pink .fas.fa-star {
   color: #ed41ec;
 }
 .pink .not-selected {

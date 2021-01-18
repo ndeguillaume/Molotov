@@ -11,7 +11,6 @@ import RandomCocktail from "./RandomCocktail";
 import SearchedCocktailsByName from "./SearchedCocktailsByName";
 import SearchedCocktailsByIngredient from "./SearchedCocktailsByIngredient";
 import Axios from "axios";
-
 import purple from "../public/images/purple.png";
 import blue from "../public/images/blue.png";
 import green from "../public/images/green.png";
@@ -41,6 +40,7 @@ export default class Home extends React.Component {
       color: "purple",
       likedCocktails: [],
       likedCocktailsLoaded: false,
+      cocktails: []
     };
     this.handleClick = this.handleClick.bind(this);
     this.resetSearch = this.resetSearch.bind(this);
@@ -79,7 +79,7 @@ export default class Home extends React.Component {
 
   componentDidUpdate() {
     if (!this.state.likedCocktailsLoaded) {
-            let token = localStorage.getItem("auth-token");
+      let token = localStorage.getItem("auth-token");
       if (token !== "") {
         Axios.get("http://localhost:5000/likedDrinks", {
           headers: { "x-auth-token": token },
@@ -112,7 +112,7 @@ export default class Home extends React.Component {
     this.state.likedCocktails = this.state.likedCocktails.filter(function (
       value
     ) {
-      return value !== id;
+      return value != id;
     });
   }
 
@@ -214,7 +214,7 @@ export default class Home extends React.Component {
       if (this.state.isLoginPage) {
         return (
           <AuthPage
-          eraseLikedCocktail={this.eraseLikedCocktail}
+            eraseLikedCocktail={this.eraseLikedCocktail}
             closeLoginPage={this.closeLoginPage}
             color={this.state.color}
             colorSrc={colorSrc}
@@ -226,25 +226,21 @@ export default class Home extends React.Component {
         var removeLikedCocktail = this.removeLikedCocktail;
         var cocktails = [];
         if (this.state.url === "") {
-          var tmp = [];
           for (let i = 0; i < this.state.reload; i++) {
             for (let j = 0; j < 10; j++) {
-              tmp.push(i);
+              cocktails.push(
+                <div className="col">
+                  <RandomCocktail
+                    addLikedCocktail={addLikedCocktail}
+                    removeLikedCocktail={removeLikedCocktail}
+                    likedCocktails={likedCocktails}
+                    ico={colorSrc}
+                    icoFL={FLcolorSrc}
+                  />
+                </div>
+              );
             }
           }
-          cocktails = tmp.map(function (i) {
-            return (
-              <div className="col">
-                <RandomCocktail
-                  addLikedCocktail={addLikedCocktail}
-                  removeLikedCocktail={removeLikedCocktail}
-                  likedCocktails={likedCocktails}
-                  ico={colorSrc}
-                  icoFL={FLcolorSrc}
-                />
-              </div>
-            );
-          });
         } else {
           if (this.state.url.split("?")[1].split("=")[0] === "s") {
             cocktails = (

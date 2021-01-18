@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const DrinkRating = require("../models/drintkRating.models");
+const DrinkRating = require("../models/drinkRating.models");
 const auth = require("../middleware/auth");
 
 router.get("/:drinkId", auth, async (req, res) => {

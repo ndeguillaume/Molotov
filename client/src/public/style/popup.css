@@ -47,6 +47,10 @@
     overflow: auto;
 }
 
-.popup-ingredients, .popup-instructions {
-    text-align: left;
+.popup-ingredients, .popup-instructions, .drink-rating {
+    text-align: left!important;
+}
+
+.drink-rating i {
+    margin:3px;
 }

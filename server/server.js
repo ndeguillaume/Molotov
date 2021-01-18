@@ -17,7 +17,6 @@ app.listen(PORT, () => {
 
 // Local
 // require('./src/database');
-
 // Online
 mongoose.connect(process.env.MONGODB_CONNECTION, {
   useNewUrlParser: true,
@@ -32,7 +31,7 @@ mongoose.connect(process.env.MONGODB_CONNECTION, {
 // routes
 app.use("/user", require("./src/routes/user.router"));
 app.use("/likedDrinks", require("./src/routes/likedDrinks.router"));
-app.use("/userRating", require("./src/routes/drinkRating.router"));
+app.use("/drinkRating", require("./src/routes/drinkRating.router"));
 
 
 

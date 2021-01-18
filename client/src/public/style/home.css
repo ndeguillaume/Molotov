@@ -153,3 +153,7 @@ body {
   margin-bottom: 5px;
   width: fit-content;
 }
+
+.fa-star:hover {
+  cursor: pointer;
+}
