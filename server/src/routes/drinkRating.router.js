@@ -17,6 +17,27 @@ router.get("/all", auth, async (req, res) => {
   res.json(data);
 });
 
+router.get("/:drinkId/averageRating", async (req, res) => {
+  const drinkId = req.params.drinkId;
+  const drinkRating = await DrinkRating.find({
+    drinkId: drinkId,
+  });
+  let data = 0;
+  let length = 0;
+  drinkRating.forEach(function(object){
+    data += object.rating;
+    length ++;
+  });
+  let average = 0;
+  if(length > 0)
+    average = data/length;
+  res.json({
+    average: average,
+    numberOfRatings: length,
+  });
+  
+});
+
 router.get("/:drinkId", auth, async (req, res) => {
   const drinkId = req.params.drinkId;
   const userId = req.user;
