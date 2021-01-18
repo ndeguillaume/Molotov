@@ -1,5 +1,4 @@
 import React from "react";
-
 import CocktailFromId from "./CocktailFromId";
 
 export default class LikedDrinksPage extends React.Component {
@@ -7,14 +6,11 @@ export default class LikedDrinksPage extends React.Component {
         super(props);
         this.state = {
             moreInfo: false,
-            
-            error: null,
-            isLoaded: false,
             items: [],
             reload: 1,
           };
 
-          this.loadMore = this.loadMore.bind(this);  
+        this.loadMore = this.loadMore.bind(this);  
     }
     
     // componentDidMount() {
@@ -50,14 +46,16 @@ export default class LikedDrinksPage extends React.Component {
         for (let i = 0; i < this.props.likedCocktails.length; i++) {
             if (i < 10 * this.state.reload) {
                 cocktails.push(
-                    <CocktailFromId 
-                        likedCocktails={this.props.likedCocktails} 
-                        addLikedCocktail={this.props.addLikedCocktail} 
-                        removeLikedCocktail={this.props.removeLikedCocktail} 
-                        id={this.props.likedCocktails[i]}
-                        ico={this.props.ico} 
-                        icoFL={this.props.icoFL}
-                    />
+                    <div className="col">
+                        <CocktailFromId 
+                            addLikedCocktail={this.props.addLikedCocktail}
+                            removeLikedCocktail={this.props.removeLikedCocktail}
+                            likedCocktails={this.props.likedCocktails}  
+                            id={this.props.likedCocktails[i]}
+                            ico={this.props.ico} 
+                            icoFL={this.props.icoFL}
+                        />
+                    </div>
                 )
             }
             else {
@@ -65,8 +63,7 @@ export default class LikedDrinksPage extends React.Component {
             }            
         }           
             return (  
-            <div>
-                <div>MOLOTLOVE</div>
+            <div className={`${this.props.color} liked-drinks-page container`}>
                 <div className="content container">
                     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
                         {cocktails}
@@ -79,9 +76,7 @@ export default class LikedDrinksPage extends React.Component {
                         </div>
                     )}
                 </div>
-            // </div>
+            </div>
         );
-            
-       // }
     }
 }

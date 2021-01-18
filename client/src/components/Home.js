@@ -56,6 +56,8 @@ export default class Home extends React.Component {
     this.addLikedCocktail = this.addLikedCocktail.bind(this);
     this.removeLikedCocktail = this.removeLikedCocktail.bind(this);
     this.eraseLikedCocktail = this.eraseLikedCocktail.bind(this);
+    this.openLikedDrinksPage = this.openLikedDrinksPage.bind(this);
+    this.closeLikedDrinksPage = this.closeLikedDrinksPage.bind(this);
   }
 
   componentDidMount() {
@@ -80,6 +82,7 @@ export default class Home extends React.Component {
 
   componentDidUpdate() {
     if (!this.state.likedCocktailsLoaded) {
+
       let token = localStorage.getItem("auth-token");
       if (token !== "") {
         Axios.get("http://localhost:5000/likedDrinks", {
@@ -110,11 +113,15 @@ export default class Home extends React.Component {
   }
 
   removeLikedCocktail(id) {
+  
     this.state.likedCocktails = this.state.likedCocktails.filter(function (
       value
     ) {
+
       return value != id;
     });
+
+    console.log(this.state.likedCocktails);
   }
 
   loadMore() {
@@ -236,10 +243,13 @@ export default class Home extends React.Component {
       } else if (this.state.isLikedCocktailPage){
         return (
           <LikedDrinksPage 
+            addLikedCocktail={this.addLikedCocktail}
+            removeLikedCocktail={this.removeLikedCocktail}
             likedCocktails={this.state.likedCocktails}
             closeLikedCocktails={this.closeLikedDrinksPage}
+            ico={colorSrc}
+            icoFL={FLcolorSrc}
             color={this.state.color}
-            colorSrc={colorSrc}
           />
         )
       }else {
