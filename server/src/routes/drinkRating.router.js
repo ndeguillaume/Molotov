@@ -2,11 +2,29 @@ const router = require("express").Router();
 const DrinkRating = require("../models/drinkRating.models");
 const auth = require("../middleware/auth");
 
+router.get("/all", auth, async (req, res) => {
+  const userId = req.user;
+  const drinkRating = await DrinkRating.find({
+    userId: userId,
+  });
+  let data = [];
+  drinkRating.forEach(function(object){
+    data.push({
+      rating: object.rating,
+    drinkId: object.drinkId,
+    });
+  });
+  res.json(data);
+});
+
 router.get("/:drinkId", auth, async (req, res) => {
   const drinkId = req.params.drinkId;
   const userId = req.user;
-  const isRatingExisting = await DrinkRating.exists({userId: userId, drinkId: drinkId});
-  if(isRatingExisting) {
+  const isRatingExisting = await DrinkRating.exists({
+    userId: userId,
+    drinkId: drinkId,
+  });
+  if (isRatingExisting) {
     const drinkRating = await DrinkRating.findOne({
       userId: userId,
       drinkId: drinkId,
