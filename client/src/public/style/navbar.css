@@ -34,3 +34,9 @@
 .fas.fa-paint-brush {
     margin: auto;
   }
+
+.log-button {
+    min-width: 100px;
+    margin-right: 20px;
+    margin-left: 20px;
+  }

@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import UserContext from "../../context/UserContext";
+import ErrorNotice from "../errors/ErrorNotice";
 import Axios from "axios";
 
 export default function Register(props) {
@@ -8,32 +9,40 @@ export default function Register(props) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [verifiedPassword, setVerifiedPassword] = useState();
+  const [error, setError] = useState();
 
   const { setUserData } = useContext(UserContext);
   const register = async (event) => {
-    const registeredUser = {
-      firstName,
-      lastName,
-      email,
-      password,
-      verifiedPassword,
-    };
-    await Axios.post("http://localhost:5000/user/register", registeredUser);
-    const loginResponse = await Axios.post("http://localhost:5000/user/login", {
-      email,
-      password,
-    });
+    try {
+      const registeredUser = {
+        firstName,
+        lastName,
+        email,
+        password,
+        verifiedPassword,
+      };
+      await Axios.post("http://localhost:5000/user/register", registeredUser);
+      const loginResponse = await Axios.post(
+        "http://localhost:5000/user/login",
+        {
+          email,
+          password,
+        }
+      );
 
-    setUserData({
-      token: loginResponse.data.token,
-      user: loginResponse.data.user,
-    });
-    localStorage.setItem("auth-token", loginResponse.data.token);
-    props.closeLoginPage();
+      setUserData({
+        token: loginResponse.data.token,
+        user: loginResponse.data.user,
+      });
+      localStorage.setItem("auth-token", loginResponse.data.token);
+      props.closeLoginPage();
+    } catch (err) {
+      if(err.response.data.msg) setError(err.response.data.msg);
+    }
   };
 
   return (
-    <div className="popup-wrapper">
+    <div className="register-popup-wrapper">
       <div className="popup">
         <div className="popup-header">
           <div className="popup-title">Sign up</div>
@@ -41,7 +50,8 @@ export default function Register(props) {
             <i className="fas fa-times" onClick={props.closeRegisterForm}></i>
           </div>
         </div>
-        <div className="popup-ingredients">
+        {error && <ErrorNotice message={error} clearError={() => setError(undefined)} />}
+        <div className="popup-content">
           <div className="col">
             <div className="row">
               <div className="form-group">
@@ -63,7 +73,7 @@ export default function Register(props) {
                 </div>
               </div>
               <div className="form-group">
-              <div className="search-wrapper">
+                <div className="search-wrapper">
                   <div className="search-ico">
                     <div>
                       <div className="search-button" title="last name">
@@ -72,16 +82,16 @@ export default function Register(props) {
                     </div>
                   </div>
                   <input
-                  type="text"
-                  className="search-bar"
-                  placeholder="Last Name"
-                  onChange={(event) => setLastName(event.target.value)}
-                  required
-                />
+                    type="text"
+                    className="search-bar"
+                    placeholder="Last Name"
+                    onChange={(event) => setLastName(event.target.value)}
+                    required
+                  />
                 </div>
               </div>
               <div className="form-group">
-              <div className="search-wrapper">
+                <div className="search-wrapper">
                   <div className="search-ico">
                     <div>
                       <div className="search-button" title="email">
@@ -90,17 +100,17 @@ export default function Register(props) {
                     </div>
                   </div>
                   <input
-                  type="email"
-                  className="search-bar"
-                  aria-describedby="emailHelp"
-                  placeholder="Email"
-                  onChange={(event) => setEmail(event.target.value)}
-                  required
-                />
+                    type="email"
+                    className="search-bar"
+                    aria-describedby="emailHelp"
+                    placeholder="Email"
+                    onChange={(event) => setEmail(event.target.value)}
+                    required
+                  />
                 </div>
               </div>
               <div className="form-group">
-              <div className="search-wrapper">
+                <div className="search-wrapper">
                   <div className="search-ico">
                     <div>
                       <div className="search-button" title="password">
@@ -109,16 +119,16 @@ export default function Register(props) {
                     </div>
                   </div>
                   <input
-                  type="password"
-                  className="search-bar"
-                  placeholder="Password"
-                  onChange={(event) => setPassword(event.target.value)}
-                  required
-                />
+                    type="password"
+                    className="search-bar"
+                    placeholder="Password"
+                    onChange={(event) => setPassword(event.target.value)}
+                    required
+                  />
                 </div>
               </div>
               <div className="form-group">
-              <div className="search-wrapper">
+                <div className="search-wrapper">
                   <div className="search-ico">
                     <div>
                       <div className="search-button" title="confirm password">
@@ -127,16 +137,18 @@ export default function Register(props) {
                     </div>
                   </div>
                   <input
-                  type="password"
-                  className="search-bar"
-                  placeholder="Confirm Password"
-                  onChange={(event) => setVerifiedPassword(event.target.value)}
-                  required
-                />
+                    type="password"
+                    className="search-bar"
+                    placeholder="Confirm Password"
+                    onChange={(event) =>
+                      setVerifiedPassword(event.target.value)
+                    }
+                    required
+                  />
                 </div>
               </div>
               <div className="button-wrapper">
-                <div className="register" onClick={register}>
+                <div className="sign-up-button" onClick={register}>
                   Sign Up
                 </div>
               </div>

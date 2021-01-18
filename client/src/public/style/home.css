@@ -8,6 +8,7 @@ body {
 
 .content {
   margin-top: 10px;
+  text-align: center;
 }
 
 /* .content > div {
@@ -150,4 +151,5 @@ body {
 
 .content .col {
   margin-bottom: 5px;
+  width: fit-content;
 }
