@@ -33,7 +33,7 @@ export default class DrinkRating extends React.Component {
         this.setState({ rating: newRating });
       }
     } else {
-      if (newRating === this.state.rating) {
+      if (newRating == this.state.rating) {
         Axios.post(
           "http://localhost:5000/drinkRating/" + this.props.drink,
           { rating: 0 },
