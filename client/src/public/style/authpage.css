@@ -2,12 +2,6 @@
   cursor: pointer;
 }
 
-.log-button {
-  min-width: 100px;
-  margin-right: 20px;
-  margin-left: 20px;
-}
-
 .auth-wrapper {
     width: 520px;
 }
@@ -23,7 +17,9 @@
 }
 
 .auth-page h3 {
-    font-size: 32px;
+  text-align: center;
+  font-size: 72px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .auth-page > div > div:nth-child(2) {
@@ -31,10 +27,6 @@
   background-color: #242526;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
-}
-
-.auth-page h3 {
-  text-align: center;
 }
 
 .form-group > div {
@@ -49,10 +41,30 @@
   cursor: initial;
 }
 
+.login-button {
+  margin: auto;
+  width: 450px;
+}
 
+.register-button {
+  margin: auto;
+  width: 70%;
+}
 
+.sign-up-button {
+  margin: auto;
+  width: 100%;
+}
+
+.register-wrapper {
+  border-top: 2px solid #3a3b3c;
+  margin-top: 5px;
+}
 .auth-page .button-wrapper {
-  margin: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  text-align: center;
 }
 
 .leave-login-page-wrapper {
@@ -62,10 +74,9 @@
 }
 
 .leave-login-page-wrapper > div {
-    margin:auto;
+  margin:auto;
   display: block;
   width: 100%;
-  border-top: 2px solid #3a3b3c;
 }
 
 
@@ -95,3 +106,14 @@
       margin: auto;
       margin-top: 5px;
   }
+
+  .register-popup-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; 
+    display: flex;
+    margin: 0;
+    background-color:rgb(0 0 0 / 90%);
+}

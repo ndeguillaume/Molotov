@@ -1,5 +1,7 @@
 import React from "react";
 import "./../../public/style/authpage.css";
+import "./../../public/style/error.css";
+
 import Register from "./Register.js";
 import Login from "./Login.js";
 

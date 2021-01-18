@@ -12,7 +12,6 @@ import SearchedCocktailsByName from "./SearchedCocktailsByName";
 import SearchedCocktailsByIngredient from "./SearchedCocktailsByIngredient";
 import LikedDrinksPage from "./LikedDrinksPage";
 import Axios from "axios";
-
 import purple from "../public/images/purple.png";
 import blue from "../public/images/blue.png";
 import green from "../public/images/green.png";

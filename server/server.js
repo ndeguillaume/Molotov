@@ -17,7 +17,6 @@ app.listen(PORT, () => {
 
 // Local
 // require('./src/database');
-
 // Online
 mongoose.connect(process.env.MONGODB_CONNECTION, {
   useNewUrlParser: true,
