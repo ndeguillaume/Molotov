@@ -62,8 +62,9 @@ router.get("/:drinkId", auth, async (req, res) => {
       drinkId: drinkId,
     });
     res.json(drinkRating.rating);
+  } else { 
+    res.json(null);
   }
-  res.json(null);
 });
 
 router.put("/:drinkId", auth, async (req, res) => {

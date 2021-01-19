@@ -42,7 +42,7 @@ export default class Home extends React.Component {
       likedCocktails: [],
       likedCocktailsLoaded: false,
       isLikedCocktailPage: false,
-      isRatedCocktailPage: true,
+      isRatedCocktailPage: false,
       cocktails: [],
     };
     this.handleClick = this.handleClick.bind(this);
