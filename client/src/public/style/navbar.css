@@ -1,42 +1,54 @@
 .NavBar {
-    display: flex;
-    height: 55px;
-    background-color: #242526;
-    border-bottom: 1px solid #e4e5eb;
-    text-align: center;
+  display: flex;
+  height: 55px;
+  background-color: #242526;
+  border-bottom: 1px solid #e4e5eb;
+  text-align: center;
 }
 
 .NavBar > div {
-    margin: auto;
-    display:inline-block;
+  margin: auto;
+  display: inline-block;
 }
 
 .NavBar > div:not(:nth-child(2)) {
-    flex: 1;
+  flex: 1;
 }
 
 .NavBar > div:nth-child(2) {
-    flex: 20;
+  flex: 20;
 }
 
 .NavBar > div:first-child img {
-    width: 32px;
+  width: 32px;
 }
 
 .login-button {
-    margin: 5px;
+  margin: 5px;
 }
 
-.reset-ico, .fas.fa-paint-brush {
-    cursor: pointer;
+.reset-ico,
+.fas.fa-paint-brush {
+  cursor: pointer;
 }
 
 .fas.fa-paint-brush {
-    margin: auto;
-  }
+  margin: auto;
+}
 
 .log-button {
-    min-width: 100px;
-    margin-right: 20px;
-    margin-left: 20px;
-  }
+  min-width: 100px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.molotlov-wrapper-ico,
+.ratedCocktails-wrapper-ico  {
+  display: inline-block;
+}
+.molotlov-wrapper-ico i , .ratedCocktails-wrapper-ico i {
+    cursor: pointer;
+}
+.ratedCocktails-wrapper-ico {
+  margin-left: 5px;
+}

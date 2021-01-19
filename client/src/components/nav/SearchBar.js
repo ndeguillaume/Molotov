@@ -81,6 +81,12 @@ export default class SearchBar extends React.Component {
             }
             return (
                 <div className="search-wrapper">
+                    <div className="molotlov-wrapper-ico">
+                    <i class="fas fa-heart" onClick={this.props.toggleLikedDrinksPage}></i>
+                    </div>
+                    <div className="ratedCocktails-wrapper-ico">
+                    <i class="fas fa-star-half-alt" onClick={this.props.toggleRatedCocktailsPage}></i>
+                    </div>
                     <div className="search-ico">
                         <div>
                             <div className="search-button" title="Search"><i className="fas fa-search" onClick={this.search}></i></div>
@@ -101,6 +107,12 @@ export default class SearchBar extends React.Component {
         }
         return (
             <div className="search-wrapper">
+                    <div className="molotlov-wrapper-ico">
+                    <i class="fas fa-heart" onClick={this.props.toggleLikedDrinksPage}></i>
+                    </div>
+                    <div className="ratedCocktails-wrapper-ico">
+                    <i class="fas fa-star-half-alt" onClick={this.props.toggleRatedCocktailsPage}></i>
+                    </div>
                 <div className="search-ico">
                     <div>
                         <div className="search-button" title="Search"><i className="fas fa-search" onClick={this.search}></i></div>

@@ -45,7 +45,7 @@ export default class Navbar extends React.Component {
             className="reset-ico"
             src={this.props.colorSrc}
             alt="app-logo"
-            onClick={this.props.closeLikedDrinksPage}
+            onClick={this.props.resetSearch}
           ></img>
         </div>
         <div>
@@ -54,6 +54,8 @@ export default class Navbar extends React.Component {
             filterClick={this.props.filterClick}
             search={this.props.search}
             handleClick={this.props.handleClick}
+            toggleLikedDrinksPage={this.props.toggleLikedDrinksPage}
+            toggleRatedCocktailsPage={this.props.toggleRatedCocktailsPage}
           />
         </div>
         {this.props.displayColorDiv ? (
@@ -85,7 +87,6 @@ export default class Navbar extends React.Component {
             flColors={flColors}
           />
         ) : null}
-        <LikedDrinksOptions openLikedDrinksPage={this.props.openLikedDrinksPage}/>
 
         <AuthOptions loginClick={this.props.loginClick}/>
       </nav>
