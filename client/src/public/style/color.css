@@ -13,7 +13,7 @@
     transform: scaleX(-1);
 }
 
-.purple h3, .purple .fas.fa-star {
+.purple h3, .purple .fas.fa-star,.purple i.selected {
   color: #d000cd
 }
 
@@ -25,7 +25,7 @@
   background-color: #d000cd!important;
 }
 
-.purple .change-color-wrapper.focused {
+.purple .focused {
   background-color: #d000cd;
 }
 
@@ -44,7 +44,7 @@
     transform: scaleX(-1);
 }
 
-.blue h3, .blue .fas.fa-star {
+.blue h3, .blue .fas.fa-star, .blue i.selected {
   color: #0896e3;
 }
 
@@ -56,7 +56,7 @@
     background-color: #0896e3!important;
 }
 
-.blue .change-color-wrapper.focused {
+.blue .focused {
   background-color: #0896e3;
 }
 
@@ -75,7 +75,7 @@
     transform: scaleX(-1);
 }
 
-.green h3, .green .fas.fa-star {
+.green h3, .green .fas.fa-star, .green i.selected {
   color: #50af37;
 }
 
@@ -87,7 +87,7 @@
     background-color: #50af37!important;
 }
 
-.green .change-color-wrapper.focused {
+.green .focused {
   background-color: #50af37;
 }
 
@@ -106,7 +106,7 @@
     transform: scaleX(-1);
 }
 
-.yellow h3, .yellow .fas.fa-star {
+.yellow h3, .yellow .fas.fa-star, .yellow i.selected {
   color: #ffed00;
 }
 
@@ -118,7 +118,7 @@
     background-color: #ffed00!important;
 }
 
-.yellow .change-color-wrapper.focused {
+.yellow .focused {
   background-color: #ffed00;
   color: #3a3b3c;
 }
@@ -138,7 +138,7 @@
     transform: scaleX(-1);
 }
 
-.red h3, .red .fas.fa-star {
+.red h3, .red .fas.fa-star, .red i.selected {
   color: #e50606;
 }
 
@@ -150,7 +150,7 @@
     background-color: #e50606!important;
 }
 
-.red .change-color-wrapper.focused {
+.red .focused {
   background-color: #e50606;
 }
 
@@ -169,7 +169,7 @@
     transform: scaleX(-1);
 }
 
-.orange h3, .orange .fas.fa-star {
+.orange h3, .orange .fas.fa-star,.orange i.selected {
   color: #fa8d3c;
 }
 
@@ -181,7 +181,7 @@
     background-color: #fa8d3c!important;
 }
 
-.orange .change-color-wrapper.focused {
+.orange .focused {
   background-color: #fa8d3c;
   color: #3a3b3c;
 }
@@ -201,7 +201,7 @@
     transform: scaleX(-1);
 }
 
-.pink h3, .pink .fas.fa-star {
+.pink h3, .pink .fas.fa-star, .pink i.selected {
   color: #ed41ec;
 }
 .pink .not-selected {
@@ -212,7 +212,7 @@
     background-color: #ed41ec!important;
 }
 
-.pink .change-color-wrapper.focused {
+.pink .focused {
   background-color: #ed41ec;
   color: #3a3b3c;
 }

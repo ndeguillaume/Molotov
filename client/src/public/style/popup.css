@@ -40,6 +40,7 @@
     text-align: center;
     font-size: 24px;
     font-weight: bold;
+    color: white;
 }
 
 .popup-instructions p {
@@ -49,6 +50,7 @@
 
 .popup-ingredients, .popup-instructions, .drink-rating {
     text-align: left!important;
+    color: white;
 }
 
 .drink-rating i {

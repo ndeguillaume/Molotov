@@ -10,6 +10,8 @@ import AuthPage from "./auth/AuthPage";
 import RandomCocktail from "./RandomCocktail";
 import SearchedCocktailsByName from "./SearchedCocktailsByName";
 import SearchedCocktailsByIngredient from "./SearchedCocktailsByIngredient";
+import LikedDrinksPage from "./LikedDrinksPage";
+import RatedDrinksPage from "./RatedDrinksPage";
 import Axios from "axios";
 import purple from "../public/images/purple.png";
 import blue from "../public/images/blue.png";
@@ -35,12 +37,13 @@ export default class Home extends React.Component {
       url: "",
       filterOption: false,
       isLoginPage: false,
-      filterOption: false,
       colorOption: false,
       color: "purple",
       likedCocktails: [],
       likedCocktailsLoaded: false,
-      cocktails: []
+      isLikedCocktailPage: false,
+      isRatedCocktailPage: true,
+      cocktails: [],
     };
     this.handleClick = this.handleClick.bind(this);
     this.resetSearch = this.resetSearch.bind(this);
@@ -55,6 +58,10 @@ export default class Home extends React.Component {
     this.addLikedCocktail = this.addLikedCocktail.bind(this);
     this.removeLikedCocktail = this.removeLikedCocktail.bind(this);
     this.eraseLikedCocktail = this.eraseLikedCocktail.bind(this);
+    this.toggleLikedDrinksPage = this.toggleLikedDrinksPage.bind(this);
+    this.toggleRatedCocktailsPage = this.toggleRatedCocktailsPage.bind(this);
+    this.closeLikedDrinksPage = this.closeLikedDrinksPage.bind(this);
+    this.closeRatedDrinksPage = this.closeRatedDrinksPage.bind(this);
   }
 
   componentDidMount() {
@@ -114,6 +121,8 @@ export default class Home extends React.Component {
     ) {
       return value != id;
     });
+
+    console.log(this.state.likedCocktails);
   }
 
   loadMore() {
@@ -128,6 +137,11 @@ export default class Home extends React.Component {
   resetSearch() {
     this.setState({ reload: 1 });
     this.setState({ url: "" });
+    this.closeLikedDrinksPage();
+    this.closeRatedDrinksPage();
+    if (document.querySelector(".selected") !== null) {
+      document.querySelector(".selected").classList.remove("selected");
+    }
   }
 
   filterClick(e) {
@@ -178,6 +192,53 @@ export default class Home extends React.Component {
     this.eraseLikedCocktail();
   }
 
+  toggleLikedDrinksPage(e) {
+    if (
+      document.querySelector(".selected") !== null &&
+      document.querySelector(".selected") != e.target
+    ) {
+      document.querySelector(".selected").classList.remove("selected");
+    }
+
+    e.target.classList.toggle("selected");
+    this.setState({
+      isLikedCocktailPage: !this.state.isLikedCocktailPage,
+    });
+    this.setState({ isRatedCocktailPage: false });
+  }
+
+  closeLikedDrinksPage() {
+    if (document.querySelector(".selected") !== null) {
+      document.querySelector(".selected").classList.remove("selected");
+    }
+    this.setState({
+      isLikedCocktailPage: false,
+    });
+  }
+
+  toggleRatedCocktailsPage(e) {
+    if (
+      document.querySelector(".selected") !== null &&
+      document.querySelector(".selected") != e.target
+    ) {
+      document.querySelector(".selected").classList.remove("selected");
+    }
+    e.target.classList.toggle("selected");
+    this.setState({
+      isRatedCocktailPage: !this.state.isRatedCocktailPage,
+    });
+    this.setState({ isLikedCocktailPage: false });
+  }
+
+  closeRatedDrinksPage() {
+    if (document.querySelector(".selected") !== null) {
+      document.querySelector(".selected").classList.remove("selected");
+    }
+    this.setState({
+      isRatedCocktailPage: false,
+    });
+  }
+
   render() {
     var colorSrc;
     var FLcolorSrc;
@@ -215,6 +276,7 @@ export default class Home extends React.Component {
         return (
           <AuthPage
             eraseLikedCocktail={this.eraseLikedCocktail}
+            resetSearch={this.resetSearch}
             closeLoginPage={this.closeLoginPage}
             color={this.state.color}
             colorSrc={colorSrc}
@@ -225,7 +287,35 @@ export default class Home extends React.Component {
         var addLikedCocktail = this.addLikedCocktail;
         var removeLikedCocktail = this.removeLikedCocktail;
         var cocktails = [];
-        if (this.state.url === "") {
+        if (this.state.isLikedCocktailPage) {
+          cocktails.push(
+            <div className="col">
+              <LikedDrinksPage
+                addLikedCocktail={this.addLikedCocktail}
+                removeLikedCocktail={this.removeLikedCocktail}
+                likedCocktails={this.state.likedCocktails}
+                closeLikedCocktails={this.closeLikedDrinksPage}
+                ico={colorSrc}
+                icoFL={FLcolorSrc}
+                color={this.state.color}
+              />
+            </div>
+          );
+        } else if (this.state.isRatedCocktailPage) {
+          cocktails.push(
+            <div className="col">
+              <RatedDrinksPage
+                addLikedCocktail={this.addLikedCocktail}
+                removeLikedCocktail={this.removeLikedCocktail}
+                closeRatedDrinksPage={this.closeRatedDrinksPage}
+                likedCocktails={likedCocktails}
+                ico={colorSrc}
+                icoFL={FLcolorSrc}
+                color={this.state.color}
+              />
+            </div>
+          );
+        } else if (this.state.url === "") {
           for (let i = 0; i < this.state.reload; i++) {
             for (let j = 0; j < 10; j++) {
               cocktails.push(
@@ -284,9 +374,15 @@ export default class Home extends React.Component {
               setColor={this.setColor}
               loginClick={this.loginClick}
               eraseLikedCocktail={this.eraseLikedCocktail}
+              toggleLikedDrinksPage={this.toggleLikedDrinksPage}
+              toggleRatedCocktailsPage={this.toggleRatedCocktailsPage}
+              closeLikedDrinksPage={this.closeLikedDrinksPage}
+              closeRatedDrinksPage={this.closeRatedDrinksPage}
             />
 
-            {this.state.url === "" ? (
+            {this.state.url === "" &&
+            !this.state.isLikedCocktailPage &&
+            !this.state.isRatedCocktailPage ? (
               <div className="content container">
                 <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
                   {cocktails}

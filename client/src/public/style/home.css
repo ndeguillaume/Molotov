@@ -86,6 +86,7 @@ body {
 .cocktail-title, .cocktail-ingredients {
   padding-left: 10px;
   padding-right: 10px;
+  color: white;
 }
 
 
@@ -156,4 +157,9 @@ body {
 
 .fa-star:hover {
   cursor: pointer;
+}
+
+.empty-set {
+  width: 100%!important;
+  text-align: center!important;
 }

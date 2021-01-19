@@ -19,6 +19,7 @@ import FL_orange from "../../public/images/FL_orange.png";
 import FL_pink from "../../public/images/FL_pink.png";
 import FL_yellow from "../../public/images/FL_yellow.png";
 import FL_red from "../../public/images/FL_red.png";
+import LikedDrinksOptions from "./LikedDrinksOptions";
 
 export default class Navbar extends React.Component {
   constructor(props) {
@@ -53,6 +54,10 @@ export default class Navbar extends React.Component {
             filterClick={this.props.filterClick}
             search={this.props.search}
             handleClick={this.props.handleClick}
+            toggleLikedDrinksPage={this.props.toggleLikedDrinksPage}
+            toggleRatedCocktailsPage={this.props.toggleRatedCocktailsPage}
+            closeLikedDrinksPage={this.props.closeLikedDrinksPage}
+            closeRatedDrinksPage={this.props.closeRatedDrinksPage}
           />
         </div>
         {this.props.displayColorDiv ? (

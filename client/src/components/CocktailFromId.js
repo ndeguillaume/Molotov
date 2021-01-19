@@ -35,7 +35,9 @@ export default class CocktailFromId extends React.Component {
   }
 
   componentDidUpdate(previousProps) {
+
     if (this.props.id !== previousProps.id) {
+      
       fetch(
         "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" +
           this.props.id
@@ -55,11 +57,13 @@ export default class CocktailFromId extends React.Component {
             });
           }
         );
+      this.setState({ reload: 1 });
     }
   }
 
   render() {
-    return (
+
+    return (      
       <Cocktail
         addLikedCocktail={this.props.addLikedCocktail}
         removeLikedCocktail={this.props.removeLikedCocktail}

@@ -36,8 +36,9 @@ export default function Register(props) {
       });
       localStorage.setItem("auth-token", loginResponse.data.token);
       props.closeLoginPage();
+      this.props.resetSearch();
     } catch (err) {
-      if(err.response.data.msg) setError(err.response.data.msg);
+      if (err.response.data.msg) setError(err.response.data.msg);
     }
   };
 
@@ -50,7 +51,9 @@ export default function Register(props) {
             <i className="fas fa-times" onClick={props.closeRegisterForm}></i>
           </div>
         </div>
-        {error && <ErrorNotice message={error} clearError={() => setError(undefined)} />}
+        {error && (
+          <ErrorNotice message={error} clearError={() => setError(undefined)} />
+        )}
         <div className="popup-content">
           <div className="col">
             <div className="row">
