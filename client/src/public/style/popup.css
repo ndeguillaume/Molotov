@@ -53,6 +53,15 @@
     color: white;
 }
 
+.drink-rating {
+    justify-content: space-between;
+    display: flex;
+}
+
+.drink-rating div {
+    text-align: center;
+}
+
 .drink-rating i {
     margin:3px;
 }
