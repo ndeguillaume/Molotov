@@ -37,7 +37,7 @@ router.get("/:drinkId/averageRating", async (req, res) => {
   const average = await AverageDrinkRating.findOne({
     drinkId: drinkId,
   });
-  if (average != null) {
+  if (average != null && average.numberOfRatings != 0) {
     res.json({
       average: average.globalRate / average.numberOfRatings,
       numberOfRatings: average.numberOfRatings,
