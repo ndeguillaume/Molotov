@@ -158,3 +158,8 @@ body {
 .fa-star:hover {
   cursor: pointer;
 }
+
+.empty-set {
+  width: 100%!important;
+  text-align: center!important;
+}

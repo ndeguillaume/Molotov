@@ -17,6 +17,7 @@ export default class AuthPage extends React.Component {
 
   registerClick() {
     this.setState({ register: true });
+    this.props.resetSearch();
   }
 
   closeRegisterForm() {
@@ -46,6 +47,7 @@ export default class AuthPage extends React.Component {
               <Register
                 closeRegisterForm={this.closeRegisterForm}
                 closeLoginPage={this.props.closeLoginPage}
+                resetSearch={this.props.resetSearch}
               />
             ) : null}
           </div>

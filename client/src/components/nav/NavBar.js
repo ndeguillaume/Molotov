@@ -56,6 +56,8 @@ export default class Navbar extends React.Component {
             handleClick={this.props.handleClick}
             toggleLikedDrinksPage={this.props.toggleLikedDrinksPage}
             toggleRatedCocktailsPage={this.props.toggleRatedCocktailsPage}
+            closeLikedDrinksPage={this.props.closeLikedDrinksPage}
+            closeRatedDrinksPage={this.props.closeRatedDrinksPage}
           />
         </div>
         {this.props.displayColorDiv ? (

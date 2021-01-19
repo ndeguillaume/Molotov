@@ -61,7 +61,7 @@ export default class Home extends React.Component {
     this.toggleLikedDrinksPage = this.toggleLikedDrinksPage.bind(this);
     this.toggleRatedCocktailsPage = this.toggleRatedCocktailsPage.bind(this);
     this.closeLikedDrinksPage = this.closeLikedDrinksPage.bind(this);
-    this.closeRatedCocktailsPage = this.closeRatedCocktailsPage.bind(this);
+    this.closeRatedDrinksPage = this.closeRatedDrinksPage.bind(this);
   }
 
   componentDidMount() {
@@ -138,8 +138,8 @@ export default class Home extends React.Component {
     this.setState({ reload: 1 });
     this.setState({ url: "" });
     this.closeLikedDrinksPage();
-    this.closeRatedCocktailsPage();
-    if (document.querySelector(".selected").length !== null) {
+    this.closeRatedDrinksPage();
+    if (document.querySelector(".selected") !== null) {
       document.querySelector(".selected").classList.remove("selected");
     }
   }
@@ -208,6 +208,9 @@ export default class Home extends React.Component {
   }
 
   closeLikedDrinksPage() {
+    if (document.querySelector(".selected") !== null) {
+      document.querySelector(".selected").classList.remove("selected");
+    }
     this.setState({
       isLikedCocktailPage: false,
     });
@@ -227,7 +230,10 @@ export default class Home extends React.Component {
     this.setState({ isLikedCocktailPage: false });
   }
 
-  closeRatedCocktailsPage() {
+  closeRatedDrinksPage() {
+    if (document.querySelector(".selected") !== null) {
+      document.querySelector(".selected").classList.remove("selected");
+    }
     this.setState({
       isRatedCocktailPage: false,
     });
@@ -270,6 +276,7 @@ export default class Home extends React.Component {
         return (
           <AuthPage
             eraseLikedCocktail={this.eraseLikedCocktail}
+            resetSearch={this.resetSearch}
             closeLoginPage={this.closeLoginPage}
             color={this.state.color}
             colorSrc={colorSrc}
@@ -300,7 +307,7 @@ export default class Home extends React.Component {
               <RatedDrinksPage
                 addLikedCocktail={this.addLikedCocktail}
                 removeLikedCocktail={this.removeLikedCocktail}
-                closeRatedCocktailsPage={this.closeRatedCocktailsPage}
+                closeRatedDrinksPage={this.closeRatedDrinksPage}
                 likedCocktails={likedCocktails}
                 ico={colorSrc}
                 icoFL={FLcolorSrc}
@@ -369,6 +376,8 @@ export default class Home extends React.Component {
               eraseLikedCocktail={this.eraseLikedCocktail}
               toggleLikedDrinksPage={this.toggleLikedDrinksPage}
               toggleRatedCocktailsPage={this.toggleRatedCocktailsPage}
+              closeLikedDrinksPage={this.closeLikedDrinksPage}
+              closeRatedDrinksPage={this.closeRatedDrinksPage}
             />
 
             {this.state.url === "" &&

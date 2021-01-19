@@ -1,5 +1,8 @@
 import React from "react";
 import CocktailFromId from "./CocktailFromId";
+import "./../public/style/likedDrinksPage.css";
+
+
 
 export default class LikedDrinksPage extends React.Component {
     constructor(props) {
@@ -62,6 +65,11 @@ export default class LikedDrinksPage extends React.Component {
                 hiddenCocktails.push(this.props.likedCocktails[i]);
             }            
         }           
+        if (cocktails.length === 0) {
+            cocktails.push(
+              <h3 className="empty-set">You haven't liked any cocktail yet !</h3>
+            );
+          }
             return (  
             <div className={`${this.props.color} liked-drinks-page container`}>
                 <div>
