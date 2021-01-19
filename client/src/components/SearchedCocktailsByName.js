@@ -69,24 +69,42 @@ export default class SearchedCocktailsByName extends React.Component {
     } else {
       var cocktailsTab = [];
       var cocktailsID = [];
-      var i = 0;
-      this.state.items.map((item) => {
-        if (i < 10 * this.state.reload) {
-          cocktailsTab.push(
-            <Cocktail
-              addLikedCocktail={this.props.addLikedCocktail}
-              removeLikedCocktail={this.props.removeLikedCocktail}
-              likedCocktails={this.props.likedCocktails}
-              ico={this.props.ico}
-              icoFL={this.props.icoFL}
-              drink={item}
-            />
-          );
-        } else {
-          cocktailsID.push(item.idDrink);
+          for(var i = 0; i < this.state.items.length; i++){
+            var currentItem = this.state.items[i];
+            if(this.props.hasAlcohol && currentItem.strAlcoholic == "Alcoholic"){             
+                if (i < 10 * this.state.reload) {
+                  cocktailsTab.push(
+                    <Cocktail
+                      addLikedCocktail={this.props.addLikedCocktail}
+                      removeLikedCocktail={this.props.removeLikedCocktail}
+                      likedCocktails={this.props.likedCocktails}
+                      ico={this.props.ico}
+                      icoFL={this.props.icoFL}
+                      drink={currentItem}
+                    />               
+                  );
+                } else {
+                  cocktailsID.push(currentItem.idDrink);
+                }
+            } else if (!this.props.hasAlcohol && currentItem.strAlcoholic == "Non alcoholic"){
+              if (i < 10 * this.state.reload) {
+                cocktailsTab.push(
+                  <Cocktail
+                    addLikedCocktail={this.props.addLikedCocktail}
+                    removeLikedCocktail={this.props.removeLikedCocktail}
+                    likedCocktails={this.props.likedCocktails}
+                    ico={this.props.ico}
+                    icoFL={this.props.icoFL}
+                    drink={currentItem}
+                  />               
+                );
+              } else {
+                cocktailsID.push(currentItem.idDrink);
+              }
+            }
+          }                  
         }
-        i++;
-      });
+       
       return (
         <div className="content container">
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
@@ -103,4 +121,4 @@ export default class SearchedCocktailsByName extends React.Component {
       );
     }
   }
-}
+

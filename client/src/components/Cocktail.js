@@ -23,7 +23,6 @@ export default class Cocktail extends React.Component {
   }
 
   render() {
-
     let isLiked = false;
     let i = 0;
     while (!isLiked && i < this.props.likedCocktails.length) {
