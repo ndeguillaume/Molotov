@@ -1,4 +1,22 @@
 .liked-drinks-title {
-    font-size: 34px;
-    text-align: center;
+    font-size: 90px;
+    margin: 45px;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.liked-drink-header > h3 img {
+    width: 80px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+}
+
+.liked-drinks-title > i{
+    font-size: 47px;
+}
+
+#molot-title-color{
+    color: white;
 }
