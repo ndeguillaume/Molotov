@@ -19,9 +19,12 @@ export default class DrinkRating extends React.Component {
     let token = localStorage.getItem("auth-token");
     if (this.state.hasARating) {
       if (newRating === this.state.rating) {
-        await Axios.delete("http://localhost:5000/drinkRating/" + this.props.drink, {
-          headers: { "x-auth-token": token },
-        });
+        await Axios.delete(
+          "http://localhost:5000/drinkRating/" + this.props.drink,
+          {
+            headers: { "x-auth-token": token },
+          }
+        );
         this.setState({ rating: 0 });
         this.setState({ hasARating: false });
       } else {
@@ -79,55 +82,61 @@ export default class DrinkRating extends React.Component {
         });
       }
     });
-    await Axios.get("http://localhost:5000/drinkRating/" + this.props.drink, {
-      headers: { "x-auth-token": localStorage.getItem("auth-token") },
-    }).then((response) => {
-      this.setState({ hasARating: response.data !== null });
-      if (response.data !== null) {
-        this.setState({ rating: response.data });
-      }
-      this.setState({ isLoaded: true });
-    });
+    if (localStorage.getItem("auth-token") !== "") {
+      await Axios.get("http://localhost:5000/drinkRating/" + this.props.drink, {
+        headers: { "x-auth-token": localStorage.getItem("auth-token") },
+      }).then((response) => {
+        this.setState({ hasARating: response.data !== null });
+        if (response.data !== null) {
+          this.setState({ rating: response.data });
+        }
+        this.setState({ isLoaded: true });
+      });
+    }
   }
 
   render() {
     const { isLoaded } = this.state;
     const content = [];
     let cpt = 1;
-    if (!isLoaded) {
+    if (!isLoaded && localStorage.getItem("auth-token") !== "") {
       return <div>Loading...</div>;
     } else {
-      for (let i = 1; i <= this.state.rating; i++) {
-        content.push(
-          <i
-            id={cpt++ + "star"}
-            class="fas fa-star"
-            onClick={(e) => {
-              this.rate(e);
-            }}
-          ></i>
-        );
-      }
-      for (let i = 1; i <= 5 - this.state.rating; i++) {
-        content.push(
-          <i
-            id={cpt++ + "star"}
-            class="far fa-star"
-            onClick={(e) => {
-              this.rate(e);
-            }}
-          ></i>
-        );
+      if (localStorage.getItem("auth-token") !== "") {
+        for (let i = 1; i <= this.state.rating; i++) {
+          content.push(
+            <i
+              id={cpt++ + "star"}
+              class="fas fa-star"
+              onClick={(e) => {
+                this.rate(e);
+              }}
+            ></i>
+          );
+        }
+        for (let i = 1; i <= 5 - this.state.rating; i++) {
+          content.push(
+            <i
+              id={cpt++ + "star"}
+              class="far fa-star"
+              onClick={(e) => {
+                this.rate(e);
+              }}
+            ></i>
+          );
+        }
       }
       const average = this.state.average;
       const numberOfRatings = this.state.numberOfRatings;
       return (
         <>
           <div className="drink-rating">
-            <div className="user-rating">
-              <h3>Your rating</h3>
-              <p>{content}</p>
-            </div>
+            {localStorage.getItem("auth-token") !== "" ? (
+              <div className="user-rating">
+                <h3>Your rating</h3>
+                <p>{content}</p>
+              </div>
+            ) : null}
             <div className="average-rating">
               <h3>Average rating</h3>
               <span className="average">

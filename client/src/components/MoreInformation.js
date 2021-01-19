@@ -50,9 +50,7 @@ export default class MoreInformation extends React.Component {
             <h3>Instructions</h3>
             <p>{this.props.drink.strInstructions}</p>
           </div>
-          {localStorage.getItem("auth-token") !== "" ? (
-            <DrinkRating drink={this.props.drink.idDrink} />
-          ) : null}
+          <DrinkRating drink={this.props.drink.idDrink} />
         </div>
       </div>
     );
