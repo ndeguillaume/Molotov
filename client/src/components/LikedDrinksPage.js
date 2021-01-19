@@ -72,9 +72,18 @@ export default class LikedDrinksPage extends React.Component {
           }
             return (  
             <div className={`${this.props.color} liked-drinks-page container`}>
-                <div>
-                    <h3 className="liked-drinks-title">MolotLove</h3>
+                <div className="liked-drink-header">
+                    <h3 className="liked-drinks-title">
+                        <p id="molot-title-color">Molot</p>
+                        <p>Love</p> 
+                        <img
+                        src={this.props.ico}
+                        alt="app-logo"
+                        ></img>
+                    </h3>                    
+                   
                 </div>
+                
                 <div className="content container">
                     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
                         {cocktails}
