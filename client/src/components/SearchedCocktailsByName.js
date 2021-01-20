@@ -1,6 +1,5 @@
 import React from "react";
 import Cocktail from "./Cocktail";
-import Like from "./Like";
 
 export default class SearchedCocktailsByName extends React.Component {
   constructor(props) {
@@ -14,14 +13,18 @@ export default class SearchedCocktailsByName extends React.Component {
     };
   }
 
-  componentDidMount() {
-    fetch(this.props.url)
+  async componentDidMount() {
+    await fetch(this.props.url)
       .then((res) => res.json())
       .then(
         (result) => {
+          if(result.drinks !== null){
+            this.setState({
+              items: result.drinks,
+            });
+          }
           this.setState({
             isLoaded: true,
-            items: result.drinks,
           });
         },
         (error) => {
@@ -33,21 +36,25 @@ export default class SearchedCocktailsByName extends React.Component {
       );
   }
 
-  componentDidUpdate(previousProps) {
+  async componentDidUpdate(previousProps) {
     if (this.props.url !== previousProps.url) {
-      fetch(this.props.url)
+      await fetch(this.props.url)
         .then((res) => res.json())
         .then(
           (result) => {
+          if(result !== null) {
             this.setState({
-              isLoaded: true,
               items: result.drinks,
             });
+          }
+          this.setState({
+            isLoaded: true,
+          });
           },
           (error) => {
             this.setState({
               isLoaded: true,
-              error,
+              error: error,
             });
           }
         );
@@ -67,12 +74,22 @@ export default class SearchedCocktailsByName extends React.Component {
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
+      if (this.state.items == null || this.state.items.length == 0) {
+        return (
+          <div className="empty-set">
+            <h3>
+              No result for the search :{" "}
+              <strong>{this.props.url.split("=")[1]}</strong>
+            </h3>
+          </div>
+        );
+      }
       var cocktailsTab = [];
       var cocktailsID = [];
       var alcoholDrinksNumber = 0;
       var noAlcoholDrinksNumber = 0;
-      for(var i = 0; i < this.state.items.length; i++){
-        var currentItem = this.state.items[i];
+      for(var i = 0; i < items.length; i++){
+        var currentItem = items[i];
         if(this.props.hasAlcohol && currentItem.strAlcoholic == "Alcoholic"){             
             if (alcoholDrinksNumber < 8 * this.state.reload) {
               cocktailsTab.push(

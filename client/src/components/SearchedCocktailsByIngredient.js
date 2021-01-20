@@ -1,7 +1,5 @@
 import React from "react";
-//import AlcoholFilter from "./AlcoholFilterIngredient";
 import CocktailFromId from "./CocktailFromId";
-import Cocktail from "./Cocktail";
 
 export default class SearchedCocktailsByIngredient extends React.Component {
   constructor(props) {
@@ -17,15 +15,19 @@ export default class SearchedCocktailsByIngredient extends React.Component {
     this.loadMore = this.loadMore.bind(this);
   }
 
-  componentDidMount() {
-    fetch(this.props.url)
+  async componentDidMount() {
+    this.setState({
+      item:[],
+    });
+    await fetch(this.props.url)
       .then((res) => res.json())
       .then(
         (result) => {
-          this.setState({
-            isLoaded: true,
-            items: result.drinks,
-          });
+          if (result !== null) {
+            this.setState({
+              items: result.drinks,
+            });
+          } 
         },
         (error) => {
           this.setState({
@@ -33,31 +35,37 @@ export default class SearchedCocktailsByIngredient extends React.Component {
           });
         }
       );
-    const promises = this.state.items.map((item) => {
-      return fetch(
-        "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" +
-          item.idDrink
-      ).then((drink) => {
-        return drink.json();
+    
+      const promises = await this.state.items.map((item) => {
+        return fetch(
+          "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" +
+            item.idDrink
+        ).then((drink) => {
+          return drink.json();
+        });
       });
-    });
 
-    Promise.all(promises).then((results) => {
-      const allDrinks = results.map((result) => result.drinks[0]);
-      this.state.drinks = allDrinks;
-    });
+      await Promise.all(promises).then((results) => {
+        const allDrinks = results.map((result) => result.drinks[0]);
+        this.state.drinks = allDrinks;
+        this.setState({
+          isLoaded: true,
+        });
+      });
+    
   }
 
-  componentDidUpdate(previousProps) {
+  async componentDidUpdate(previousProps) {
     if (this.props.url !== previousProps.url) {
-      fetch(this.props.url)
+      await fetch(this.props.url)
         .then((res) => res.json())
         .then(
           (result) => {
-            this.setState({
-              isLoaded: true,
-              items: result.drinks,
-            });
+            if (result !== null) {
+              this.setState({
+                items: result.drinks,
+              });
+            } 
           },
           (error) => {
             this.setState({
@@ -66,21 +74,25 @@ export default class SearchedCocktailsByIngredient extends React.Component {
           }
         );
       this.setState({ reload: 1 });
+    
+        const promises = await this.state.items.map((item) => {
+          return fetch(
+            "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" +
+              item.idDrink
+          ).then((drink) => {
+            return drink.json();
+          });
+        });
+  
+        await Promise.all(promises).then((results) => {
+          const allDrinks = results.map((result) => result.drinks[0]);
+          this.state.drinks = allDrinks;
+          this.setState({
+            isLoaded: true,
+          });
+        });
+           
     }
-
-    const promises = this.state.items.map((item) => {
-      return fetch(
-        "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" +
-          item.idDrink
-      ).then((drink) => {
-        return drink.json();
-      });
-    });
-
-    Promise.all(promises).then((results) => {
-      const allDrinks = results.map((result) => result.drinks[0]);
-      this.state.drinks = allDrinks;
-    });
   }
 
   loadMore() {
@@ -96,7 +108,7 @@ export default class SearchedCocktailsByIngredient extends React.Component {
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
-      if (this.state.items.length === 0) {
+      if (this.state.items == null || this.state.items.length == 0) {
         return (
           <div className="empty-set">
             <h3>
@@ -127,7 +139,7 @@ export default class SearchedCocktailsByIngredient extends React.Component {
                 />
               </div>
             );
-            alcoholDrinksNumber ++;
+            alcoholDrinksNumber++;
           } else {
             cocktailsID.push(currentItem.idDrink);
           }
@@ -155,6 +167,7 @@ export default class SearchedCocktailsByIngredient extends React.Component {
           }
         }
       }
+
       return (
         <div className="content container">
           <div className="row row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
