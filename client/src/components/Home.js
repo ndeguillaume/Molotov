@@ -39,7 +39,7 @@ export default class Home extends React.Component {
       filterOption: false,
       isLoginPage: false,
       colorOption: false,
-      color: "purple",
+      color: localStorage.getItem("color"),
       likedCocktails: [],
       avgRating: [],
       likedCocktailsLoaded: false,
@@ -50,6 +50,7 @@ export default class Home extends React.Component {
       cocktails: [],
 
     };
+   // if (localStorage.getItem("color") !== null) this.setState({color:localStorage.getItem("color")})
     this.handleClick = this.handleClick.bind(this);
     this.resetSearch = this.resetSearch.bind(this);
     this.filterClick = this.filterClick.bind(this);
@@ -74,6 +75,7 @@ export default class Home extends React.Component {
   }
 
   componentDidMount() {
+    if(this.state.color === null) this.setState({color:"purple"})
     let token = localStorage.getItem("auth-token");
     if (token !== "") {
       Axios.get("http://localhost:5000/likedDrinks", {
@@ -181,6 +183,8 @@ export default class Home extends React.Component {
 
   setColor(newColor) {
     this.setState({ color: newColor });
+    localStorage.setItem("color", newColor);
+
   }
 
   close(e) {

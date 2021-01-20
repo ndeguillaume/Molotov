@@ -4,13 +4,7 @@ import "../../public/style/colorFilter.css";
 export default class ColorFIlter extends React.Component {
   optionClicked(e) {
     const target = e.target.className;
-    if (target.includes("blue")) this.props.setColor("blue");
-    if (target.includes("purple")) this.props.setColor("purple");
-    if (target.includes("green")) this.props.setColor("green");
-    if (target.includes("orange")) this.props.setColor("orange");
-    if (target.includes("pink")) this.props.setColor("pink");
-    if (target.includes("yellow")) this.props.setColor("yellow");
-    if (target.includes("red")) this.props.setColor("red");
+    this.props.setColor(target);
   }
 
   render() {
@@ -66,7 +60,7 @@ export default class ColorFIlter extends React.Component {
           e.stopPropagation();
         }}
       >
-        <div className="filter-options-title">Choose the colors</div>
+        <div className="filter-options-title"></div>
         <div className="filter-options-buttons">
           <div className="button-wrapper">{colors}</div>
         </div>

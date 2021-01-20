@@ -15,10 +15,10 @@ export default class DrinkRating extends React.Component {
   }
 
   async rate(e) {
-    const newRating = e.target.id.charAt(0);
+    let newRating = e.target.id.charAt(0);
     let token = localStorage.getItem("auth-token");
     if (this.state.hasARating) {
-      if (newRating === this.state.rating) {
+      if ((newRating.toString()) == (this.state.rating)) {
         await Axios.delete(
           "http://localhost:5000/drinkRating/" + this.props.drink,
           {
