@@ -39,7 +39,10 @@ export default class Cocktail extends React.Component {
             ></img>
           </div>
           <div className="cocktail-title">
-            <i className="fas fa-cocktail" title="contains alcohol"></i>
+            {this.props.drink.strAlcoholic === "Non alcoholic" ? 
+            <i className="fas fa-glass-whiskey" title="without alcohol"></i>
+            :
+            <i className="fas fa-cocktail" title="with alcohol"></i>}
             {this.props.drink.strDrink}
           </div>
           <div className="cocktail-ingredients">

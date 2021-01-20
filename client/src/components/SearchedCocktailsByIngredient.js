@@ -29,8 +29,7 @@ export default class SearchedCocktailsByIngredient extends React.Component {
         },
         (error) => {
           this.setState({
-            isLoaded: true,
-            error,
+            isLoaded: true
           });
         }
       );
@@ -62,7 +61,6 @@ export default class SearchedCocktailsByIngredient extends React.Component {
           (error) => {
             this.setState({
               isLoaded: true,
-              error,
             });
           }
         );
@@ -81,21 +79,6 @@ export default class SearchedCocktailsByIngredient extends React.Component {
       const allDrinks = results.map(result => result.drinks[0]);
       this.state.drinks = allDrinks;
     })
-
-    // Promise.all(promises).then(
-    //   (results) => {
-    //     const allDrinks = results.map(result => result.drinks[0]);
-    //     this.setState({
-    //       isLoaded: true,
-    //       drinks: allDrinks,
-    //     });
-    //   },
-    //   (error) => {
-    //     this.setState({
-    //       isLoaded: true,
-    //       error,
-    //     });
-    //   });
   }
 
   loadMore() {
@@ -111,6 +94,13 @@ export default class SearchedCocktailsByIngredient extends React.Component {
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
+      if (this.state.items.length === 0) {
+        return (
+          <div className="empty-set">
+            <h3>No result for the search : <strong>{this.props.url.split("=")[1]}</strong></h3>
+          </div>
+        )
+      }
       var cocktailsTab = [];
       var cocktailsID = []; 
 
