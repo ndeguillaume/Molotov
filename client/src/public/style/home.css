@@ -163,3 +163,8 @@ body {
   width: 100%!important;
   text-align: center!important;
 }
+
+.row .col {
+  padding-left: 0px;
+  padding-right: 0px;
+}

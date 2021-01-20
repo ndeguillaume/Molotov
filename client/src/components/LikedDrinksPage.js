@@ -47,9 +47,9 @@ export default class LikedDrinksPage extends React.Component {
         var cocktails = [];
         var hiddenCocktails = [];
         for (let i = 0; i < this.props.likedCocktails.length; i++) {
-            if (i < 8 * this.state.reload) {
+            if (i < 10 * this.state.reload) {
                 cocktails.push(
-                    <div className="col">
+                    <div className="col-3">
                         <CocktailFromId 
                             addLikedCocktail={this.props.addLikedCocktail}
                             removeLikedCocktail={this.props.removeLikedCocktail}
