@@ -60,7 +60,7 @@ export default class DrinkRating extends React.Component {
       this.setState({ hasARating: true });
     }
     await Axios.get(
-      "http://localhost:5000/drinkRating/" + this.props.drink + "/averageRating"
+      "http://localhost:5000/averageDrinkRating/" + this.props.drink
     ).then((response) => {
       if (response.data !== null) {
         this.setState({
@@ -73,7 +73,7 @@ export default class DrinkRating extends React.Component {
 
   async componentDidMount() {
     await Axios.get(
-      "http://localhost:5000/drinkRating/" + this.props.drink + "/averageRating"
+      "http://localhost:5000/averageDrinkRating/" + this.props.drink
     ).then((response) => {
       if (response.data !== null) {
         this.setState({
@@ -90,6 +90,7 @@ export default class DrinkRating extends React.Component {
         if (response.data !== null) {
           this.setState({ rating: response.data });
         }
+
         this.setState({ isLoaded: true });
       });
     }

@@ -11,7 +11,7 @@ export default class PopularDrinksPage extends React.Component {
       items: [],
       avgRating: [],
       reload: false,
-      isLoadeed: false,
+      isLoaded: false,
       noMoreCocktailsToDisplay : false
     };
 
@@ -19,11 +19,11 @@ export default class PopularDrinksPage extends React.Component {
   }
 
   componentDidMount() {
-    Axios.get("http://localhost:5000/drinkRating/all/averageRating").then(
+    Axios.get("http://localhost:5000/averageDrinkRating").then(
       (response) => {
         if (response.data !== null) {
           this.state.avgRating.push(response.data);
-          this.setState({ isLoadeed: true });
+          this.setState({ isLoaded: true });
         }
       }
     );
@@ -49,7 +49,7 @@ export default class PopularDrinksPage extends React.Component {
   }
 
   render() {
-    if (!this.state.isLoadeed) {
+    if (!this.state.isLoaded) {
       return <div>Loading...</div>;
     }
     if (this.state.noMoreCocktailsToDisplay) {

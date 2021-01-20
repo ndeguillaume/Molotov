@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const drinkRatingSchema = new mongoose.Schema({
     userId: {type: String, required: true},
-    drinkId: {type: Number, required: true, min: 0},
+    drinkId: {type: String, required: true},
     rating: {type: Number, required: true, min: 0, max: 5},
 });
 
