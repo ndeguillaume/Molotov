@@ -49,7 +49,8 @@ export default class LikedDrinksPage extends React.Component {
         for (let i = 0; i < this.props.likedCocktails.length; i++) {
             if (i < 10 * this.state.reload) {
                 cocktails.push(
-                    <div className="col-3">
+                    
+                    <div className="col-md">
                         <CocktailFromId 
                             addLikedCocktail={this.props.addLikedCocktail}
                             removeLikedCocktail={this.props.removeLikedCocktail}
@@ -80,7 +81,7 @@ export default class LikedDrinksPage extends React.Component {
                 </div>
                 <div className="liked-drink-separator"></div>
                 <div className="content container">
-                    <div className="row">
+                    <div className="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
                         {cocktails}
                     </div>
                     {hiddenCocktails.length === 0 ? null : (

@@ -98,3 +98,9 @@
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
 }
+
+@media (max-width: 950px) {
+    .search-bar {
+      width: 50%;
+    }
+  }

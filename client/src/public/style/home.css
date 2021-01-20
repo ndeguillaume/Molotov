@@ -164,8 +164,9 @@
     text-align: center!important;
   }
   
-  .row .col-3 {
-    padding-left: 0px;
-    padding-right: 0px;
-    margin-top: 60px;
+  .row .col-md{
+    margin-top: 40px;
   }
+
+
+ 

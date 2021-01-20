@@ -70,7 +70,7 @@ export default class PopularDrinksPage extends React.Component {
       for (let i = 0; i < 4; i++) {
         cocktailsId.push(popularCocktails[i]);
         cocktails.push(
-          <div className="col-3">
+          <div className="col-md">
             <CocktailFromId
               addLikedCocktail={this.props.addLikedCocktail}
               removeLikedCocktail={this.props.removeLikedCocktail}
@@ -85,7 +85,7 @@ export default class PopularDrinksPage extends React.Component {
     return (
       <div className={`${this.props.color} liked-drinks-page container`}>
         <div className="content container">
-          <div className="row">
+          <div className="row row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
             {cocktails}
           </div>
           <div className="load-more-button-wrapper button-wrapper">

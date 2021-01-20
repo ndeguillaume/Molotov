@@ -380,7 +380,7 @@ export default class Home extends React.Component {
           for (let i = 0; i < this.state.reload; i++) {
             for (let j = 0; j < 10; j++) {
               cocktails.push(
-                <div className="col-3">
+                <div className="col-md">
                   <RandomCocktail
                     addLikedCocktail={addLikedCocktail}
                     removeLikedCocktail={removeLikedCocktail}

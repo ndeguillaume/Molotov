@@ -120,7 +120,7 @@ export default class SearchedCocktailsByIngredient extends React.Component {
         if(this.props.hasAlcohol && currentItem.strAlcoholic == "Alcoholic"){             
             if (i < 10 * this.state.reload) {
               cocktailsTab.push(
-                <div className="col-3">
+                <div className="col-md">
                   <CocktailFromId
                     addLikedCocktail={this.props.addLikedCocktail}
                     removeLikedCocktail={this.props.removeLikedCocktail}
@@ -139,7 +139,7 @@ export default class SearchedCocktailsByIngredient extends React.Component {
           if (i < 10 * this.state.reload) {
             cocktailsTab.push(
 
-              <div className="col-3">
+              <div className="col-md">
                 <CocktailFromId
                   addLikedCocktail={this.props.addLikedCocktail}
                   removeLikedCocktail={this.props.removeLikedCocktail}
@@ -178,7 +178,7 @@ export default class SearchedCocktailsByIngredient extends React.Component {
 
       return (
         <div className="content container">
-          <div className="row">
+          <div className="row row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
             {cocktailsTab}
           </div>
           {cocktailsID.length === 0 ? null : (
