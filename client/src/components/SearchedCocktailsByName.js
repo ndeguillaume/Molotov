@@ -69,12 +69,14 @@ export default class SearchedCocktailsByName extends React.Component {
     } else {
       var cocktailsTab = [];
       var cocktailsID = [];
+      var alcoholDrinksNumber = 0;
+      var noAlcoholDrinksNumber = 0;
       for(var i = 0; i < this.state.items.length; i++){
         var currentItem = this.state.items[i];
         if(this.props.hasAlcohol && currentItem.strAlcoholic == "Alcoholic"){             
-            if (i < 8 * this.state.reload) {
+            if (alcoholDrinksNumber < 8 * this.state.reload) {
               cocktailsTab.push(
-                <div className="col-3">
+                <div className="col-md">
                   <Cocktail
                     addLikedCocktail={this.props.addLikedCocktail}
                     removeLikedCocktail={this.props.removeLikedCocktail}
@@ -83,14 +85,14 @@ export default class SearchedCocktailsByName extends React.Component {
                     icoFL={this.props.icoFL}
                     drink={currentItem}
                   /> 
-                </div>
-                              
+                </div>                              
               );
+              alcoholDrinksNumber++;
             } else {
               cocktailsID.push(currentItem.idDrink);
             }
         } else if (!this.props.hasAlcohol && currentItem.strAlcoholic == "Non alcoholic"){
-          if (i < 8 * this.state.reload) {
+          if (noAlcoholDrinksNumber < 8 * this.state.reload) {
             cocktailsTab.push(
               <div className="col-md">
                 <Cocktail
@@ -103,6 +105,7 @@ export default class SearchedCocktailsByName extends React.Component {
                 />  
               </div>             
             );
+            noAlcoholDrinksNumber++;
           } else {
             cocktailsID.push(currentItem.idDrink);
           }
