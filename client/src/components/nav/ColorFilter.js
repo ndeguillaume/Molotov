@@ -60,7 +60,7 @@ export default class ColorFIlter extends React.Component {
           e.stopPropagation();
         }}
       >
-        <div className="filter-options-title">Choose the colors</div>
+        <div className="filter-options-title"></div>
         <div className="filter-options-buttons">
           <div className="button-wrapper">{colors}</div>
         </div>

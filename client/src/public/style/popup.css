@@ -23,7 +23,7 @@
     display:inline-block
 }
 
-.fa-times {
+.popup .fa-times {
     cursor: pointer;
     position: relative;
     bottom: 10px;
