@@ -3,20 +3,6 @@ const DrinkRating = require("../models/drinkRating.models");
 const AverageDrinkRating = require("../models/averageDrinkRating.models");
 const auth = require("../middleware/auth");
 
-router.get("/all/averageRating", async (req, res) => {
-  const averageDrinkRating = await AverageDrinkRating.find();
-  let data = [];
-  averageDrinkRating.forEach(function (object) {
-    if (object.numberOfRatings > 0) {
-      data.push({
-        drinkId: object.drinkId,
-        average: object.globalRate / object.numberOfRatings,
-      });
-    }
-  });
-  res.json(data);
-});
-
 router.get("/all", auth, async (req, res) => {
   const userId = req.user;
   const drinkRating = await DrinkRating.find({
@@ -30,23 +16,6 @@ router.get("/all", auth, async (req, res) => {
     });
   });
   res.json(data);
-});
-
-router.get("/:drinkId/averageRating", async (req, res) => {
-  const drinkId = req.params.drinkId;
-  const average = await AverageDrinkRating.findOne({
-    drinkId: drinkId,
-  });
-  if (average != null && average.numberOfRatings != 0) {
-    res.json({
-      average: average.globalRate / average.numberOfRatings,
-      numberOfRatings: average.numberOfRatings,
-    });
-  }
-  res.json({
-    average: 0,
-    numberOfRatings: 0,
-  });
 });
 
 router.get("/:drinkId", auth, async (req, res) => {
