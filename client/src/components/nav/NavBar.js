@@ -56,8 +56,12 @@ export default class Navbar extends React.Component {
             handleClick={this.props.handleClick}
             toggleLikedDrinksPage={this.props.toggleLikedDrinksPage}
             toggleRatedCocktailsPage={this.props.toggleRatedCocktailsPage}
+            toggleRatedDrinksPage={this.props.toggleRatedDrinksPage}
             closeLikedDrinksPage={this.props.closeLikedDrinksPage}
+            togglePopularDrinksPage={this.props.togglePopularDrinksPage}
             closeRatedDrinksPage={this.props.closeRatedDrinksPage}
+            getAlcoholDrink={this.props.getAlcoholDrink}
+            getNoAlcoholDrink={this.props.getNoAlcoholDrink}
           />
         </div>
         {this.props.displayColorDiv ? (
@@ -90,7 +94,7 @@ export default class Navbar extends React.Component {
           />
         ) : null}
 
-        <AuthOptions loginClick={this.props.loginClick}/>
+        <AuthOptions loginClick={this.props.loginClick} />
       </nav>
     );
   }

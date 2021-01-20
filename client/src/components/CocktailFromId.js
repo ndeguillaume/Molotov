@@ -35,7 +35,6 @@ export default class CocktailFromId extends React.Component {
   }
 
   componentDidUpdate(previousProps) {
-
     if (this.props.id !== previousProps.id) {
       
       fetch(

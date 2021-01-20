@@ -58,10 +58,6 @@
     display: flex;
 }
 
-.drink-rating div {
-    text-align: center;
-}
-
 .drink-rating i {
     margin:3px;
 }

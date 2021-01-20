@@ -1,165 +1,171 @@
 .Home {
-  color: #e4e5eb;
-}
-
-body {
-  overflow-x: hidden;
-}
-
-.content {
-  margin-top: 10px;
-  text-align: center;
-}
-
-/* .content > div {
-  height: calc(100vh - 55px)
-} */
-
-.load-more-button-wrapper {
-  width: 50%;
-  margin: auto;
-}
-
-.button-wrapper div {
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  -webkit-transition: 0.18s ease-out;
-  -moz-transition: 0.18s ease-out;
-  -o-transition: 0.18s ease-out;
-  transition: 0.18s ease-out;
-}
-
-.button-wrapper div:hover {
-  -webkit-transition: 0.18s ease-out;
-  -moz-transition: 0.18s ease-out;
-  -o-transition: 0.18s ease-out;
-  transition: 0.18s ease-out;
-}
-
-.load-more-button-wrapper {
-  margin-top: 20px;
-}
-
-.button-wrapper div {
-  text-align: center;
-}
-
-
-.cocktail{
-  background-color: #242526;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  display: inline-block;
-  width: 250px;
-  border-radius: 5px;
-}
-
-.cocktail-thumbnail-wrapper > img:not(.like-ico) {
-  width: 230px;
-  border-radius: 5px;
-  border: 1px solid #99918a;
-}
-
-.cocktail-title {
-  text-align: center!important;
-}
-
-.cocktail-title i {
-  margin-right: 5px;
-}
-
-.popup-button-wrapper {
-  margin: 10px;
-}
-
-.cocktail .button-wrapper {
-  text-align: center;
-}
-
-.cocktail-thumbnail-wrapper {
-  padding: 10px;
-  padding-bottom: 5px;
-}
-
-.cocktail-title, .cocktail-ingredients {
-  padding-left: 10px;
-  padding-right: 10px;
-  color: white;
-}
-
-
-
-.ingredient{
-  background-color: #242526;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  display: inline-block;
-  width: 400px;
-  border-radius: 5px;
-}
-
-.ingredient-content {
-  max-height: 500px;
-  overflow: auto;
-  margin-bottom: 10px;
-}
-
-.ingredient-thumbnail-wrapper > img {
-  width: 300px;
-  border-radius: 5px;
-}
-
-.ingredient-title {
-  text-align: center!important;
-}
-
-.ingredient-title i {
-  margin-right: 5px;
-}
-
-
-.cocktail-ingredients {
-  text-transform: capitalize;
-}
-
-.change-color-wrapper {
-  flex: initial!important;
-  width: 30px;
-  height: 30px;
-  border-radius: 50px;
-  background-color: #3a3b3c;
-  display: flex!important;
-  margin: auto;
-  margin-right: 10px!important;
-}
-
-.column {
-  text-align: center!important;
-}
-
-.like-ico {
-  width: 30px;
-}
-
-.like-ico:hover {
-  cursor: pointer;
-}
-
-.like-wrapper {
-  text-align: center!important;
-}
-
-.content .col {
-  margin-bottom: 5px;
-  width: fit-content;
-}
-
-.fa-star:hover {
-  cursor: pointer;
-}
-
-.empty-set {
-  width: 100%!important;
-  text-align: center!important;
-}
+    color: #e4e5eb;
+  }
+  
+  body {
+    overflow-x: hidden;
+  }
+  
+  .content {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  /* .content > div {
+    height: calc(100vh - 55px)
+  } */
+  
+  .load-more-button-wrapper {
+    width: 50%;
+    margin: auto;
+  }
+  
+  .button-wrapper div {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    -webkit-transition: 0.18s ease-out;
+    -moz-transition: 0.18s ease-out;
+    -o-transition: 0.18s ease-out;
+    transition: 0.18s ease-out;
+  }
+  
+  .button-wrapper div:hover {
+    -webkit-transition: 0.18s ease-out;
+    -moz-transition: 0.18s ease-out;
+    -o-transition: 0.18s ease-out;
+    transition: 0.18s ease-out;
+  }
+  
+  .load-more-button-wrapper {
+    margin-top: 20px;
+  }
+  
+  .button-wrapper div {
+    text-align: center;
+  }
+  
+  
+  .cocktail{
+    background-color: #242526;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: inline-block;
+    width: 250px;
+    border-radius: 5px;
+  }
+  
+  .cocktail-thumbnail-wrapper > img:not(.like-ico) {
+    width: 230px;
+    border-radius: 5px;
+    border: 1px solid #99918a;
+  }
+  
+  .cocktail-title {
+    text-align: center!important;
+  }
+  
+  .cocktail-title i {
+    margin-right: 5px;
+  }
+  
+  .popup-button-wrapper {
+    margin: 10px;
+  }
+  
+  .cocktail .button-wrapper {
+    text-align: center;
+  }
+  
+  .cocktail-thumbnail-wrapper {
+    padding: 10px;
+    padding-bottom: 5px;
+  }
+  
+  .cocktail-title, .cocktail-ingredients {
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+  }
+  
+  
+  
+  .ingredient{
+    background-color: #242526;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: inline-block;
+    width: 400px;
+    border-radius: 5px;
+  }
+  
+  .ingredient-content {
+    max-height: 500px;
+    overflow: auto;
+    margin-bottom: 10px;
+  }
+  
+  .ingredient-thumbnail-wrapper > img {
+    width: 300px;
+    border-radius: 5px;
+  }
+  
+  .ingredient-title {
+    text-align: center!important;
+  }
+  
+  .ingredient-title i {
+    margin-right: 5px;
+  }
+  
+  
+  .cocktail-ingredients {
+    text-transform: capitalize;
+  }
+  
+  .change-color-wrapper {
+    flex: initial!important;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    background-color: #3a3b3c;
+    display: flex!important;
+    margin: auto;
+    margin-right: 10px!important;
+  }
+  
+  .column {
+    text-align: center!important;
+  }
+  
+  .like-ico {
+    width: 30px;
+  }
+  
+  .like-ico:hover {
+    cursor: pointer;
+  }
+  
+  .like-wrapper {
+    text-align: center!important;
+  }
+  
+  .content .col {
+    margin-bottom: 5px;
+    width: fit-content;
+  }
+  
+  .fa-star:hover {
+    cursor: pointer;
+  }
+  
+  .empty-set {
+    width: 100%!important;
+    text-align: center!important;
+  }
+  
+  .row .col-3 {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: 60px;
+  }
