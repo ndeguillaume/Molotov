@@ -61,7 +61,9 @@ export default class CocktailFromId extends React.Component {
   }
 
   render() {
-
+    if (this.state.item.length === 0) {
+      return <div>loading...</div>
+    }
     return (      
       <Cocktail
         addLikedCocktail={this.props.addLikedCocktail}

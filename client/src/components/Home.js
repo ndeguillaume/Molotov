@@ -131,7 +131,6 @@ export default class Home extends React.Component {
       return value != id;
     });
 
-    console.log(this.state.likedCocktails);
   }
 
   loadMore() {
@@ -378,7 +377,7 @@ export default class Home extends React.Component {
                     )
                   } else if (this.state.url === "") {
           for (let i = 0; i < this.state.reload; i++) {
-            for (let j = 0; j < 10; j++) {
+            for (let j = 0; j < 8; j++) {
               cocktails.push(
                 <div className="col-md">
                   <RandomCocktail

@@ -86,10 +86,10 @@ export default class SearchBar extends React.Component {
       let buttons;
       if (this.state.searchCocktail) {
         buttons =
-          '<div class="button-wrapper"><div class="option-cocktail">Cocktails</div></div><div class="button-wrapper"><div class="not-selected option-ingredient">Ingredient(s)</div></div>';
+          '<div class="button-wrapper"><div class="option-cocktail">Cocktails</div></div><div class="button-wrapper"><div class="not-selected option-ingredient">Ingredient</div></div>';
       } else {
         buttons =
-          '<div class="button-wrapper"><div class="not-selected option-cocktail">Cocktails</div></div><div class="button-wrapper"><div class="option-ingredient">Ingredient(s)</div></div>';
+          '<div class="button-wrapper"><div class="not-selected option-cocktail">Cocktails</div></div><div class="button-wrapper"><div class="option-ingredient">Ingredient</div></div>';
       }
       if (this.state.alcohol) {
         buttons +=

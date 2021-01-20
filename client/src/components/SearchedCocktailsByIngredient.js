@@ -29,22 +29,23 @@ export default class SearchedCocktailsByIngredient extends React.Component {
         },
         (error) => {
           this.setState({
-            isLoaded: true
+            isLoaded: true,
           });
         }
       );
-      const promises = this.state.items.map(item => {
-        return fetch(
-          "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + item.idDrink
-        ).then(drink => {
-          return drink.json()
-        });
+    const promises = this.state.items.map((item) => {
+      return fetch(
+        "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" +
+          item.idDrink
+      ).then((drink) => {
+        return drink.json();
       });
-  
-      Promise.all(promises).then(results => {
-        const allDrinks = results.map(result => result.drinks[0])
-        this.state.drinks = allDrinks;
-      })    
+    });
+
+    Promise.all(promises).then((results) => {
+      const allDrinks = results.map((result) => result.drinks[0]);
+      this.state.drinks = allDrinks;
+    });
   }
 
   componentDidUpdate(previousProps) {
@@ -67,18 +68,19 @@ export default class SearchedCocktailsByIngredient extends React.Component {
       this.setState({ reload: 1 });
     }
 
-    const promises = this.state.items.map(item => {
+    const promises = this.state.items.map((item) => {
       return fetch(
-        "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + item.idDrink
-      ).then(drink => {
-        return drink.json()
+        "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" +
+          item.idDrink
+      ).then((drink) => {
+        return drink.json();
       });
     });
 
-    Promise.all(promises).then(results => {
-      const allDrinks = results.map(result => result.drinks[0]);
+    Promise.all(promises).then((results) => {
+      const allDrinks = results.map((result) => result.drinks[0]);
       this.state.drinks = allDrinks;
-    })
+    });
   }
 
   loadMore() {
@@ -97,38 +99,21 @@ export default class SearchedCocktailsByIngredient extends React.Component {
       if (this.state.items.length === 0) {
         return (
           <div className="empty-set">
-            <h3>No result for the search : <strong>{this.props.url.split("=")[1]}</strong></h3>
+            <h3>
+              No result for the search :{" "}
+              <strong>{this.props.url.split("=")[1]}</strong>
+            </h3>
           </div>
-        )
+        );
       }
       var cocktailsTab = [];
-      var cocktailsID = []; 
+      var cocktailsID = [];
 
-      for(var i = 0; i < this.state.drinks.length; i++){
-        console.log(this.state.drinks[i]);
+      for (var i = 0; i < this.state.drinks.length; i++) {
         var currentItem = this.state.drinks[i];
-        if(this.props.hasAlcohol && currentItem.strAlcoholic == "Alcoholic"){             
-            if (i < 10 * this.state.reload) {
-              cocktailsTab.push(
-                <div className="col-md">
-                  <CocktailFromId
-                    addLikedCocktail={this.props.addLikedCocktail}
-                    removeLikedCocktail={this.props.removeLikedCocktail}
-                    likedCocktails={this.props.likedCocktails}
-                    ico={this.props.ico}
-                    icoFL={this.props.icoFL}
-                    drink={currentItem}
-                    id={currentItem.idDrink}
-                  />
-                </div>              
-              );
-            } else {
-              cocktailsID.push(currentItem.idDrink);
-            }
-        } else if (!this.props.hasAlcohol && currentItem.strAlcoholic == "Non alcoholic"){
-          if (i < 10 * this.state.reload) {
+        if (this.props.hasAlcohol && currentItem.strAlcoholic == "Alcoholic") {
+          if (i < 8 * this.state.reload) {
             cocktailsTab.push(
-
               <div className="col-md">
                 <CocktailFromId
                   addLikedCocktail={this.props.addLikedCocktail}
@@ -138,34 +123,35 @@ export default class SearchedCocktailsByIngredient extends React.Component {
                   icoFL={this.props.icoFL}
                   drink={currentItem}
                   id={currentItem.idDrink}
-                />   
-              </div>            
+                />
+              </div>
+            );
+          } else {
+            cocktailsID.push(currentItem.idDrink);
+          }
+        } else if (
+          !this.props.hasAlcohol &&
+          currentItem.strAlcoholic == "Non alcoholic"
+        ) {
+          if (i < 8 * this.state.reload) {
+            cocktailsTab.push(
+              <div className="col-md">
+                <CocktailFromId
+                  addLikedCocktail={this.props.addLikedCocktail}
+                  removeLikedCocktail={this.props.removeLikedCocktail}
+                  likedCocktails={this.props.likedCocktails}
+                  ico={this.props.ico}
+                  icoFL={this.props.icoFL}
+                  drink={currentItem}
+                  id={currentItem.idDrink}
+                />
+              </div>
             );
           } else {
             cocktailsID.push(currentItem.idDrink);
           }
         }
       }
-      // var i = 0;
-      // this.state.items.map((item) => {  
-      //   if (i < 8 * this.state.reload) {
-      //     cocktailsTab.push(
-      //       <CocktailFromId
-      //         addLikedCocktail={this.props.addLikedCocktail}
-      //         removeLikedCocktail={this.props.removeLikedCocktail}
-      //         likedCocktails={this.props.likedCocktails}
-      //         ico={this.props.ico}
-      //         icoFL={this.props.icoFL}
-      //         drink={item}
-      //         id={item.idDrink}
-      //       />
-      //     );
-      //   } else {
-      //     cocktailsID.push(item.idDrink);
-      //   }
-      //   i++;
-      // });              
-
       return (
         <div className="content container">
           <div className="row row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
@@ -183,4 +169,3 @@ export default class SearchedCocktailsByIngredient extends React.Component {
     }
   }
 }
-

@@ -23,6 +23,27 @@ export default class Cocktail extends React.Component {
   }
 
   render() {
+    let moreIngredients = true;
+    let nbOfIngredients = 1;
+    let j=0;
+    while (moreIngredients && j++ < 15) {
+      moreIngredients =
+        !(this.props.drink["strIngredient" + nbOfIngredients] === null) &&
+        !(this.props.drink["strIngredient" + nbOfIngredients] === "");
+      if (moreIngredients) nbOfIngredients++;
+    }
+    let ingredients ="";
+
+    for (let i = 1; i <= nbOfIngredients; i++) {
+      if (this.props.drink["strIngredient" + i] !== null) {
+        ingredients += this.props.drink["strIngredient" + i] +", "
+      }
+    }
+    ingredients = ingredients.substring(0, ingredients.length-2);
+    if (ingredients.length > 28) {
+      ingredients = ingredients.substring(0, 25) +"...";
+    }
+    
     let isLiked = false;
     let i = 0;
     while (!isLiked && i < this.props.likedCocktails.length) {
@@ -43,10 +64,13 @@ export default class Cocktail extends React.Component {
             <i className="fas fa-glass-whiskey" title="without alcohol"></i>
             :
             <i className="fas fa-cocktail" title="with alcohol"></i>}
-            {this.props.drink.strDrink}
+                {(this.props.drink.strDrink.length > 25) ?
+      this.props.drink.strDrink.substring(0,22) + "..." : 
+      this.props.drink.strDrink
+    }
           </div>
           <div className="cocktail-ingredients">
-            {this.props.drink.strIngredient1}, ...
+            {ingredients}
           </div>
           <div className="like-wrapper">
               <Like

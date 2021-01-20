@@ -67,19 +67,12 @@ export default class SearchedCocktailsByName extends React.Component {
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
-      if (this.state.items === null) {
-        return (
-          <div className="empty-set">
-            <h3>No result for the search : <strong>{this.props.url.split("=")[1]}</strong></h3>
-          </div>
-        )
-      }
       var cocktailsTab = [];
       var cocktailsID = [];
       for(var i = 0; i < this.state.items.length; i++){
         var currentItem = this.state.items[i];
         if(this.props.hasAlcohol && currentItem.strAlcoholic == "Alcoholic"){             
-            if (i < 10 * this.state.reload) {
+            if (i < 8 * this.state.reload) {
               cocktailsTab.push(
                 <div className="col-3">
                   <Cocktail
@@ -97,7 +90,7 @@ export default class SearchedCocktailsByName extends React.Component {
               cocktailsID.push(currentItem.idDrink);
             }
         } else if (!this.props.hasAlcohol && currentItem.strAlcoholic == "Non alcoholic"){
-          if (i < 10 * this.state.reload) {
+          if (i < 8 * this.state.reload) {
             cocktailsTab.push(
               <div className="col-md">
                 <Cocktail
@@ -118,9 +111,11 @@ export default class SearchedCocktailsByName extends React.Component {
       return (
         <div className="content container">
           <div className="row row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
-            {cocktailsTab}
+            {cocktailsTab.length > 0 ? cocktailsTab : <div className="empty-set">
+            <h3>No result for the search : <strong>{this.props.url.split("=")[1]}</strong></h3>
+          </div> }
           </div>
-          {cocktailsID.length === 0 ? null : (
+          {cocktailsID.length === 0 ?           null : (
             <div className="load-more-button-wrapper button-wrapper">
               <div onClick={() => this.loadMore()}>
                 Load more... ({cocktailsID.length})
