@@ -4,12 +4,12 @@
 
 Run the app with the command : 
 
-$cd serveur
-$sudo npm install
-$cd ../client
-$sudo npm install
-$cd ..
-$sudo sh deploy.sh
+$cd serveur    
+$sudo npm install   
+$cd ../client   
+$sudo npm install   
+$cd ..    
+$sudo sh deploy.sh    
 
 The server should be listening on port 5000.
 
