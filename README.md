@@ -4,12 +4,13 @@
 
 Run the app with the command : sudo sh deploy.sh
 
+
 The server should be listening on port 5000.
 
 The port of the client is not important.
 
 If the script doesn't work :
-
+Copy sample.env in server/.env
 Run the following commands in one terminal: cd server/ && npm install && node server.js
 Run the following commands in another terminal : cd client/ && npm install && npm start
 
