@@ -74,14 +74,17 @@ export default class SearchedCocktailsByName extends React.Component {
         if(this.props.hasAlcohol && currentItem.strAlcoholic == "Alcoholic"){             
             if (i < 10 * this.state.reload) {
               cocktailsTab.push(
-                <Cocktail
-                  addLikedCocktail={this.props.addLikedCocktail}
-                  removeLikedCocktail={this.props.removeLikedCocktail}
-                  likedCocktails={this.props.likedCocktails}
-                  ico={this.props.ico}
-                  icoFL={this.props.icoFL}
-                  drink={currentItem}
-                />               
+                <div className="col-3">
+                  <Cocktail
+                    addLikedCocktail={this.props.addLikedCocktail}
+                    removeLikedCocktail={this.props.removeLikedCocktail}
+                    likedCocktails={this.props.likedCocktails}
+                    ico={this.props.ico}
+                    icoFL={this.props.icoFL}
+                    drink={currentItem}
+                  /> 
+                </div>
+                              
               );
             } else {
               cocktailsID.push(currentItem.idDrink);
@@ -89,14 +92,16 @@ export default class SearchedCocktailsByName extends React.Component {
         } else if (!this.props.hasAlcohol && currentItem.strAlcoholic == "Non alcoholic"){
           if (i < 10 * this.state.reload) {
             cocktailsTab.push(
-              <Cocktail
-                addLikedCocktail={this.props.addLikedCocktail}
-                removeLikedCocktail={this.props.removeLikedCocktail}
-                likedCocktails={this.props.likedCocktails}
-                ico={this.props.ico}
-                icoFL={this.props.icoFL}
-                drink={currentItem}
-              />               
+              <div className="col-3">
+                <Cocktail
+                  addLikedCocktail={this.props.addLikedCocktail}
+                  removeLikedCocktail={this.props.removeLikedCocktail}
+                  likedCocktails={this.props.likedCocktails}
+                  ico={this.props.ico}
+                  icoFL={this.props.icoFL}
+                  drink={currentItem}
+                />  
+              </div>             
             );
           } else {
             cocktailsID.push(currentItem.idDrink);
@@ -105,7 +110,7 @@ export default class SearchedCocktailsByName extends React.Component {
     }
       return (
         <div className="content container">
-          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+          <div className="row">
             {cocktailsTab}
           </div>
           {cocktailsID.length === 0 ? null : (

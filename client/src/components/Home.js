@@ -380,7 +380,7 @@ export default class Home extends React.Component {
           for (let i = 0; i < this.state.reload; i++) {
             for (let j = 0; j < 10; j++) {
               cocktails.push(
-                <div className="col">
+                <div className="col-3">
                   <RandomCocktail
                     addLikedCocktail={addLikedCocktail}
                     removeLikedCocktail={removeLikedCocktail}
@@ -451,7 +451,7 @@ export default class Home extends React.Component {
             !this.state.isRatedCocktailPage && 
                         !this.state.isPopularCocktailPage ? (
               <div className="content container">
-                <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+                <div className="row">
                   {cocktails}
                 </div>
                 <div className="load-more-button-wrapper button-wrapper">

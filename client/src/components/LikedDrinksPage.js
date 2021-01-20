@@ -75,7 +75,7 @@ export default class LikedDrinksPage extends React.Component {
                 <div className="liked-drink-header">
                     <h3 className="liked-drinks-title">
                         <p id="molot-title-color">Molot</p>
-                        <p>Love</p> 
+                        <p>Loves</p> 
                     </h3>                         
                 </div>
                 <div className="liked-drink-separator"></div>
