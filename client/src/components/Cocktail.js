@@ -64,8 +64,8 @@ export default class Cocktail extends React.Component {
             <i className="fas fa-glass-whiskey" title="without alcohol"></i>
             :
             <i className="fas fa-cocktail" title="with alcohol"></i>}
-                {(this.props.drink.strDrink.length > 25) ?
-      this.props.drink.strDrink.substring(0,22) + "..." : 
+                {(this.props.drink.strDrink.length > 24) ?
+      this.props.drink.strDrink.substring(0,21) + "..." : 
       this.props.drink.strDrink
     }
           </div>
