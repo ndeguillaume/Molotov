@@ -45,7 +45,7 @@ export default class PopularDrinksPage extends React.Component {
     }
     tmp.push(newAvg);
     this.state.avgRating = tmp;
-    this.setState({noMoreCocktailsToDisplay : cocktails.includes(undefined)});
+    this.setState({noMoreCocktailsToDisplay : cocktails.length < 4});
   }
 
   render() {
@@ -68,6 +68,7 @@ export default class PopularDrinksPage extends React.Component {
       cocktails.push(<h3 className="empty-set">No average rating yet !</h3>);
     else
       for (let i = 0; i < 4; i++) {
+        if (popularCocktails[i] !== undefined) {
         cocktailsId.push(popularCocktails[i]);
         cocktails.push(
           <div className="col-md">
@@ -82,6 +83,7 @@ export default class PopularDrinksPage extends React.Component {
           </div>
         );
       }
+    }
     return (
       <div className={`${this.props.color} liked-drinks-page container`}>
         <div className="content container">
@@ -89,8 +91,8 @@ export default class PopularDrinksPage extends React.Component {
             {cocktails}
           </div>
           <div className="load-more-button-wrapper button-wrapper">
-            <div class="reload-wrapper" onClick={() => this.reload(cocktailsId)}>
-              <i class="fas fa-sync-alt"></i>
+            <div class="reload-wrapper">
+              <i class="fas fa-sync-alt" onClick={() => this.reload(cocktailsId)}></i>
             </div>
           </div>
         </div>

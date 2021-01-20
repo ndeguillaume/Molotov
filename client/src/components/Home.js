@@ -48,9 +48,8 @@ export default class Home extends React.Component {
       isPopularCocktailPage: false,
       hasAlcohol: true,
       cocktails: [],
-
     };
-   // if (localStorage.getItem("color") !== null) this.setState({color:localStorage.getItem("color")})
+    // if (localStorage.getItem("color") !== null) this.setState({color:localStorage.getItem("color")})
     this.handleClick = this.handleClick.bind(this);
     this.resetSearch = this.resetSearch.bind(this);
     this.filterClick = this.filterClick.bind(this);
@@ -75,7 +74,7 @@ export default class Home extends React.Component {
   }
 
   componentDidMount() {
-    if(this.state.color === null) this.setState({color:"purple"})
+    if (this.state.color === null) this.setState({ color: "purple" });
     let token = localStorage.getItem("auth-token");
     if (token !== "") {
       Axios.get("http://localhost:5000/likedDrinks", {
@@ -132,7 +131,6 @@ export default class Home extends React.Component {
     ) {
       return value != id;
     });
-
   }
 
   loadMore() {
@@ -184,7 +182,6 @@ export default class Home extends React.Component {
   setColor(newColor) {
     this.setState({ color: newColor });
     localStorage.setItem("color", newColor);
-
   }
 
   close(e) {
@@ -231,13 +228,13 @@ export default class Home extends React.Component {
   }
 
   closePopularDrinkPage() {
-        if (document.querySelector(".selected") !== null) {
-          document.querySelector(".selected").classList.remove("selected");
-        }
-        this.setState({
-          isPopularCocktailPage: false,
-        });
-      }
+    if (document.querySelector(".selected") !== null) {
+      document.querySelector(".selected").classList.remove("selected");
+    }
+    this.setState({
+      isPopularCocktailPage: false,
+    });
+  }
 
   toggleRatedDrinksPage(e) {
     if (
@@ -251,8 +248,8 @@ export default class Home extends React.Component {
       isRatedCocktailPage: !this.state.isRatedCocktailPage,
     });
     this.setState({ isLikedCocktailPage: false });
-	
-    this.setState({ isPopularCocktailPage : false});
+
+    this.setState({ isPopularCocktailPage: false });
   }
   togglePopularDrinksPage(e) {
     if (
@@ -267,7 +264,6 @@ export default class Home extends React.Component {
     });
     this.setState({ isLikedCocktailPage: false });
     this.setState({ isRatedCocktailPage: false });
-
   }
 
   closeRatedDrinksPage() {
@@ -279,14 +275,13 @@ export default class Home extends React.Component {
     });
   }
 
-  getAlcoholDrink(){
+  getAlcoholDrink() {
     this.state.hasAlcohol = true;
   }
 
-  getNoAlcoholDrink(){
+  getNoAlcoholDrink() {
     this.state.hasAlcohol = false;
   }
-
 
   render() {
     var colorSrc;
@@ -364,22 +359,21 @@ export default class Home extends React.Component {
               />
             </div>
           );
-         	
         } else if (this.state.isPopularCocktailPage) {
-                    cocktails.push(
-                      <div className="col">
-                        <PopularDrinksPage
-                        addLikedCocktail={this.addLikedCocktail}
-                        removeLikedCocktail={this.removeLikedCocktail}
-                        closeRatedDrinksPage={this.closeRatedDrinksPage}
-                        likedCocktails={likedCocktails}
-                        ico={colorSrc}
-                        icoFL={FLcolorSrc}
-                        color={this.state.color}
-                        />
-                      </div>
-                    )
-                  } else if (this.state.url === "") {
+          cocktails.push(
+            <div className="col">
+              <PopularDrinksPage
+                addLikedCocktail={this.addLikedCocktail}
+                removeLikedCocktail={this.removeLikedCocktail}
+                closeRatedDrinksPage={this.closeRatedDrinksPage}
+                likedCocktails={likedCocktails}
+                ico={colorSrc}
+                icoFL={FLcolorSrc}
+                color={this.state.color}
+              />
+            </div>
+          );
+        } else if (this.state.url === "") {
           for (let i = 0; i < this.state.reload; i++) {
             for (let j = 0; j < 8; j++) {
               cocktails.push(
@@ -451,14 +445,17 @@ export default class Home extends React.Component {
 
             {this.state.url === "" &&
             !this.state.isLikedCocktailPage &&
-            !this.state.isRatedCocktailPage && 
-                        !this.state.isPopularCocktailPage ? (
+            !this.state.isRatedCocktailPage &&
+            !this.state.isPopularCocktailPage ? (
               <div className="content container">
-                <div className="row">
-                  {cocktails}
-                </div>
+                <div className="row">{cocktails}</div>
                 <div className="load-more-button-wrapper button-wrapper">
-                  <div onClick={() => this.loadMore()}>Load more...</div>
+                  <div
+                    className="load-more-wrapper"
+                    onClick={() => this.loadMore()}
+                  >
+                    <i className="fas fa-plus"></i>
+                  </div>
                 </div>
               </div>
             ) : (
