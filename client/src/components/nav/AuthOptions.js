@@ -11,6 +11,7 @@ export default function AuthOptions(props) {
           user: undefined
       })
       localStorage.setItem("auth-token", "");
+      props.resetSearch()
   };
 
   return (
