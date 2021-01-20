@@ -107,19 +107,19 @@ export default class SearchBar extends React.Component {
             <>
               <div className="popular-wrapper-ico">
                 <i
-                  class="fas fa-fire-alt"
+                  className="fas fa-fire-alt"
                   onClick={this.props.togglePopularDrinksPage}
                 ></i>
               </div>
               <div className="molotlove-wrapper-ico">
                 <i
-                  class="fas fa-heart"
+                  className="fas fa-heart"
                   onClick={this.props.toggleLikedDrinksPage}
                 ></i>
               </div>
               <div className="ratedCocktails-wrapper-ico">
                 <i
-                  class="fas fa-star-half-alt"
+                  className="fas fa-star-half-alt"
                   onClick={this.props.toggleRatedCocktailsPage}
                 ></i>
               </div>
@@ -127,7 +127,7 @@ export default class SearchBar extends React.Component {
           ) : (
             <div className="popular-wrapper-ico">
               <i
-                class="fas fa-fire-alt"
+                className="fas fa-fire-alt"
                 onClick={this.props.togglePopularDrinksPage}
               ></i>
             </div>
@@ -179,19 +179,19 @@ export default class SearchBar extends React.Component {
           <>
             <div className="popular-wrapper-ico">
               <i
-                class="fas fa-fire-alt"
+                className="fas fa-fire-alt"
                 onClick={this.props.togglePopularDrinksPage}
               ></i>
             </div>
             <div className="molotlove-wrapper-ico">
               <i
-                class="fas fa-heart"
+                className="fas fa-heart"
                 onClick={this.props.toggleLikedDrinksPage}
               ></i>
             </div>
             <div className="ratedCocktails-wrapper-ico">
               <i
-                class="fas fa-star-half-alt"
+                className="fas fa-star-half-alt"
                 onClick={this.props.toggleRatedDrinksPage}
               ></i>
             </div>
@@ -199,7 +199,7 @@ export default class SearchBar extends React.Component {
         ) : 
         <div className="popular-wrapper-ico">
         <i
-          class="fas fa-fire-alt"
+          className="fas fa-fire-alt"
           onClick={this.props.togglePopularDrinksPage}
         ></i>
       </div>

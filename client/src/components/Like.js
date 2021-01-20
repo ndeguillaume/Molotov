@@ -5,7 +5,6 @@ import Axios from "axios";
 export default function Like(props) {
   const { userData, setUserData } = useContext(UserContext);
   const like = async (event) => {
-    console.log(event.target)
     if (!props.isLiked) {
       props.addLikedCocktail(props.id);
     } else {
