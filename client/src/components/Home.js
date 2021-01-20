@@ -12,6 +12,7 @@ import SearchedCocktailsByName from "./SearchedCocktailsByName";
 import SearchedCocktailsByIngredient from "./SearchedCocktailsByIngredient";
 import LikedDrinksPage from "./LikedDrinksPage";
 import RatedDrinksPage from "./RatedDrinksPage";
+import PopularDrinksPage from "./PopularDrinksPage";
 import Axios from "axios";
 import purple from "../public/images/purple.png";
 import blue from "../public/images/blue.png";
@@ -40,9 +41,11 @@ export default class Home extends React.Component {
       colorOption: false,
       color: "purple",
       likedCocktails: [],
+      avgRating: [],
       likedCocktailsLoaded: false,
       isLikedCocktailPage: false,
       isRatedCocktailPage: false,
+      isPopularCocktailPage: false,
       hasAlcohol: true,
       cocktails: [],
 
@@ -61,9 +64,11 @@ export default class Home extends React.Component {
     this.removeLikedCocktail = this.removeLikedCocktail.bind(this);
     this.eraseLikedCocktail = this.eraseLikedCocktail.bind(this);
     this.toggleLikedDrinksPage = this.toggleLikedDrinksPage.bind(this);
-    this.toggleRatedCocktailsPage = this.toggleRatedCocktailsPage.bind(this);
+    this.toggleRatedDrinksPage = this.toggleRatedDrinksPage.bind(this);
     this.closeLikedDrinksPage = this.closeLikedDrinksPage.bind(this);
     this.closeRatedDrinksPage = this.closeRatedDrinksPage.bind(this);
+    this.closePopularDrinkPage = this.closePopularDrinkPage.bind(this);
+    this.togglePopularDrinksPage = this.togglePopularDrinksPage.bind(this);
     this.getAlcoholDrink = this.getAlcoholDrink.bind(this);
     this.getNoAlcoholDrink = this.getNoAlcoholDrink.bind(this);
   }
@@ -143,6 +148,7 @@ export default class Home extends React.Component {
     this.setState({ url: "" });
     this.closeLikedDrinksPage();
     this.closeRatedDrinksPage();
+    this.closePopularDrinkPage();
     if (document.querySelector(".selected") !== null) {
       document.querySelector(".selected").classList.remove("selected");
     }
@@ -209,6 +215,7 @@ export default class Home extends React.Component {
       isLikedCocktailPage: !this.state.isLikedCocktailPage,
     });
     this.setState({ isRatedCocktailPage: false });
+    this.setState({ isPopularCocktailPage: false });
   }
 
   closeLikedDrinksPage() {
@@ -220,7 +227,16 @@ export default class Home extends React.Component {
     });
   }
 
-  toggleRatedCocktailsPage(e) {
+  closePopularDrinkPage() {
+        if (document.querySelector(".selected") !== null) {
+          document.querySelector(".selected").classList.remove("selected");
+        }
+        this.setState({
+          isPopularCocktailPage: false,
+        });
+      }
+
+  toggleRatedDrinksPage(e) {
     if (
       document.querySelector(".selected") !== null &&
       document.querySelector(".selected") != e.target
@@ -232,6 +248,23 @@ export default class Home extends React.Component {
       isRatedCocktailPage: !this.state.isRatedCocktailPage,
     });
     this.setState({ isLikedCocktailPage: false });
+	
+    this.setState({ isPopularCocktailPage : false});
+  }
+  togglePopularDrinksPage(e) {
+    if (
+      document.querySelector(".selected") !== null &&
+      document.querySelector(".selected") != e.target
+    ) {
+      document.querySelector(".selected").classList.remove("selected");
+    }
+    e.target.classList.toggle("selected");
+    this.setState({
+      isPopularCocktailPage: !this.state.isPopularCocktailPage,
+    });
+    this.setState({ isLikedCocktailPage: false });
+    this.setState({ isRatedCocktailPage: false });
+
   }
 
   closeRatedDrinksPage() {
@@ -328,7 +361,22 @@ export default class Home extends React.Component {
               />
             </div>
           );
-        } else if (this.state.url === "") {
+         	
+        } else if (this.state.isPopularCocktailPage) {
+                    cocktails.push(
+                      <div className="col">
+                        <PopularDrinksPage
+                        addLikedCocktail={this.addLikedCocktail}
+                        removeLikedCocktail={this.removeLikedCocktail}
+                        closeRatedDrinksPage={this.closeRatedDrinksPage}
+                        likedCocktails={likedCocktails}
+                        ico={colorSrc}
+                        icoFL={FLcolorSrc}
+                        color={this.state.color}
+                        />
+                      </div>
+                    )
+                  } else if (this.state.url === "") {
           for (let i = 0; i < this.state.reload; i++) {
             for (let j = 0; j < 10; j++) {
               cocktails.push(
@@ -390,7 +438,8 @@ export default class Home extends React.Component {
               loginClick={this.loginClick}
               eraseLikedCocktail={this.eraseLikedCocktail}
               toggleLikedDrinksPage={this.toggleLikedDrinksPage}
-              toggleRatedCocktailsPage={this.toggleRatedCocktailsPage}
+              toggleRatedDrinksPage={this.toggleRatedDrinksPage}
+              togglePopularDrinksPage={this.togglePopularDrinksPage}
               closeLikedDrinksPage={this.closeLikedDrinksPage}
               closeRatedDrinksPage={this.closeRatedDrinksPage}
               getAlcoholDrink={this.getAlcoholDrink}
@@ -399,7 +448,8 @@ export default class Home extends React.Component {
 
             {this.state.url === "" &&
             !this.state.isLikedCocktailPage &&
-            !this.state.isRatedCocktailPage ? (
+            !this.state.isRatedCocktailPage && 
+                        !this.state.isPopularCocktailPage ? (
               <div className="content container">
                 <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
                   {cocktails}

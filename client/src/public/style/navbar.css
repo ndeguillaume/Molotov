@@ -42,13 +42,13 @@
   margin-left: 20px;
 }
 
-.molotlov-wrapper-ico,
+.molotlove-wrapper-ico,
 .ratedCocktails-wrapper-ico  {
   display: inline-block;
 }
-.molotlov-wrapper-ico i , .ratedCocktails-wrapper-ico i {
+.molotlove-wrapper-ico i , .ratedCocktails-wrapper-ico i, .popular-wrapper-ico i {
     cursor: pointer;
 }
-.ratedCocktails-wrapper-ico {
+.ratedCocktails-wrapper-ico, .molotlove-wrapper-ico {
   margin-left: 5px;
 }

@@ -163,3 +163,8 @@ body {
   width: 100%!important;
   text-align: center!important;
 }
+
+.reload-wrapper {
+  width: 50px!important;
+  margin: auto;
+}

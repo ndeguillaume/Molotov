@@ -105,7 +105,13 @@ export default class SearchBar extends React.Component {
         <div className="search-wrapper">
           {localStorage.getItem("auth-token") !== "" ? (
             <>
-              <div className="molotlov-wrapper-ico">
+              <div className="popular-wrapper-ico">
+                <i
+                  class="fas fa-fire-alt"
+                  onClick={this.props.togglePopularDrinksPage}
+                ></i>
+              </div>
+              <div className="molotlove-wrapper-ico">
                 <i
                   class="fas fa-heart"
                   onClick={this.props.toggleLikedDrinksPage}
@@ -118,7 +124,14 @@ export default class SearchBar extends React.Component {
                 ></i>
               </div>
             </>
-          ) : null}
+          ) : (
+            <div className="popular-wrapper-ico">
+              <i
+                class="fas fa-fire-alt"
+                onClick={this.props.togglePopularDrinksPage}
+              ></i>
+            </div>
+          )}
           <div className="search-ico">
             <div>
               <div className="search-button" title="Search">
@@ -164,7 +177,13 @@ export default class SearchBar extends React.Component {
       <div className="search-wrapper">
         {localStorage.getItem("auth-token") !== "" ? (
           <>
-            <div className="molotlov-wrapper-ico">
+            <div className="popular-wrapper-ico">
+              <i
+                class="fas fa-fire-alt"
+                onClick={this.props.togglePopularDrinksPage}
+              ></i>
+            </div>
+            <div className="molotlove-wrapper-ico">
               <i
                 class="fas fa-heart"
                 onClick={this.props.toggleLikedDrinksPage}
@@ -173,11 +192,18 @@ export default class SearchBar extends React.Component {
             <div className="ratedCocktails-wrapper-ico">
               <i
                 class="fas fa-star-half-alt"
-                onClick={this.props.toggleRatedCocktailsPage}
+                onClick={this.props.toggleRatedDrinksPage}
               ></i>
             </div>
           </>
-        ) : null}
+        ) : 
+        <div className="popular-wrapper-ico">
+        <i
+          class="fas fa-fire-alt"
+          onClick={this.props.togglePopularDrinksPage}
+        ></i>
+      </div>
+      }
         <div className="search-ico">
           <div>
             <div className="search-button" title="Search">
