@@ -67,7 +67,6 @@ export default class RatedDrinksPage extends React.Component {
 
   render() {
     const { isLoaded } = this.state;
-    const content = [];
     if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
@@ -112,7 +111,6 @@ export default class RatedDrinksPage extends React.Component {
           </div>
         </div>
       );
-      return null;
     }
   }
 }

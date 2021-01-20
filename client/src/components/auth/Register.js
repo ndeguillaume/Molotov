@@ -36,7 +36,7 @@ export default function Register(props) {
       });
       localStorage.setItem("auth-token", loginResponse.data.token);
       props.closeLoginPage();
-      this.props.resetSearch();
+      props.resetSearch();
     } catch (err) {
       if (err.response.data.msg) setError(err.response.data.msg);
     }

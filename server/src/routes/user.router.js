@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const router = require("express").Router();
 const User = require("../models/user.models");
+const DrinkRating = require("../models/drinkRating.models");
 const auth = require("../middleware/auth");
 
 router.post("/register", async (req, res) => {
@@ -41,9 +42,8 @@ router.post("/register", async (req, res) => {
       firstName,
       lastName,
     });
-
-    const savedUser = await newUser.save();
-    res.json(savedUser);
+    await newUser.save();
+    res.json("item created");
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -81,10 +81,15 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.delete("/delete", auth, async (req, res) => {
+router.delete("/", auth, async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(req.user);
-    res.json(user);
+    await DrinkRating.deleteMany({userId: user._id});
+    res.json({
+      id: user._id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+    });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

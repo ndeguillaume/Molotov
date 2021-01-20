@@ -32,6 +32,8 @@ mongoose.connect(process.env.MONGODB_CONNECTION, {
 app.use("/user", require("./src/routes/user.router"));
 app.use("/likedDrinks", require("./src/routes/likedDrinks.router"));
 app.use("/drinkRating", require("./src/routes/drinkRating.router"));
+app.use("/averageDrinkRating", require("./src/routes/averageDrinkRating.router"));
+
 
 
 

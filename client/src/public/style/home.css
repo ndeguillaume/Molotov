@@ -121,6 +121,7 @@
   
   .cocktail-ingredients {
     text-transform: capitalize;
+    text-align: left!important;
   }
   
   .change-color-wrapper {

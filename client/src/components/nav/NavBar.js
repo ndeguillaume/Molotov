@@ -94,7 +94,7 @@ export default class Navbar extends React.Component {
           />
         ) : null}
 
-        <AuthOptions loginClick={this.props.loginClick} />
+        <AuthOptions resetSearch={this.props.resetSearch} loginClick={this.props.loginClick} />
       </nav>
     );
   }
