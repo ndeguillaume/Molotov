@@ -12,6 +12,7 @@ export default class SearchBar extends React.Component {
     };
     this.optionsFilterIco = React.createRef();
     this.optionClicked = this.optionClicked.bind(this);
+    this.search = this.search.bind(this);
   }
 
   search() {
@@ -25,6 +26,7 @@ export default class SearchBar extends React.Component {
         "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" +
         this.state.searchValue;
     }
+
     this.props.handleClick(url);
     this.props.closeLikedDrinksPage();
     this.props.closeRatedDrinksPage();
@@ -92,9 +94,12 @@ export default class SearchBar extends React.Component {
       if (this.state.alcohol) {
         buttons +=
           '<div class="button-wrapper"><div class="option-alcohol">Alcohol</div></div>';
+        this.props.getAlcoholDrink();          
+          
       } else {
         buttons +=
           '<div class="button-wrapper"><div class="not-selected option-alcohol">Alcohol</div></div>';
+        this.props.getNoAlcoholDrink();
       }
       return (
         <div className="search-wrapper">

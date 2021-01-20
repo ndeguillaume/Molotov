@@ -43,7 +43,9 @@ export default class Home extends React.Component {
       likedCocktailsLoaded: false,
       isLikedCocktailPage: false,
       isRatedCocktailPage: false,
+      hasAlcohol: true,
       cocktails: [],
+
     };
     this.handleClick = this.handleClick.bind(this);
     this.resetSearch = this.resetSearch.bind(this);
@@ -62,6 +64,8 @@ export default class Home extends React.Component {
     this.toggleRatedCocktailsPage = this.toggleRatedCocktailsPage.bind(this);
     this.closeLikedDrinksPage = this.closeLikedDrinksPage.bind(this);
     this.closeRatedDrinksPage = this.closeRatedDrinksPage.bind(this);
+    this.getAlcoholDrink = this.getAlcoholDrink.bind(this);
+    this.getNoAlcoholDrink = this.getNoAlcoholDrink.bind(this);
   }
 
   componentDidMount() {
@@ -239,6 +243,15 @@ export default class Home extends React.Component {
     });
   }
 
+  getAlcoholDrink(){
+    this.state.hasAlcohol = true;
+  }
+
+  getNoAlcoholDrink(){
+    this.state.hasAlcohol = false;
+  }
+
+
   render() {
     var colorSrc;
     var FLcolorSrc;
@@ -341,6 +354,7 @@ export default class Home extends React.Component {
                 ico={colorSrc}
                 icoFL={FLcolorSrc}
                 url={this.state.url}
+                hasAlcohol={this.state.hasAlcohol}
               />
             );
           } else if (this.state.url.split("?")[1].split("=")[0] === "i") {
@@ -352,6 +366,7 @@ export default class Home extends React.Component {
                 ico={colorSrc}
                 icoFL={FLcolorSrc}
                 url={this.state.url}
+                hasAlcohol={this.state.hasAlcohol}
               />
             );
           }
@@ -378,6 +393,8 @@ export default class Home extends React.Component {
               toggleRatedCocktailsPage={this.toggleRatedCocktailsPage}
               closeLikedDrinksPage={this.closeLikedDrinksPage}
               closeRatedDrinksPage={this.closeRatedDrinksPage}
+              getAlcoholDrink={this.getAlcoholDrink}
+              getNoAlcoholDrink={this.getNoAlcoholDrink}
             />
 
             {this.state.url === "" &&

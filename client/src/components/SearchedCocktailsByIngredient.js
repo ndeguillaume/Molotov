@@ -1,5 +1,7 @@
 import React from "react";
+//import AlcoholFilter from "./AlcoholFilterIngredient";
 import CocktailFromId from "./CocktailFromId";
+import Cocktail from "./Cocktail";
 
 export default class SearchedCocktailsByIngredient extends React.Component {
   constructor(props) {
@@ -9,6 +11,7 @@ export default class SearchedCocktailsByIngredient extends React.Component {
       error: null,
       isLoaded: false,
       items: [],
+      drinks: [],
       reload: 1,
     };
     this.loadMore = this.loadMore.bind(this);
@@ -31,6 +34,18 @@ export default class SearchedCocktailsByIngredient extends React.Component {
           });
         }
       );
+      const promises = this.state.items.map(item => {
+        return fetch(
+          "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + item.idDrink
+        ).then(drink => {
+          return drink.json()
+        });
+      });
+  
+      Promise.all(promises).then(results => {
+        const allDrinks = results.map(result => result.drinks[0])
+        this.state.drinks = allDrinks;
+      })    
   }
 
   componentDidUpdate(previousProps) {
@@ -53,6 +68,34 @@ export default class SearchedCocktailsByIngredient extends React.Component {
         );
       this.setState({ reload: 1 });
     }
+
+    const promises = this.state.items.map(item => {
+      return fetch(
+        "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + item.idDrink
+      ).then(drink => {
+        return drink.json()
+      });
+    });
+
+    Promise.all(promises).then(results => {
+      const allDrinks = results.map(result => result.drinks[0]);
+      this.state.drinks = allDrinks;
+    })
+
+    // Promise.all(promises).then(
+    //   (results) => {
+    //     const allDrinks = results.map(result => result.drinks[0]);
+    //     this.setState({
+    //       isLoaded: true,
+    //       drinks: allDrinks,
+    //     });
+    //   },
+    //   (error) => {
+    //     this.setState({
+    //       isLoaded: true,
+    //       error,
+    //     });
+    //   });
   }
 
   loadMore() {
@@ -69,26 +112,65 @@ export default class SearchedCocktailsByIngredient extends React.Component {
       return <div>Loading...</div>;
     } else {
       var cocktailsTab = [];
-      var cocktailsID = [];
-      var i = 0;
-      this.state.items.map((item) => {
-        if (i < 8 * this.state.reload) {
-          cocktailsTab.push(
-            <CocktailFromId
-              addLikedCocktail={this.props.addLikedCocktail}
-              removeLikedCocktail={this.props.removeLikedCocktail}
-              likedCocktails={this.props.likedCocktails}
-              ico={this.props.ico}
-              icoFL={this.props.icoFL}
-              drink={item}
-              id={item.idDrink}
-            />
-          );
-        } else {
-          cocktailsID.push(item.idDrink);
+      var cocktailsID = []; 
+
+      for(var i = 0; i < this.state.drinks.length; i++){
+        console.log(this.state.drinks[i]);
+        var currentItem = this.state.drinks[i];
+        if(this.props.hasAlcohol && currentItem.strAlcoholic == "Alcoholic"){             
+            if (i < 10 * this.state.reload) {
+              cocktailsTab.push(
+                <CocktailFromId
+                  addLikedCocktail={this.props.addLikedCocktail}
+                  removeLikedCocktail={this.props.removeLikedCocktail}
+                  likedCocktails={this.props.likedCocktails}
+                  ico={this.props.ico}
+                  icoFL={this.props.icoFL}
+                  drink={currentItem}
+                  id={currentItem.idDrink}
+                />               
+              );
+            } else {
+              cocktailsID.push(currentItem.idDrink);
+            }
+        } else if (!this.props.hasAlcohol && currentItem.strAlcoholic == "Non alcoholic"){
+          if (i < 10 * this.state.reload) {
+            cocktailsTab.push(
+              <CocktailFromId
+                  addLikedCocktail={this.props.addLikedCocktail}
+                  removeLikedCocktail={this.props.removeLikedCocktail}
+                  likedCocktails={this.props.likedCocktails}
+                  ico={this.props.ico}
+                  icoFL={this.props.icoFL}
+                  drink={currentItem}
+                  id={currentItem.idDrink}
+                />               
+            );
+          } else {
+            cocktailsID.push(currentItem.idDrink);
+          }
         }
-        i++;
-      });
+      }
+      // var i = 0;
+      // this.state.items.map((item) => {  
+      //   if (i < 8 * this.state.reload) {
+      //     cocktailsTab.push(
+      //       <CocktailFromId
+      //         addLikedCocktail={this.props.addLikedCocktail}
+      //         removeLikedCocktail={this.props.removeLikedCocktail}
+      //         likedCocktails={this.props.likedCocktails}
+      //         ico={this.props.ico}
+      //         icoFL={this.props.icoFL}
+      //         drink={item}
+      //         id={item.idDrink}
+      //       />
+      //     );
+      //   } else {
+      //     cocktailsID.push(item.idDrink);
+      //   }
+      //   i++;
+      // });              
+
       return (
         <div className="content container">
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
@@ -106,3 +188,4 @@ export default class SearchedCocktailsByIngredient extends React.Component {
     }
   }
 }
+
