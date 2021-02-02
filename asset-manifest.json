@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Molotov/static/css/main.8d346cff.chunk.css",
-    "main.js": "/Molotov/static/js/main.1ff95e64.chunk.js",
-    "main.js.map": "/Molotov/static/js/main.1ff95e64.chunk.js.map",
+    "main.js": "/Molotov/static/js/main.61e8169f.chunk.js",
+    "main.js.map": "/Molotov/static/js/main.61e8169f.chunk.js.map",
     "runtime-main.js": "/Molotov/static/js/runtime-main.3366ed8a.js",
     "runtime-main.js.map": "/Molotov/static/js/runtime-main.3366ed8a.js.map",
-    "static/js/2.4b6c76b4.chunk.js": "/Molotov/static/js/2.4b6c76b4.chunk.js",
-    "static/js/2.4b6c76b4.chunk.js.map": "/Molotov/static/js/2.4b6c76b4.chunk.js.map",
+    "static/js/2.019559a8.chunk.js": "/Molotov/static/js/2.019559a8.chunk.js",
+    "static/js/2.019559a8.chunk.js.map": "/Molotov/static/js/2.019559a8.chunk.js.map",
     "index.html": "/Molotov/index.html",
     "static/css/main.8d346cff.chunk.css.map": "/Molotov/static/css/main.8d346cff.chunk.css.map",
-    "static/js/2.4b6c76b4.chunk.js.LICENSE.txt": "/Molotov/static/js/2.4b6c76b4.chunk.js.LICENSE.txt",
+    "static/js/2.019559a8.chunk.js.LICENSE.txt": "/Molotov/static/js/2.019559a8.chunk.js.LICENSE.txt",
     "static/media/FL_blue.9e7cd0e9.png": "/Molotov/static/media/FL_blue.9e7cd0e9.png",
     "static/media/FL_green.cbd720f9.png": "/Molotov/static/media/FL_green.cbd720f9.png",
     "static/media/FL_orange.050780e5.png": "/Molotov/static/media/FL_orange.050780e5.png",
@@ -28,8 +28,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.3366ed8a.js",
-    "static/js/2.4b6c76b4.chunk.js",
+    "static/js/2.019559a8.chunk.js",
     "static/css/main.8d346cff.chunk.css",
-    "static/js/main.1ff95e64.chunk.js"
+    "static/js/main.61e8169f.chunk.js"
   ]
 }
