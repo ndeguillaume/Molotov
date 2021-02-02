@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/Molotov/static/css/main.8d346cff.chunk.css",
+    "main.js": "/Molotov/static/js/main.efc9baf2.chunk.js",
+    "main.js.map": "/Molotov/static/js/main.efc9baf2.chunk.js.map",
+    "runtime-main.js": "/Molotov/static/js/runtime-main.3366ed8a.js",
+    "runtime-main.js.map": "/Molotov/static/js/runtime-main.3366ed8a.js.map",
+    "static/js/2.4b6c76b4.chunk.js": "/Molotov/static/js/2.4b6c76b4.chunk.js",
+    "static/js/2.4b6c76b4.chunk.js.map": "/Molotov/static/js/2.4b6c76b4.chunk.js.map",
+    "index.html": "/Molotov/index.html",
+    "static/css/main.8d346cff.chunk.css.map": "/Molotov/static/css/main.8d346cff.chunk.css.map",
+    "static/js/2.4b6c76b4.chunk.js.LICENSE.txt": "/Molotov/static/js/2.4b6c76b4.chunk.js.LICENSE.txt",
+    "static/media/FL_blue.9e7cd0e9.png": "/Molotov/static/media/FL_blue.9e7cd0e9.png",
+    "static/media/FL_green.cbd720f9.png": "/Molotov/static/media/FL_green.cbd720f9.png",
+    "static/media/FL_orange.050780e5.png": "/Molotov/static/media/FL_orange.050780e5.png",
+    "static/media/FL_pink.328a435a.png": "/Molotov/static/media/FL_pink.328a435a.png",
+    "static/media/FL_purple.43237fa1.png": "/Molotov/static/media/FL_purple.43237fa1.png",
+    "static/media/FL_red.1915f31b.png": "/Molotov/static/media/FL_red.1915f31b.png",
+    "static/media/FL_yellow.e8964562.png": "/Molotov/static/media/FL_yellow.e8964562.png",
+    "static/media/blue.6c11093d.png": "/Molotov/static/media/blue.6c11093d.png",
+    "static/media/all.min.css": "/Molotov/static/media/fa-solid-900.46fdbd2d.woff",
+    "static/media/green.a65cc561.png": "/Molotov/static/media/green.a65cc561.png",
+    "static/media/orange.0a40b09e.png": "/Molotov/static/media/orange.0a40b09e.png",
+    "static/media/pink.7dde91d5.png": "/Molotov/static/media/pink.7dde91d5.png",
+    "static/media/purple.cdef483f.png": "/Molotov/static/media/purple.cdef483f.png",
+    "static/media/red.846ad701.png": "/Molotov/static/media/red.846ad701.png",
+    "static/media/yellow.8170448c.png": "/Molotov/static/media/yellow.8170448c.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3366ed8a.js",
+    "static/js/2.4b6c76b4.chunk.js",
+    "static/css/main.8d346cff.chunk.css",
+    "static/js/main.efc9baf2.chunk.js"
+  ]
+}
