@@ -4,7 +4,6 @@
 
 Molotov est un catalogue de recettes de cocktails. On y trouve une multitude de cocktails du monde entier ainsi que, pour chacun, la liste des ingrédients et des instructions pour leur réalisation. Une recherche filtrée permet à l’utilisateur de trouver aisément le cocktail de ses rêves. L’application peut être utilisée avec authentification ou bien anonymement. Dans le second cas, certaines fonctionnalités comme la note des cocktails ou pouvoir les ajouter à ses favoris ne sont pas disponibles. A noter que notre application est en anglais car l’API ne fournit que des données en anglais ou partiellement en allemand.
 L'API utilisée pour récupérer les cocktails est <a href="https://www.thecocktaildb.com">https://www.thecocktaildb.com</a>
-<img src="https://i.imgur.com/ZhLb0LH.png" />
 
 ## Fonctionnalités
 
